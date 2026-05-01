@@ -1,0 +1,273 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 0, 8, 0.97);
+  z-index: 300;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  animation: flashIn 0.08s ease;
+}
+
+@keyframes flashIn {
+  0%   { background: rgba(255,255,255,0.9); }
+  100% { background: rgba(10, 0, 8, 0.97); }
+}
+
+/* ─── Left panel ─────────────────────────────────────────────────────────── */
+.left {
+  border-right: 1px solid var(--border);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.clearLabel {
+  font-size: 9px;
+  color: var(--green);
+  letter-spacing: 4px;
+  border: 1px solid #0a5a3a;
+  background: #001a0a;
+  padding: 3px 10px;
+  display: inline-block;
+}
+
+.roomTitle {
+  font-family: 'Cinzel', serif;
+  font-size: 26px;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.roomTitle.boss {
+  color: var(--gold2);
+  text-shadow: 2px 2px 0 var(--gold);
+}
+
+/* XP breakdown */
+.xpTable {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  padding: 14px;
+}
+
+.xpRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text2);
+}
+
+.xpRow.total {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  color: var(--gold2);
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  margin-top: 4px;
+}
+
+.xpVal {
+  color: var(--purple);
+}
+
+.xpVal.gold { color: var(--gold2); }
+
+/* Progress bar */
+.progressWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progressLabel {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progressBar {
+  height: 8px;
+  background: #1a0018;
+  border: 1px solid #2a0028;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--purple2);
+  transition: width 1.2s ease;
+  width: 0;
+}
+
+.progressFill.animated {
+  width: var(--xp-pct);
+}
+
+/* ─── Loot section ───────────────────────────────────────────────────────── */
+.lootSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lootTitle {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 3px;
+}
+
+.lootItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.lootItem.rare {
+  border-color: #4a3a00;
+}
+
+.lootIcon {
+  width: 48px;
+  height: 48px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lootName {
+  font-size: 12px;
+  color: var(--text);
+}
+
+.lootItem.rare .lootName {
+  color: var(--gold2);
+}
+
+.lootDesc {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* ─── Right panel ────────────────────────────────────────────────────────── */
+.right {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.nextLabel {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 3px;
+}
+
+.nextCard {
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  padding: 16px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.nextCard:hover {
+  border-color: var(--purple2);
+}
+
+.nextTitle {
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.nextMeta {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+
+/* Inventory */
+.inventory {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.invTitle {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 3px;
+}
+
+.invGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 28px);
+  gap: 4px;
+}
+
+.invSlot {
+  width: 28px;
+  height: 28px;
+  background: #0a000f;
+  border: 1px solid var(--border);
+  border-radius: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.actionBtn {
+  background: var(--purple3);
+  border: 2px solid var(--purple);
+  color: var(--purple2);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  text-align: center;
+}
+
+.actionBtn:hover {
+  background: var(--purple2);
+  color: #fff;
+  border-color: var(--pink);
+}
+
+.actionBtn.secondary {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text3);
+  font-size: 10px;
+}
+
+.actionBtn.secondary:hover {
+  border-color: var(--purple2);
+  color: var(--text2);
+}

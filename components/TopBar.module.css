@@ -1,0 +1,119 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #05000a;
+  border-bottom: 2px solid var(--border);
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--pink);
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 var(--purple3);
+}
+
+.urlBar {
+  flex: 1;
+  background: #0a000f;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-family: 'Share Tech Mono', monospace;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.statGroup {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.statLabel {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+
+.hpBar {
+  width: 52px;
+  height: 5px;
+  background: #1a0018;
+  border: 1px solid #2a0028;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.hpFill {
+  height: 100%;
+  background: var(--blood);
+  transition: width 0.4s ease;
+}
+
+.xpBar {
+  width: 52px;
+  height: 5px;
+  background: #1a0018;
+  border: 1px solid #2a0028;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.xpFill {
+  height: 100%;
+  background: var(--purple2);
+  transition: width 0.6s ease;
+}
+
+.lvl {
+  font-size: 10px;
+  color: var(--gold);
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.modeBtn {
+  background: var(--purple3);
+  border: 1px solid var(--purple);
+  color: var(--purple2);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.modeBtn:hover {
+  background: var(--purple2);
+  color: #fff;
+  border-color: var(--pink);
+}

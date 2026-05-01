@@ -1,0 +1,134 @@
+.sidebar {
+  width: 190px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--border);
+  background: var(--bg2);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.panel {
+  border-bottom: 1px solid var(--border);
+  padding: 12px;
+}
+
+.panelTitle {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.panelTitle::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: var(--purple2);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  flex-shrink: 0;
+}
+
+/* ─── Char card ──────────────────────────────────────────────────────────── */
+.charRows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.charRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+.charLabel {
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+
+.charVal {
+  color: var(--text);
+  font-size: 11px;
+}
+
+.charBar {
+  width: 70px;
+  height: 5px;
+  background: #1a0018;
+  border: 1px solid #2a0028;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.charFill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.charFill.hp  { background: var(--blood); }
+.charFill.xp  { background: var(--purple2); }
+
+/* ─── Stats panel ────────────────────────────────────────────────────────── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.statBox {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  border-radius: 1px;
+}
+
+.statNum {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  color: var(--purple);
+  line-height: 1;
+}
+
+.statLbl {
+  font-size: 8px;
+  color: var(--text3);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* ─── Controls panel ─────────────────────────────────────────────────────── */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.controlRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+}
+
+.key {
+  display: inline-block;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--purple);
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 1px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.controlDesc {
+  color: var(--text2);
+  font-size: 10px;
+}

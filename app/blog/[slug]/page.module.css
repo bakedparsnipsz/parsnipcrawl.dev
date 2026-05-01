@@ -1,0 +1,151 @@
+.shell {
+  display: flex;
+  min-height: calc(100vh - 44px);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 780px;
+}
+
+.breadcrumb {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.breadcrumb a {
+  color: var(--text3);
+  transition: color 0.15s;
+}
+
+.breadcrumb a:hover {
+  color: var(--purple2);
+}
+
+.sep {
+  color: var(--border);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.difficulty {
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 1px;
+  border: 1px solid;
+}
+
+.diff-Easy   { border-color: var(--green);   color: var(--green);   background: #001a0a; }
+.diff-Medium { border-color: var(--purple2);  color: var(--purple);  background: #1a003a; }
+.diff-Hard   { border-color: var(--blood);    color: var(--pink);    background: #1a000a; }
+.diff-BOSS   { border-color: var(--gold);     color: var(--gold2);   background: #130800; }
+
+.floor {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 2px;
+}
+
+.title {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.title.boss {
+  color: var(--gold2);
+  text-shadow: 2px 2px 0 var(--gold);
+}
+
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 9px;
+  padding: 2px 6px;
+  letter-spacing: 1px;
+  border-radius: 1px;
+  border: 1px solid var(--purple2);
+  color: var(--purple);
+  background: #1a003a;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.collectBtn {
+  background: var(--purple3);
+  border: 2px solid var(--purple);
+  color: var(--purple2);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  padding: 10px 24px;
+  cursor: pointer;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.collectBtn:hover {
+  background: var(--purple2);
+  color: #fff;
+  border-color: var(--pink);
+}
+
+.collectBtn.boss {
+  background: #1a0800;
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.xpPreview {
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 1px;
+}

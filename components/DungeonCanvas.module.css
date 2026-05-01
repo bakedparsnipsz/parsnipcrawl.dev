@@ -1,0 +1,108 @@
+.wrapper {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.canvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
+.roomOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 0, 8, 0.92);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.roTitle {
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  color: var(--pink);
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.roTitle.boss {
+  color: var(--gold2);
+}
+
+.roDiff {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--text3);
+}
+
+.roDesc {
+  font-size: 11px;
+  color: var(--text2);
+  max-width: 320px;
+  text-align: center;
+  line-height: 1.7;
+  padding: 0 24px;
+}
+
+.roMeta {
+  display: flex;
+  gap: 16px;
+  font-size: 10px;
+  color: var(--text3);
+}
+
+.roBtn {
+  background: var(--purple3);
+  border: 2px solid var(--purple);
+  color: var(--purple2);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  padding: 10px 24px;
+  cursor: pointer;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.roBtn:hover {
+  background: var(--purple2);
+  color: #fff;
+  border-color: var(--pink);
+}
+
+.roBtn.boss {
+  background: #1a0800;
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.roBtn.boss:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+.hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 2px;
+  pointer-events: none;
+  animation: fadeInOut 3s ease infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}

@@ -1,0 +1,206 @@
+.card {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 16px;
+  background: var(--bg2);
+  display: flex;
+  gap: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: var(--pink);
+  background: #160018;
+}
+
+.card.boss {
+  border-color: var(--gold);
+  background: #130a00;
+}
+
+.card.boss:hover {
+  border-color: var(--gold2);
+}
+
+.card.cleared {
+  opacity: 0.6;
+}
+
+.card.cleared:hover {
+  opacity: 1;
+}
+
+/* Scanline overlay */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.07) 3px,
+    rgba(0, 0, 0, 0.07) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Left column ────────────────────────────────────────────────────────── */
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 48px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.spriteLabel {
+  font-size: 8px;
+  color: var(--text3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ─── Right column ───────────────────────────────────────────────────────── */
+.right {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.difficulty {
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 1px;
+  border: 1px solid;
+}
+
+.diff-Easy   { border-color: var(--green);   color: var(--green);   background: #001a0a; }
+.diff-Medium { border-color: var(--purple2);  color: var(--purple);  background: #1a003a; }
+.diff-Hard   { border-color: var(--blood);    color: var(--pink);    background: #1a000a; }
+.diff-BOSS   { border-color: var(--gold);     color: var(--gold2);   background: #130800; }
+
+.roomName {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+
+.title {
+  font-family: 'Cinzel', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  transition: color 0.15s;
+}
+
+.card:hover .title {
+  color: var(--pink);
+}
+
+.card.boss .title {
+  color: var(--gold2);
+}
+
+.excerpt {
+  font-size: 11px;
+  color: var(--text2);
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 9px;
+  padding: 2px 6px;
+  letter-spacing: 1px;
+  border-radius: 1px;
+  border: 1px solid var(--purple2);
+  color: var(--purple);
+  background: #1a003a;
+  text-transform: lowercase;
+}
+
+/* ─── Card footer ────────────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.readTime {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+
+.xpBar {
+  width: 44px;
+  height: 3px;
+  background: #1a0018;
+  border: 1px solid #2a0028;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.xpFill {
+  height: 100%;
+  background: var(--purple2);
+}
+
+.xpFill.boss {
+  background: var(--gold);
+}
+
+.xpLabel {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+
+.roomLoc {
+  margin-left: auto;
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+
+/* ─── Cleared badge ──────────────────────────────────────────────────────── */
+.clearedBadge {
+  font-size: 8px;
+  color: var(--green);
+  border: 1px solid #0a5a3a;
+  background: #001a0a;
+  padding: 1px 5px;
+  border-radius: 1px;
+  letter-spacing: 1px;
+  margin-left: auto;
+}

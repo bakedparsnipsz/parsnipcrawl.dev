@@ -1,0 +1,63 @@
+.shell {
+  display: flex;
+  height: calc(100vh - 44px);
+  overflow: hidden;
+}
+
+.gameArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hud {
+  background: #08000f;
+  border-bottom: 1px solid var(--border);
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.hudGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hudLabel {
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+
+.hudBar {
+  width: 80px;
+  height: 6px;
+  background: #1a0018;
+  border: 1px solid #2a0028;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.hudFill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.hudFill.hp { background: var(--blood); }
+.hudFill.xp { background: var(--purple2); }
+
+.hudStat {
+  font-size: 9px;
+  color: var(--text2);
+  letter-spacing: 1px;
+}
+
+.hudSep {
+  width: 1px;
+  height: 12px;
+  background: var(--border);
+}

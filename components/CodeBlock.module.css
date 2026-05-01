@@ -1,0 +1,70 @@
+.block {
+  background: #060006;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  background: #0e0012;
+  border-bottom: 1px solid #2a0040;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 9px;
+}
+
+.lang {
+  color: var(--purple);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.copyBtn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text3);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  padding: 2px 8px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border-radius: 1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.copyBtn:hover {
+  color: var(--text2);
+  border-color: var(--purple2);
+}
+
+.copyBtn.copied {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.body {
+  padding: 14px 16px;
+  overflow-x: auto;
+}
+
+.body pre {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 0;
+  white-space: pre;
+}
+
+/* Token colours */
+.kw  { color: #4aff4a; }
+.fn  { color: #7accff; }
+.str { color: #ffca7a; }
+.cmt { color: #3a6a3a; font-style: italic; }
+.ty  { color: #ca7aff; }
+.num { color: #ff7a7a; }
+.mac { color: #ffaa4a; }
+.var { color: #e8c8f0; }

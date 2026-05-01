@@ -1,0 +1,13 @@
+.modeBtn {
+  background: var(--purple3);
+  border: 1px solid var(--purple);
+  color: var(--purple2);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
