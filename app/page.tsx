@@ -11,13 +11,13 @@ export default function BlogPage() {
     <div className={styles.shell}>
       <main className={styles.main}>
         <div className={styles.header}>
-          <span className={styles.sectionLabel}>DUNGEON.DEV · ENGINEERING LOG</span>
+          <span className={styles.sectionLabel}>PARSNIPCRAWL.DEV · ENGINEERING LOG</span>
         </div>
 
         <BlogFeedClient posts={POSTS} />
 
         <footer className={styles.footer}>
-          <span>// dungeon.dev</span>
+          <span>// parsnipcrawl.dev</span>
           <span className="cursor-blink">_</span>
         </footer>
       </main>

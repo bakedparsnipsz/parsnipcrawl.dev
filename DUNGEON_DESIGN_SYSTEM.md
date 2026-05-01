@@ -1,11 +1,11 @@
-# dungeon.dev — Design System
+# parsnipcrawl.dev — Design System
 > A reference for Claude Code. Everything needed to build the blog + dungeon game consistently.
 
 ---
 
 ## 1. Concept & Architecture
 
-**dungeon.dev** is a software engineering blog that doubles as a 2D pixel dungeon RPG. The same content powers both views — the user can toggle between them at any time via the top bar.
+**parsnipcrawl.dev** is a software engineering blog that doubles as a 2D pixel dungeon RPG. The same content powers both views — the user can toggle between them at any time via the top bar.
 
 ### The core mapping
 | Blog concept | Dungeon concept |
@@ -610,7 +610,7 @@ dungeon-dev/
 Use this as your opener when starting the build:
 
 ```
-Build dungeon.dev — a software engineering blog that is also a 2D pixel dungeon RPG.
+Build parsnipcrawl.dev — a software engineering blog that is also a 2D pixel dungeon RPG.
 Use the attached design system document as the single source of truth for all colours,
 typography, components, sprites, game logic, and file structure.
 

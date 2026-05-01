@@ -24,13 +24,13 @@ export function TopBar() {
     }
   }
 
-  const displayPath = pathname === '/' ? 'dungeon.dev/' : `dungeon.dev${pathname}`;
+  const displayPath = pathname === '/' ? 'parsnipcrawl.dev/' : `parsnipcrawl.dev${pathname}`;
 
   return (
     <header className={styles.topbar}>
       <Link href="/" className={styles.logoWrap}>
         <LogoIcon size={14} />
-        <span className={styles.logoText}>dungeon.dev</span>
+        <span className={styles.logoText}>parsnipcrawl.dev</span>
       </Link>
 
       <div className={styles.urlBar}>{displayPath}</div>

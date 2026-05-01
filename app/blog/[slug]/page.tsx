@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  return { title: `${post.title} — dungeon.dev` };
+  return { title: `${post.title} — parsnipcrawl.dev` };
 }
 
 export default async function ArticlePage({ params }: Props) {

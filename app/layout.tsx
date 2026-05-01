@@ -3,7 +3,7 @@ import './globals.css';
 import { TopBar } from '@/components/TopBar';
 
 export const metadata: Metadata = {
-  title: 'dungeon.dev',
+  title: 'parsnipcrawl.dev',
   description: 'A software engineering blog that is also a dungeon.',
 };
 
