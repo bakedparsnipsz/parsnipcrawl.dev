@@ -29,21 +29,27 @@ export function Sidebar({ mode, currentSlug }: Props) {
         <div className={styles.charRows}>
           <div className={styles.charRow}>
             <span className={styles.charLabel}>LVL</span>
-            <span className={styles.charVal} style={{ color: 'var(--gold)' }}>{level}</span>
+            <span className={styles.charVal} style={{ color: 'var(--gold)' }}>
+              {level}
+            </span>
           </div>
           <div className={styles.charRow}>
             <span className={styles.charLabel}>HP</span>
             <div className={styles.charBar}>
               <div className={`${styles.charFill} ${styles.hp}`} style={{ width: `${hpPct}%` }} />
             </div>
-            <span className={styles.charVal} style={{ fontSize: 9 }}>{hp}/{maxHp}</span>
+            <span className={styles.charVal} style={{ fontSize: 9 }}>
+              {hp}/{maxHp}
+            </span>
           </div>
           <div className={styles.charRow}>
             <span className={styles.charLabel}>XP</span>
             <div className={styles.charBar}>
               <div className={`${styles.charFill} ${styles.xp}`} style={{ width: `${xpPct}%` }} />
             </div>
-            <span className={styles.charVal} style={{ fontSize: 9 }}>{xp}/{xpToNext}</span>
+            <span className={styles.charVal} style={{ fontSize: 9 }}>
+              {xp}/{xpToNext}
+            </span>
           </div>
         </div>
       </div>
@@ -65,7 +71,9 @@ export function Sidebar({ mode, currentSlug }: Props) {
             <div className={styles.statLbl}>CLEARED</div>
           </div>
           <div className={styles.statBox}>
-            <div className={styles.statNum} style={{ fontSize: 12 }}>{level * 10}%</div>
+            <div className={styles.statNum} style={{ fontSize: 12 }}>
+              {level * 10}%
+            </div>
             <div className={styles.statLbl}>EXPLORED</div>
           </div>
         </div>

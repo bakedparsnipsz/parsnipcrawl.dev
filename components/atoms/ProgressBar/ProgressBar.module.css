@@ -33,9 +33,15 @@
   overflow: hidden;
 }
 
-.track--thin   { height: var(--bar-height-thin); }
-.track--medium { height: var(--bar-height-medium); }
-.track--thick  { height: var(--bar-height-thick); }
+.track--thin {
+  height: var(--bar-height-thin);
+}
+.track--medium {
+  height: var(--bar-height-medium);
+}
+.track--thick {
+  height: var(--bar-height-thick);
+}
 
 /* ── Fill variants ───────────────────────────────────────────────────────── */
 
@@ -44,8 +50,18 @@
   transition: width 0.3s ease;
 }
 
-.fill--hp       { background: var(--bar-fill-hp); }
-.fill--xp       { background: var(--bar-fill-xp); }
-.fill--progress { background: var(--bar-fill-progress); }
-.fill--gold     { background: var(--bar-fill-gold); }
-.fill--green    { background: var(--bar-fill-green); }
+.fill--hp {
+  background: var(--bar-fill-hp);
+}
+.fill--xp {
+  background: var(--bar-fill-xp);
+}
+.fill--progress {
+  background: var(--bar-fill-progress);
+}
+.fill--gold {
+  background: var(--bar-fill-gold);
+}
+.fill--green {
+  background: var(--bar-fill-green);
+}

@@ -1,13 +1,25 @@
 /* ── Animations ──────────────────────────────────────────────────────────── */
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-4px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideUp {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(-4px); }
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
 }
 
 /* ── Field wrapper & label ───────────────────────────────────────────────── */
@@ -95,7 +107,9 @@
   background: var(--select-content-bg);
   border: var(--border-width) solid var(--select-content-border);
   border-radius: var(--border-rad-3);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--select-content-border);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.6),
+    0 0 0 1px var(--select-content-border);
   overflow: hidden;
   z-index: 100;
   min-width: var(--radix-select-trigger-width);
@@ -128,7 +142,9 @@
   cursor: pointer;
   outline: none;
   user-select: none;
-  transition: background-color 0.1s, color 0.1s;
+  transition:
+    background-color 0.1s,
+    color 0.1s;
   /* Reserve space on the left for the indicator so text stays aligned */
   padding-left: calc(var(--space-2) + 4px + var(--space-2));
   position: relative;

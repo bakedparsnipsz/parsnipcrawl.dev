@@ -12,9 +12,9 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    maxCols:    { control: { type: 'range', min: 2, max: 6 } },
+    maxCols: { control: { type: 'range', min: 2, max: 6 } },
     showLegend: { control: 'boolean' },
-    rooms:      { table: { disable: true } },
+    rooms: { table: { disable: true } },
   },
   args: { onRoomClick: fn() },
 } satisfies Meta<typeof SeriesMinimap>;
@@ -37,7 +37,7 @@ const SYSTEMS_SERIES = makeRooms(
   [
     'Why Allocators Matter',
     'Stack vs Heap Deep Dive',
-    'Writing a Custom Allocator',   // ← reading now
+    'Writing a Custom Allocator', // ← reading now
     'Arenas and Bump Allocation',
     'TLSF: Real-time Allocators',
     'The Allocator Boss Fight',
@@ -50,11 +50,31 @@ const SHORT_SERIES = makeRooms(
 );
 
 const LONG_SERIES = makeRooms(
-  ['cleared', 'cleared', 'cleared', 'cleared', 'cleared', 'cleared', 'current', 'unread', 'unread', 'unread', 'boss'],
   [
-    'Chapter I',  'Chapter II',   'Chapter III', 'Chapter IV',
-    'Chapter V',  'Chapter VI',   'Chapter VII', 'Chapter VIII',
-    'Chapter IX', 'Chapter X',    'The Final Boss',
+    'cleared',
+    'cleared',
+    'cleared',
+    'cleared',
+    'cleared',
+    'cleared',
+    'current',
+    'unread',
+    'unread',
+    'unread',
+    'boss',
+  ],
+  [
+    'Chapter I',
+    'Chapter II',
+    'Chapter III',
+    'Chapter IV',
+    'Chapter V',
+    'Chapter VI',
+    'Chapter VII',
+    'Chapter VIII',
+    'Chapter IX',
+    'Chapter X',
+    'The Final Boss',
   ],
 );
 

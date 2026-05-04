@@ -1,5 +1,7 @@
 /* Crown + skull hybrid, 8×8 pixel grid */
-interface Props { size?: number }
+interface Props {
+  size?: number;
+}
 
 export function LogoIcon({ size = 14 }: Props) {
   return (

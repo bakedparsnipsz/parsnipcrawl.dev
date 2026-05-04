@@ -11,29 +11,29 @@ export type MinimapRoom = {
   slug: string;
   title?: string;
   state: RoomState;
-}
+};
 
 export type SeriesMinimapProps = {
   rooms: MinimapRoom[];
   maxCols?: number;
   onRoomClick?: (room: MinimapRoom) => void;
-}
+};
 
 // ── Layout constants ───────────────────────────────────────────────────────
 
-const CELL_W  = 20;
-const CELL_H  = 16;
-const GAP     = 8;
-const PAD     = 6;
-const DOT_R   = 1; // pulsing dot half-size
+const CELL_W = 20;
+const CELL_H = 16;
+const GAP = 8;
+const PAD = 6;
+const DOT_R = 1; // pulsing dot half-size
 
 // ── Colours — mirrored as CSS tokens in globals.css ───────────────────────
 
 const COLORS: Record<RoomState, { fill: string; border: string }> = {
   current: { fill: '#ff3a7a', border: '#ff6aa0' },
   cleared: { fill: '#2a0050', border: '#8020cc' },
-  unread:  { fill: '#120018', border: '#2a0040' },
-  boss:    { fill: '#3a1800', border: '#d4a030' },
+  unread: { fill: '#120018', border: '#2a0040' },
+  boss: { fill: '#3a1800', border: '#d4a030' },
 };
 
 // ── Geometry helpers ───────────────────────────────────────────────────────
@@ -41,11 +41,9 @@ const COLORS: Record<RoomState, { fill: string; border: string }> = {
 function gridPos(idx: number, maxCols: number) {
   const row = Math.floor(idx / maxCols);
   // Snake: even rows go L→R, odd rows go R→L
-  const col = row % 2 === 0
-    ? idx % maxCols
-    : maxCols - 1 - (idx % maxCols);
-  const x  = PAD + col * (CELL_W + GAP);
-  const y  = PAD + row * (CELL_H + GAP);
+  const col = row % 2 === 0 ? idx % maxCols : maxCols - 1 - (idx % maxCols);
+  const x = PAD + col * (CELL_W + GAP);
+  const y = PAD + row * (CELL_H + GAP);
   return { x, y, cx: x + CELL_W / 2, cy: y + CELL_H / 2 };
 }
 
@@ -58,7 +56,12 @@ function canvasSize(count: number, maxCols: number) {
   };
 }
 
-function roomAtPoint(px: number, py: number, rooms: MinimapRoom[], maxCols: number): MinimapRoom | null {
+function roomAtPoint(
+  px: number,
+  py: number,
+  rooms: MinimapRoom[],
+  maxCols: number,
+): MinimapRoom | null {
   for (let i = 0; i < rooms.length; i++) {
     const { x, y } = gridPos(i, maxCols);
     if (px >= x && px <= x + CELL_W && py >= y && py <= y + CELL_H) {
@@ -70,14 +73,10 @@ function roomAtPoint(px: number, py: number, rooms: MinimapRoom[], maxCols: numb
 
 // ── Component ──────────────────────────────────────────────────────────────
 
-export function SeriesMinimap({
-  rooms,
-  maxCols = 4,
-  onRoomClick,
-}: SeriesMinimapProps) {
-  const canvasRef  = useRef<HTMLCanvasElement>(null);
-  const animRef    = useRef(0);
-  const tickRef    = useRef(0);
+export function SeriesMinimap({ rooms, maxCols = 4, onRoomClick }: SeriesMinimapProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animRef = useRef(0);
+  const tickRef = useRef(0);
   const [hovered, setHovered] = useState<MinimapRoom | null>(null);
 
   const { w, h } = canvasSize(rooms.length, maxCols);
@@ -133,7 +132,7 @@ export function SeriesMinimap({
       }
 
       // Pulsing dot on current room
-      const currentIdx = rooms.findIndex(r => r.state === 'current');
+      const currentIdx = rooms.findIndex((r) => r.state === 'current');
       if (currentIdx >= 0) {
         const { cx, cy } = gridPos(currentIdx, maxCols);
         const alpha = 0.35 + Math.sin(tick * 0.08) * 0.3;
@@ -144,13 +143,12 @@ export function SeriesMinimap({
       }
 
       animRef.current = requestAnimationFrame(draw);
-
     }
 
     draw();
 
     // Set current room as hovered
-    setHovered(rooms.find((r) => r.state === 'current') ?? null)
+    setHovered(rooms.find((r) => r.state === 'current') ?? null);
 
     return () => cancelAnimationFrame(animRef.current);
   }, [rooms, maxCols]);
@@ -159,11 +157,11 @@ export function SeriesMinimap({
 
   const getCanvasPoint = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const scaleX = e.currentTarget.width  / rect.width;
+    const scaleX = e.currentTarget.width / rect.width;
     const scaleY = e.currentTarget.height / rect.height;
     return {
       x: (e.clientX - rect.left) * scaleX,
-      y: (e.clientY - rect.top)  * scaleY,
+      y: (e.clientY - rect.top) * scaleY,
     };
   }, []);
 
@@ -187,12 +185,12 @@ export function SeriesMinimap({
 
   // ── Legend ───────────────────────────────────────────────────────────────
 
-  const presentStates = new Set(rooms.map(r => r.state));
+  const presentStates = new Set(rooms.map((r) => r.state));
   const LEGEND_ITEMS: { state: RoomState; label: string }[] = [
     { state: 'current', label: 'Current' },
     { state: 'cleared', label: 'Cleared' },
-    { state: 'unread',  label: 'Unread'  },
-    { state: 'boss',    label: 'Boss'    },
+    { state: 'unread', label: 'Unread' },
+    { state: 'boss', label: 'Boss' },
   ];
 
   return (
@@ -210,17 +208,17 @@ export function SeriesMinimap({
       />
 
       <p className={styles.tooltip}>
-        {hovered?.title ?? rooms.find(r => r.state === 'current')?.title ?? ''}
+        {hovered?.title ?? rooms.find((r) => r.state === 'current')?.title ?? ''}
       </p>
 
       <div className={styles.legend}>
-        {LEGEND_ITEMS.filter(item => presentStates.has(item.state)).map(({ state, label }) => (
+        {LEGEND_ITEMS.filter((item) => presentStates.has(item.state)).map(({ state, label }) => (
           <span key={state} className={styles.legendItem}>
             <span
               className={styles.legendDot}
               style={{
-                background:   COLORS[state].fill,
-                borderColor:  COLORS[state].border,
+                background: COLORS[state].fill,
+                borderColor: COLORS[state].border,
               }}
             />
             {label}

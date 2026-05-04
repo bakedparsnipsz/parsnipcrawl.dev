@@ -21,7 +21,9 @@ export function DungeonView() {
             <div className={styles.hudBar}>
               <div className={`${styles.hudFill} ${styles.hp}`} style={{ width: `${hpPct}%` }} />
             </div>
-            <span className={styles.hudStat}>{hp}/{maxHp}</span>
+            <span className={styles.hudStat}>
+              {hp}/{maxHp}
+            </span>
           </div>
 
           <div className={styles.hudSep} />
@@ -31,14 +33,18 @@ export function DungeonView() {
             <div className={styles.hudBar}>
               <div className={`${styles.hudFill} ${styles.xp}`} style={{ width: `${xpPct}%` }} />
             </div>
-            <span className={styles.hudStat}>{xp}/{xpToNext}</span>
+            <span className={styles.hudStat}>
+              {xp}/{xpToNext}
+            </span>
           </div>
 
           <div className={styles.hudSep} />
 
           <div className={styles.hudGroup}>
             <span className={styles.hudLabel}>LVL</span>
-            <span className={styles.hudStat} style={{ color: 'var(--gold)' }}>{level}</span>
+            <span className={styles.hudStat} style={{ color: 'var(--gold)' }}>
+              {level}
+            </span>
           </div>
 
           <div className={styles.hudSep} />

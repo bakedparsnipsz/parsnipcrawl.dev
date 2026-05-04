@@ -80,7 +80,7 @@ The event loop is not magic. It is a \`while(true)\` loop around a priority queu
     slug: 'css-grid-mastery',
     title: 'CSS Grid: Beyond the Basics',
     excerpt:
-      'Grid areas, subgrid, auto-placement algorithms — most developers only use a fraction of what CSS Grid can do. Let\'s fix that.',
+      "Grid areas, subgrid, auto-placement algorithms — most developers only use a fraction of what CSS Grid can do. Let's fix that.",
     series: 'css-deep-dives',
     floor: 1,
     room: 2,
@@ -195,7 +195,8 @@ Now every card's header, body, and footer snap to the same horizontal bands — 
         name: 'Syntax Wraith',
         hp: 65,
         xpReward: 130,
-        question: 'In the TypeScript Compiler API, what is the difference between a `SyntaxKind` and a `Type`?',
+        question:
+          'In the TypeScript Compiler API, what is the difference between a `SyntaxKind` and a `Type`?',
         answers: [
           'SyntaxKind describes AST node shape; Type describes the semantic type resolved by the checker',
           'SyntaxKind is runtime; Type is compile-time only',
@@ -312,7 +313,7 @@ The Compiler API is the right choice for: generating typed documentation, buildi
         xpReward: 100,
         question: 'In React Fiber, what is a "work unit"?',
         answers: [
-          'A single Fiber node — one element\'s work can be paused and resumed',
+          "A single Fiber node — one element's work can be paused and resumed",
           'A batch of setState calls',
           'A useEffect call',
           'A full component subtree re-render',
@@ -472,7 +473,8 @@ Paint rasterises elements onto layers. Composite assembles those layers on the G
         name: 'Redux Revenant',
         hp: 60,
         xpReward: 120,
-        question: 'In Zustand, how do you prevent a component from re-rendering when an unrelated slice of state changes?',
+        question:
+          'In Zustand, how do you prevent a component from re-rendering when an unrelated slice of state changes?',
         answers: [
           'Use a selector: `useStore(state => state.count)` — only re-renders when `count` changes',
           'Split the store into multiple files',
@@ -539,7 +541,7 @@ The rule of thumb: if the state came from a server and needs to stay in sync wit
     slug: 'web-performance-core-vitals',
     title: 'Core Web Vitals: What Actually Moves the Numbers',
     excerpt:
-      'LCP, CLS, INP — Google\'s metrics are now a ranking signal. But optimising for them without understanding what they measure leads to gaming, not improving. Here\'s the substance.',
+      "LCP, CLS, INP — Google's metrics are now a ranking signal. But optimising for them without understanding what they measure leads to gaming, not improving. Here's the substance.",
     series: 'performance',
     floor: 3,
     room: 1,
@@ -623,7 +625,7 @@ async function processLargeList(items) {
     slug: 'the-dom-is-not-slow',
     title: 'The DOM Is Not Slow — You Are Using It Wrong',
     excerpt:
-      'The virtual DOM narrative convinced a generation of developers that touching the DOM is dangerous. It\'s not. Uncoordinated, unmeasured DOM access is. There\'s a difference.',
+      "The virtual DOM narrative convinced a generation of developers that touching the DOM is dangerous. It's not. Uncoordinated, unmeasured DOM access is. There's a difference.",
     series: 'browser-internals',
     floor: 3,
     room: 2,
@@ -640,7 +642,8 @@ async function processLargeList(items) {
         name: 'Virtual DOM Lich',
         hp: 120,
         xpReward: 300,
-        question: 'Why does the virtual DOM not inherently provide a performance advantage over direct DOM manipulation?',
+        question:
+          'Why does the virtual DOM not inherently provide a performance advantage over direct DOM manipulation?',
         answers: [
           'It adds overhead (diff + patch). The gain is predictability and batching — not DOM avoidance.',
           'Virtual DOM operations are synchronous and block the main thread.',
@@ -655,7 +658,7 @@ async function processLargeList(items) {
         xpReward: 200,
         question: 'What is `requestAnimationFrame` primarily used for?',
         answers: [
-          'Scheduling visual updates to synchronise with the browser\'s paint cycle',
+          "Scheduling visual updates to synchronise with the browser's paint cycle",
           'Deferring heavy computation to a background thread',
           'Batching multiple setState calls in React',
           'Preventing layout thrash by reading DOM properties asynchronously',
@@ -721,9 +724,9 @@ The DOM is a perfectly capable rendering API. The browser vendors have been opti
 ];
 
 export function getPost(slug: string): Post | undefined {
-  return POSTS.find(p => p.slug === slug);
+  return POSTS.find((p) => p.slug === slug);
 }
 
 export function getPostsByFloor(floor: number): Post[] {
-  return POSTS.filter(p => p.floor === floor);
+  return POSTS.filter((p) => p.floor === floor);
 }

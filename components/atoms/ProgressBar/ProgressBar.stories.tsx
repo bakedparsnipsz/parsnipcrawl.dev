@@ -95,11 +95,11 @@ export const Thick: Story = {
 export const AllVariants: Story = {
   render: () => (
     <>
-      <ProgressBar variant="hp"       size="medium" value={80}  label="HP"       valueLabel="80/100" />
-      <ProgressBar variant="xp"       size="medium" value={62}  label="XP"       valueLabel="Lv7" />
-      <ProgressBar variant="progress" size="thin"   value={34}  label="PROGRESS" />
-      <ProgressBar variant="gold"     size="thin"   value={100} label="GOLD"     valueLabel="2400" />
-      <ProgressBar variant="green"    size="thick"  value={72}  label="STAMINA"  valueLabel="72/100" />
+      <ProgressBar variant="hp" size="medium" value={80} label="HP" valueLabel="80/100" />
+      <ProgressBar variant="xp" size="medium" value={62} label="XP" valueLabel="Lv7" />
+      <ProgressBar variant="progress" size="thin" value={34} label="PROGRESS" />
+      <ProgressBar variant="gold" size="thin" value={100} label="GOLD" valueLabel="2400" />
+      <ProgressBar variant="green" size="thick" value={72} label="STAMINA" valueLabel="72/100" />
     </>
   ),
 };

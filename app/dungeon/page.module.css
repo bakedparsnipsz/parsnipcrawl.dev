@@ -47,8 +47,12 @@
   transition: width 0.4s ease;
 }
 
-.hudFill.hp { background: var(--blood); }
-.hudFill.xp { background: var(--purple2); }
+.hudFill.hp {
+  background: var(--blood);
+}
+.hudFill.xp {
+  background: var(--purple2);
+}
 
 .hudStat {
   font-size: 9px;

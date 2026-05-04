@@ -1,29 +1,36 @@
-import { ComponentProps, ReactNode } from "react"
-import { Slot } from "@radix-ui/react-slot"
+import { ComponentProps, ReactNode } from 'react';
+import { Slot } from '@radix-ui/react-slot';
 
 import styles from './Typography.module.css';
 
 export type TypographyProps = ComponentProps<'p'> & {
-  variant: "display-primary-large" | "display-secondary-large" | "display-secondary-medium" | "display-secondary-small" | "display-secondary-xsmall" | "body" | "body-small" | "body--xsmall";
+  variant:
+    | 'display-primary-large'
+    | 'display-secondary-large'
+    | 'display-secondary-medium'
+    | 'display-secondary-small'
+    | 'display-secondary-xsmall'
+    | 'body'
+    | 'body-small'
+    | 'body--xsmall';
   asChild: boolean;
   children: ReactNode;
-}
+};
 
 export function Typography({
   className,
-  variant = "body",
+  variant = 'body',
   asChild = false,
   children,
   ...props
 }: TypographyProps) {
-  const Comp = asChild ? Slot : "p"
+  const Comp = asChild ? Slot : 'p';
 
-  const classes = [styles.type, styles[`type--${variant}`]].join(' ');
+  const classes = [styles.type, styles[`type--${variant}`], className].filter(Boolean).join(' ');
 
   return (
-    <Comp
-      className={classes}
-      {...props}
-    >{children}</Comp>
-  )
+    <Comp className={classes} {...props}>
+      {children}
+    </Comp>
+  );
 }

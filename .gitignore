@@ -46,3 +46,5 @@ storybook-static
 # ai agents
 .claude
 .claire
+
+./parsnipscrawl-design-system-v4.html

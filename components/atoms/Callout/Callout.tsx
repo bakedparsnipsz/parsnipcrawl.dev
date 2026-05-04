@@ -6,13 +6,13 @@ export type CalloutProps = {
   variant?: CalloutVariant;
   heading?: string;
   children: React.ReactNode;
-}
+};
 
 const DEFAULT_HEADINGS: Record<CalloutVariant, string> = {
-  lore:   '[ LORE DROP ]',
-  warn:   '[ TRAP AHEAD ]',
+  lore: '[ LORE DROP ]',
+  warn: '[ TRAP AHEAD ]',
   danger: '[ DANGER ]',
-  info:   '[ ARCANE NOTE ]',
+  info: '[ ARCANE NOTE ]',
 };
 
 export function Callout({ variant = 'info', heading, children }: CalloutProps) {

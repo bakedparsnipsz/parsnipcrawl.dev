@@ -4,7 +4,11 @@ import { Prose } from './Prose';
 
 describe('Prose', () => {
   it('renders children', () => {
-    render(<Prose><p>Hello world</p></Prose>);
+    render(
+      <Prose>
+        <p>Hello world</p>
+      </Prose>,
+    );
     expect(screen.getByText('Hello world')).toBeInTheDocument();
   });
 

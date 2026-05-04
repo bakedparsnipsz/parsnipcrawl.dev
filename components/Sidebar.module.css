@@ -71,8 +71,12 @@
   transition: width 0.4s ease;
 }
 
-.charFill.hp  { background: var(--blood); }
-.charFill.xp  { background: var(--purple2); }
+.charFill.hp {
+  background: var(--blood);
+}
+.charFill.xp {
+  background: var(--purple2);
+}
 
 /* ─── Stats panel ────────────────────────────────────────────────────────── */
 .statsGrid {

@@ -4,12 +4,20 @@ import { Typography } from './Typography';
 
 describe('Typography', () => {
   it('renders children', () => {
-    render(<Typography variant="body" asChild={false}>Hello</Typography>);
+    render(
+      <Typography variant="body" asChild={false}>
+        Hello
+      </Typography>,
+    );
     expect(screen.getByText('Hello')).toBeInTheDocument();
   });
 
   it('renders as a <p> by default', () => {
-    render(<Typography variant="body" asChild={false}>Text</Typography>);
+    render(
+      <Typography variant="body" asChild={false}>
+        Text
+      </Typography>,
+    );
     expect(screen.getByText('Text').tagName).toBe('P');
   });
 
@@ -33,7 +41,11 @@ describe('Typography', () => {
     'body--xsmall',
   ] as const)('renders variant "%s" without throwing', (variant) => {
     expect(() =>
-      render(<Typography variant={variant} asChild={false}>x</Typography>),
+      render(
+        <Typography variant={variant} asChild={false}>
+          x
+        </Typography>,
+      ),
     ).not.toThrow();
   });
 });

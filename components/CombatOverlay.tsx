@@ -50,7 +50,9 @@ export function CombatOverlay({ enemy, onClose }: Props) {
 
         <div className={styles.arena}>
           <div className={styles.spriteCol}>
-            <div className={styles.spriteBox}><PlayerSprite size={36} /></div>
+            <div className={styles.spriteBox}>
+              <PlayerSprite size={36} />
+            </div>
             <span className={styles.spriteLabel}>YOU</span>
           </div>
 
@@ -78,7 +80,9 @@ export function CombatOverlay({ enemy, onClose }: Props) {
           </div>
 
           <div className={styles.spriteCol}>
-            <div className={styles.spriteBox}><EnemySprite size={36} /></div>
+            <div className={styles.spriteBox}>
+              <EnemySprite size={36} />
+            </div>
             <span className={styles.spriteLabel}>{enemy.name.split(' ')[0].toUpperCase()}</span>
           </div>
         </div>

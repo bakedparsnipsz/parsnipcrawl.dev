@@ -57,7 +57,9 @@ describe('SelectItem', () => {
   it('is disabled when the disabled prop is set', async () => {
     render(
       <Select placeholder="Pick">
-        <SelectItem value="locked" disabled>Locked</SelectItem>
+        <SelectItem value="locked" disabled>
+          Locked
+        </SelectItem>
         <SelectItem value="open">Open</SelectItem>
       </Select>,
     );

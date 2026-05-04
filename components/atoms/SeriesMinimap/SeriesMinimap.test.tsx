@@ -24,9 +24,9 @@ afterEach(() => {
 });
 
 const ROOMS: MinimapRoom[] = [
-  { slug: 'intro',   title: 'Introduction',   state: 'cleared' },
-  { slug: 'middle',  title: 'Middle Chapter',  state: 'current' },
-  { slug: 'finale',  title: 'The Finale',      state: 'unread'  },
+  { slug: 'intro', title: 'Introduction', state: 'cleared' },
+  { slug: 'middle', title: 'Middle Chapter', state: 'current' },
+  { slug: 'finale', title: 'The Finale', state: 'unread' },
 ];
 
 describe('SeriesMinimap', () => {
@@ -44,9 +44,7 @@ describe('SeriesMinimap', () => {
   });
 
   it('shows boss legend item when a boss room is present', () => {
-    const rooms: MinimapRoom[] = [
-      { slug: 'boss', title: 'Boss Room', state: 'boss' },
-    ];
+    const rooms: MinimapRoom[] = [{ slug: 'boss', title: 'Boss Room', state: 'boss' }];
     render(<SeriesMinimap rooms={rooms} />);
     expect(screen.getByText('Boss')).toBeInTheDocument();
   });
@@ -74,9 +72,12 @@ describe('SeriesMinimap', () => {
 
     // Mock getBoundingClientRect so the coordinate math hits room 0
     canvas.getBoundingClientRect = vi.fn().mockReturnValue({
-      left: 0, top: 0, width: 200, height: 100,
+      left: 0,
+      top: 0,
+      width: 200,
+      height: 100,
     });
-    Object.defineProperty(canvas, 'width',  { value: 200, configurable: true });
+    Object.defineProperty(canvas, 'width', { value: 200, configurable: true });
     Object.defineProperty(canvas, 'height', { value: 100, configurable: true });
 
     // Click at the centre of the first room cell (PAD=6, CELL_W=20, CELL_H=16)
@@ -88,7 +89,10 @@ describe('SeriesMinimap', () => {
     render(<SeriesMinimap rooms={ROOMS} />);
     const canvas = screen.getByRole('img');
     canvas.getBoundingClientRect = vi.fn().mockReturnValue({
-      left: 0, top: 0, width: 200, height: 100,
+      left: 0,
+      top: 0,
+      width: 200,
+      height: 100,
     });
     expect(() => fireEvent.click(canvas, { clientX: 16, clientY: 14 })).not.toThrow();
   });

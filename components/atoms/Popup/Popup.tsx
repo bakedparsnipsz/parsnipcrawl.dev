@@ -5,7 +5,7 @@ export type PopupVariant = 'xp' | 'gold' | 'combat' | 'encounter';
 export type PopupProps = {
   children: React.ReactNode;
   variant?: PopupVariant;
-}
+};
 
 export function Popup({ children, variant = 'xp' }: PopupProps) {
   return (

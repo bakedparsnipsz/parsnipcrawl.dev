@@ -11,7 +11,7 @@ import { RoomClearScreen } from '@/components/RoomClearScreen';
 import { Sidebar } from '@/components/Sidebar';
 import styles from './page.module.css';
 
-const TRIGGER_POINTS = [0.20, 0.55, 0.85];
+const TRIGGER_POINTS = [0.2, 0.55, 0.85];
 const XP_PER_SCROLL_MILESTONE = 25;
 const PASSIVE_XP_INTERVAL = 20;
 
@@ -49,16 +49,15 @@ export function ArticleClient({ post }: Props) {
   const handleScroll = useCallback(() => {
     const el = articleRef.current;
     if (!el) return;
-    const { scrollTop, scrollHeight, clientHeight } = el.closest('[data-scroll]') as HTMLElement ?? document.documentElement;
-    const depth = (window.scrollY) / (document.body.scrollHeight - window.innerHeight || 1);
+    const depth = window.scrollY / (document.body.scrollHeight - window.innerHeight || 1);
     const clampedDepth = Math.min(1, depth);
 
     /* Scroll milestone XP */
     const milestones = [0.25, 0.5, 0.75, 1.0];
     milestones.forEach((m, i) => {
       if (clampedDepth >= m && !scrollMilestones.has(i)) {
-        setScrollMilestones(prev => new Set([...prev, i]));
-        setScrollXp(prev => prev + XP_PER_SCROLL_MILESTONE);
+        setScrollMilestones((prev) => new Set([...prev, i]));
+        setScrollXp((prev) => prev + XP_PER_SCROLL_MILESTONE);
         gainXp(XP_PER_SCROLL_MILESTONE);
       }
     });
@@ -68,7 +67,7 @@ export function ArticleClient({ post }: Props) {
     TRIGGER_POINTS.forEach((point, idx) => {
       if (clampedDepth >= point && !triggered.has(idx)) {
         const enemyIdx = idx % post.enemies.length;
-        setTriggered(prev => new Set([...prev, idx]));
+        setTriggered((prev) => new Set([...prev, idx]));
         setFlashEnemyIdx(enemyIdx);
         setShowFlash(true);
       }
@@ -109,14 +108,18 @@ export function ArticleClient({ post }: Props) {
           <header className={styles.header}>
             <div className={styles.meta}>
               <span className={`${styles.difficulty} ${diffClass}`}>{post.difficulty}</span>
-              <span className={styles.floor}>Floor {post.floor} · Room {post.room} · {post.readingTime}m read</span>
+              <span className={styles.floor}>
+                Floor {post.floor} · Room {post.room} · {post.readingTime}m read
+              </span>
             </div>
             <h1 className={`${styles.title}${post.isBoss ? ` ${styles.boss}` : ''}`}>
               {post.title}
             </h1>
             <div className={styles.tags}>
-              {post.tags.map(t => (
-                <span key={t} className={styles.tag}>#{t}</span>
+              {post.tags.map((t) => (
+                <span key={t} className={styles.tag}>
+                  #{t}
+                </span>
               ))}
             </div>
           </header>
@@ -168,26 +171,27 @@ export function ArticleClient({ post }: Props) {
 
       {/* Combat overlay */}
       {currentEnemy !== null && !isCleared && (
-        <CombatOverlay
-          enemy={post.enemies[currentEnemy]}
-          onClose={() => setCurrentEnemy(null)}
-        />
+        <CombatOverlay enemy={post.enemies[currentEnemy]} onClose={() => setCurrentEnemy(null)} />
       )}
 
       {/* Room clear screen */}
-      {showClear && (
-        <RoomClearScreen post={post} scrollXp={scrollXp} />
-      )}
+      {showClear && <RoomClearScreen post={post} scrollXp={scrollXp} />}
     </>
   );
 }
 
 function SwordDividerSvg() {
   return (
-    <svg viewBox="0 0 30 5" width={60} height={10} style={{ imageRendering: 'pixelated' }} aria-hidden>
-      <rect x="0"  y="2" width="10" height="1" fill="#4a1060" />
+    <svg
+      viewBox="0 0 30 5"
+      width={60}
+      height={10}
+      style={{ imageRendering: 'pixelated' }}
+      aria-hidden
+    >
+      <rect x="0" y="2" width="10" height="1" fill="#4a1060" />
       <rect x="10" y="1" width="10" height="3" fill="#8020cc" />
-      <rect x="13" y="0" width="4"  height="5" fill="#ff3a7a" />
+      <rect x="13" y="0" width="4" height="5" fill="#ff3a7a" />
       <rect x="20" y="2" width="10" height="1" fill="#4a1060" />
     </svg>
   );

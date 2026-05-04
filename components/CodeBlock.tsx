@@ -41,10 +41,7 @@ export function CodeBlock({ lang, code }: Props) {
 /* ─── Minimal syntax highlighter ────────────────────────────────────────── */
 function tokenize(code: string, lang: string): string {
   /* For languages we can pattern-match on */
-  const escaped = code
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+  const escaped = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
   const isJS = ['javascript', 'typescript', 'js', 'ts', 'jsx', 'tsx'].includes(lang);
   const isCSS = ['css', 'scss'].includes(lang);
@@ -59,12 +56,13 @@ function span(cls: string, content: string) {
 }
 
 function highlightJS(code: string): string {
-  const KEYWORDS = /\b(const|let|var|function|return|if|else|for|while|class|extends|import|export|default|from|new|this|typeof|instanceof|async|await|of|in|true|false|null|undefined|void|type|interface|enum)\b/g;
-  const STRINGS  = /(["'`])(?:(?!\1)[^\\]|\\.)*?\1/g;
+  const KEYWORDS =
+    /\b(const|let|var|function|return|if|else|for|while|class|extends|import|export|default|from|new|this|typeof|instanceof|async|await|of|in|true|false|null|undefined|void|type|interface|enum)\b/g;
+  const STRINGS = /(["'`])(?:(?!\1)[^\\]|\\.)*?\1/g;
   const COMMENTS = /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)/g;
-  const NUMBERS  = /\b(\d+(?:\.\d+)?)\b/g;
-  const TYPES    = /\b([A-Z][a-zA-Z0-9]*)\b/g;
-  const FNS      = /\b([a-z_][a-zA-Z0-9_]*)\s*(?=\()/g;
+  const NUMBERS = /\b(\d+(?:\.\d+)?)\b/g;
+  const TYPES = /\b([A-Z][a-zA-Z0-9]*)\b/g;
+  const FNS = /\b([a-z_][a-zA-Z0-9_]*)\s*(?=\()/g;
 
   const placeholders: string[] = [];
 
@@ -95,17 +93,21 @@ function highlightJS(code: string): string {
   result = result.replace(KEYWORDS, (_, k) => span(`__TOKEN__${styles.kw}`, k));
 
   /* Restore placeholders */
+  // eslint-disable-next-line no-control-regex
   result = result.replace(/\x00(\d+)\x00/g, (_, i) => placeholders[Number(i)]);
 
   /* Replace class prefix with actual CSS module class */
-  result = result.replace(/__TOKEN__([a-z_-]+)/g, (_, cls) => `${styles[cls as keyof typeof styles] ?? cls}`);
+  result = result.replace(
+    /__TOKEN__([a-z_-]+)/g,
+    (_, cls) => `${styles[cls as keyof typeof styles] ?? cls}`,
+  );
 
   return result;
 }
 
 function highlightCSS(code: string): string {
-  const PROP   = /([a-z-]+)\s*(?=:)/g;
-  const VALUE  = /:\s*([^;{}]+)/g;
+  const PROP = /([a-z-]+)\s*(?=:)/g;
+  const VALUE = /:\s*([^;{}]+)/g;
   const SELECTOR = /^([.#:[\w*>+~, \n]+)\s*\{/gm;
 
   let result = code;

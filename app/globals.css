@@ -7,40 +7,40 @@
 /* ─── Colour palette ─────────────────────────────────────────────────────── */
 :root {
   /* Backgrounds */
-  --bg:            #0a0008;
-  --bg-2:          #110012;
-  --bg-3:          #1a001c;
+  --bg: #0a0008;
+  --bg-2: #110012;
+  --bg-3: #1a001c;
 
   /* Borders */
-  --border:        #4a1060;
+  --border: #4a1060;
   --border-bright: #8a20b0;
 
   /* Brand */
-  --pink:          #ff3a7a;
-  --pink-2:        #ff6aa0;
-  --purple:        #c040ff;
-  --purple-2:      #8020cc;
-  --purple-3:      #4a0080;
+  --pink: #ff3a7a;
+  --pink-2: #ff6aa0;
+  --purple: #c040ff;
+  --purple-2: #8020cc;
+  --purple-3: #4a0080;
 
   /* Gold */
-  --gold:          #d4a030;
-  --gold-2:        #ffcc60;
+  --gold: #d4a030;
+  --gold-2: #ffcc60;
 
   /* Text */
-  --text:          #e8c8f0;
-  --text-2:        #a070c0;
-  --text-3:        #9b7fc0;
+  --text: #e8c8f0;
+  --text-2: #a070c0;
+  --text-3: #9b7fc0;
 
   /* Semantic */
-  --blood:         #8a0020;
-  --green:         #2ad880;
-  --fire:          #ff6020;
+  --blood: #8a0020;
+  --green: #2ad880;
+  --fire: #ff6020;
 
   /* Fonts */
-  --font-display-1: "UnifrakturMaguntia", cursive;
-  --font-display-2: "Cinzel Decorative", serif;
-  --font-display-3: "Cinzel", serif;
-  --font-default:  'Share Tech Mono', monospace;
+  --font-display-1: 'UnifrakturMaguntia', cursive;
+  --font-display-2: 'Cinzel Decorative', serif;
+  --font-display-3: 'Cinzel', serif;
+  --font-default: 'Share Tech Mono', monospace;
 
   /* Font sizes */
   --font-size-logo: clamp(28px, 4.5vw, 36px);
@@ -53,7 +53,7 @@
   --font-size-10: 0.625rem;
 
   /* Font styles */
-  --font-style-shadow: 2px 3px 0 var(--purple-3), 4px 5px 0 rgba(74,0,128,0.4);
+  --font-style-shadow: 2px 3px 0 var(--purple-3), 4px 5px 0 rgba(74, 0, 128, 0.4);
 
   /* Border radius */
   --border-rad: 0.063rem;
@@ -66,7 +66,7 @@
   --border-width-2: 0.125rem;
 
   /* Border combos */
-  
+
   /* Spacing */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -143,7 +143,7 @@
   --badge-default-fg: var(--purple);
 
   /* Outlined */
-  --badge-outlined-bg: transparent; 
+  --badge-outlined-bg: transparent;
   --badge-outlined-border: var(--border);
   --badge-outlined-fg: var(--text-3);
 
@@ -209,16 +209,16 @@
   --mm-legend-fg: var(--text-3);
   /* Room fill/border colours are applied directly in Canvas2D to avoid
      CSS-variable-in-canvas limitations; kept here as reference tokens */
-  --mm-bg:             #08000f;
-  --mm-corridor:       #2a0040;
-  --mm-current-fill:   var(--pink);
+  --mm-bg: #08000f;
+  --mm-corridor: #2a0040;
+  --mm-current-fill: var(--pink);
   --mm-current-border: var(--pink-2);
-  --mm-cleared-fill:   #2a0050;
+  --mm-cleared-fill: #2a0050;
   --mm-cleared-border: var(--purple-2);
-  --mm-unread-fill:    #120018;
-  --mm-unread-border:  #2a0040;
-  --mm-boss-fill:      #3a1800;
-  --mm-boss-border:    var(--gold);
+  --mm-unread-fill: #120018;
+  --mm-unread-border: #2a0040;
+  --mm-boss-fill: #3a1800;
+  --mm-boss-border: var(--gold);
 
   /* Prose */
   --prose-body-fg: #b090c8;
@@ -244,11 +244,11 @@
   --code-default-fg: var(--text-2);
 
   /* Syntax tokens */
-  --tok-kw:  #4aff4a;
-  --tok-fn:  #7accff;
+  --tok-kw: #4aff4a;
+  --tok-fn: #7accff;
   --tok-str: #ffca7a;
   --tok-cmt: #3a6a3a;
-  --tok-ty:  #ca7aff;
+  --tok-ty: #ca7aff;
   --tok-num: #ff7a7a;
   --tok-mac: #ffaa4a;
 
@@ -297,7 +297,7 @@
   --callout-danger-bg: #100005;
   --callout-danger-border: var(--blood);
   --callout-danger-heading: var(--pink);
-  
+
   --callout-info-bg: #06000e;
   --callout-info-border: var(--purple-2);
   --callout-info-heading: var(--purple);
@@ -311,18 +311,19 @@
   --select-item-hover-bg: var(--bg-3);
   --select-item-selected-fg: var(--purple);
   --select-separator: var(--border);
-
 }
 
-
 /* ─── Base reset ─────────────────────────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -357,8 +358,13 @@ svg {
 
 /* ─── Cursor blink ───────────────────────────────────────────────────────── */
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .cursor-blink {
@@ -366,7 +372,16 @@ svg {
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */
-::-webkit-scrollbar              { width: 6px; }
-::-webkit-scrollbar-track        { background: var(--bg); }
-::-webkit-scrollbar-thumb        { background: var(--purple3); border-radius: 1px; }
-::-webkit-scrollbar-thumb:hover  { background: var(--purple2); }
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--purple3);
+  border-radius: 1px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--purple2);
+}

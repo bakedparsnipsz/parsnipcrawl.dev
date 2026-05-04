@@ -20,7 +20,9 @@ export function EncounterFlash({ enemy, onFight, onDismiss }: Props) {
     <div className={styles.flash} role="alert">
       <div className={styles.title}>⚔ ENCOUNTER</div>
       <div className={styles.enemyName}>{enemy.name}</div>
-      <div className={styles.sub}>HP {enemy.hp} · +{enemy.xpReward} XP</div>
+      <div className={styles.sub}>
+        HP {enemy.hp} · +{enemy.xpReward} XP
+      </div>
       <button className={styles.fightBtn} onClick={onFight}>
         [ FIGHT ]
       </button>

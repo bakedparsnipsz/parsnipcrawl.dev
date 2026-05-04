@@ -35,12 +35,12 @@ export interface Post {
 /* ─── Dungeon / map types ────────────────────────────────────────────────── */
 
 export const T = {
-  VOID:       0,
-  FLOOR:      1,
-  WALL:       2,
-  TORCH:      6,
-  PILLAR:     7,
-  CHEST:      5,
+  VOID: 0,
+  FLOOR: 1,
+  WALL: 2,
+  TORCH: 6,
+  PILLAR: 7,
+  CHEST: 5,
   BOSS_FLOOR: 8,
 } as const;
 

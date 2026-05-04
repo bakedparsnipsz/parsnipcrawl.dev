@@ -30,14 +30,16 @@ type Story = StoryObj<typeof meta>;
 export const Lore: Story = {
   args: {
     variant: 'lore',
-    children: 'Cache-friendly data layout matters more than algorithmic complexity at this scale. A cache miss costs ~200 CPU cycles.',
+    children:
+      'Cache-friendly data layout matters more than algorithmic complexity at this scale. A cache miss costs ~200 CPU cycles.',
   },
 };
 
 export const Warn: Story = {
   args: {
     variant: 'warn',
-    children: "Don't reach for Box<dyn Trait> as your first instinct. An enum handles 90% of AST node cases.",
+    children:
+      "Don't reach for Box<dyn Trait> as your first instinct. An enum handles 90% of AST node cases.",
   },
 };
 
@@ -51,7 +53,8 @@ export const Danger: Story = {
 export const Info: Story = {
   args: {
     variant: 'info',
-    children: 'The borrow checker enforces these rules entirely at compile time — zero runtime cost.',
+    children:
+      'The borrow checker enforces these rules entirely at compile time — zero runtime cost.',
   },
 };
 
@@ -66,10 +69,16 @@ export const CustomHeading: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Callout variant="lore">Cache-friendly data layout matters more than algorithmic complexity.</Callout>
+      <Callout variant="lore">
+        Cache-friendly data layout matters more than algorithmic complexity.
+      </Callout>
       <Callout variant="warn">Don't reach for Box{'<dyn Trait>'} as your first instinct.</Callout>
-      <Callout variant="danger">This approach causes undefined behaviour if the pointer outlives the allocation.</Callout>
-      <Callout variant="info">The borrow checker enforces these rules entirely at compile time.</Callout>
+      <Callout variant="danger">
+        This approach causes undefined behaviour if the pointer outlives the allocation.
+      </Callout>
+      <Callout variant="info">
+        The borrow checker enforces these rules entirely at compile time.
+      </Callout>
     </div>
   ),
 };

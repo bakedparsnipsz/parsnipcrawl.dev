@@ -19,9 +19,9 @@ export function RoomClearScreen({ post, scrollXp }: Props) {
   const [animated, setAnimated] = useState(false);
 
   const combatXp = post.enemies.reduce((s, e) => s + e.xpReward, 0);
-  const readXp   = scrollXp;
-  const totalXp  = post.xp + readXp;
-  const xpPct    = Math.min(100, (xp / xpToNext) * 100);
+  const readXp = scrollXp;
+  const totalXp = post.xp + readXp;
+  const xpPct = Math.min(100, (xp / xpToNext) * 100);
 
   useEffect(() => {
     const t = setTimeout(() => setAnimated(true), 100);
@@ -30,12 +30,19 @@ export function RoomClearScreen({ post, scrollXp }: Props) {
     return () => clearTimeout(t);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const idx = POSTS.findIndex(p => p.slug === post.slug);
+  const idx = POSTS.findIndex((p) => p.slug === post.slug);
   const nextPost = POSTS[idx + 1] ?? null;
 
   const lootItems = [
-    { id: 'read', name: `${post.sprite === 'tome' ? 'Ancient Tome' : 'Worn Scroll'}: ${post.title.split(':')[0]}`, descriptor: 'KNOWLEDGE RELIC', rare: post.isBoss },
-    ...(post.isBoss ? [{ id: 'boss-loot', name: 'Boss Seal', descriptor: 'LEGENDARY', rare: true }] : []),
+    {
+      id: 'read',
+      name: `${post.sprite === 'tome' ? 'Ancient Tome' : 'Worn Scroll'}: ${post.title.split(':')[0]}`,
+      descriptor: 'KNOWLEDGE RELIC',
+      rare: post.isBoss,
+    },
+    ...(post.isBoss
+      ? [{ id: 'boss-loot', name: 'Boss Seal', descriptor: 'LEGENDARY', rare: true }]
+      : []),
   ];
 
   return (
@@ -73,7 +80,9 @@ export function RoomClearScreen({ post, scrollXp }: Props) {
         <div className={styles.progressWrap}>
           <div className={styles.progressLabel}>
             <span>LVL {level} XP</span>
-            <span>{xp} / {xpToNext}</span>
+            <span>
+              {xp} / {xpToNext}
+            </span>
           </div>
           <div className={styles.progressBar}>
             <div
@@ -86,8 +95,11 @@ export function RoomClearScreen({ post, scrollXp }: Props) {
         {/* Loot */}
         <div className={styles.lootSection}>
           <div className={styles.lootTitle}>LOOT DROPS</div>
-          {lootItems.map(item => (
-            <div key={item.id} className={`${styles.lootItem}${item.rare ? ` ${styles.rare}` : ''}`}>
+          {lootItems.map((item) => (
+            <div
+              key={item.id}
+              className={`${styles.lootItem}${item.rare ? ` ${styles.rare}` : ''}`}
+            >
               <div className={styles.lootIcon}>
                 <TomeSprite type={post.sprite} boss={item.rare} size={32} />
               </div>
@@ -98,7 +110,9 @@ export function RoomClearScreen({ post, scrollXp }: Props) {
             </div>
           ))}
           <div className={`${styles.lootItem}`}>
-            <div className={styles.lootIcon}><PotionSprite size={14} /></div>
+            <div className={styles.lootIcon}>
+              <PotionSprite size={14} />
+            </div>
             <div>
               <div className={styles.lootName}>Health Potion</div>
               <div className={styles.lootDesc}>CONSUMABLE · +20 HP</div>
@@ -112,10 +126,15 @@ export function RoomClearScreen({ post, scrollXp }: Props) {
         {nextPost && (
           <div>
             <div className={styles.nextLabel}>NEXT ROOM</div>
-            <div className={styles.nextCard} onClick={() => router.push(`/blog/${nextPost.slug}`)}>
+            <button
+              className={styles.nextCard}
+              onClick={() => router.push(`/blog/${nextPost.slug}`)}
+            >
               <div className={styles.nextTitle}>{nextPost.title}</div>
-              <div className={styles.nextMeta}>{nextPost.roomName} · {nextPost.difficulty} · +{nextPost.xp} XP</div>
-            </div>
+              <div className={styles.nextMeta}>
+                {nextPost.roomName} · {nextPost.difficulty} · +{nextPost.xp} XP
+              </div>
+            </button>
           </div>
         )}
 
@@ -125,9 +144,7 @@ export function RoomClearScreen({ post, scrollXp }: Props) {
           <div className={styles.invGrid}>
             {Array.from({ length: 18 }, (_, i) => (
               <div key={i} className={styles.invSlot}>
-                {inventory[i] && (
-                  <TomeSprite type={inventory[i].sprite} size={18} />
-                )}
+                {inventory[i] && <TomeSprite type={inventory[i].sprite} size={18} />}
               </div>
             ))}
           </div>
@@ -136,14 +153,20 @@ export function RoomClearScreen({ post, scrollXp }: Props) {
         {/* Actions */}
         <div className={styles.actions}>
           {nextPost && (
-            <button className={styles.actionBtn} onClick={() => router.push(`/blog/${nextPost.slug}`)}>
+            <button
+              className={styles.actionBtn}
+              onClick={() => router.push(`/blog/${nextPost.slug}`)}
+            >
               [ NEXT ROOM ]
             </button>
           )}
           <button className={styles.actionBtn} onClick={() => router.push('/dungeon')}>
             [ RETURN TO DUNGEON ]
           </button>
-          <button className={`${styles.actionBtn} ${styles.secondary}`} onClick={() => router.push('/')}>
+          <button
+            className={`${styles.actionBtn} ${styles.secondary}`}
+            onClick={() => router.push('/')}
+          >
             [ VIEW BLOG ]
           </button>
         </div>

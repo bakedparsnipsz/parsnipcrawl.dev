@@ -6,7 +6,7 @@ import styles from './Textarea.module.css';
 export type TextareaProps = React.ComponentProps<'textarea'> & {
   label?: string;
   variant?: 'default' | 'error';
-}
+};
 
 export function Textarea({ label, variant = 'default', id, className, ...props }: TextareaProps) {
   const generatedId = useId();
@@ -16,7 +16,9 @@ export function Textarea({ label, variant = 'default', id, className, ...props }
     styles.textarea,
     variant === 'error' && styles['textarea--error'],
     className,
-  ].filter(Boolean).join(' ');
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <div className={styles.wrapper}>

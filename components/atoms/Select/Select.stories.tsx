@@ -108,7 +108,9 @@ export const WithDisabledItem: Story = {
     <Select {...args} label="CHARACTER CLASS" placeholder="Choose class...">
       <SelectItem value="rustacean">Rustacean</SelectItem>
       <SelectItem value="typewitch">TypeWitch</SelectItem>
-      <SelectItem value="gopher" disabled>Gopher (locked)</SelectItem>
+      <SelectItem value="gopher" disabled>
+        Gopher (locked)
+      </SelectItem>
       <SelectItem value="shell-sorcerer">Shell Sorcerer</SelectItem>
     </Select>
   ),

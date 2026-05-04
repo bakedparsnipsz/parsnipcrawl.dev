@@ -33,7 +33,9 @@
   cursor: pointer;
   letter-spacing: 1px;
   border-radius: 1px;
-  transition: color 0.15s, border-color 0.15s;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
 }
 
 .copyBtn:hover {
@@ -60,11 +62,28 @@
 }
 
 /* Token colours */
-.kw  { color: #4aff4a; }
-.fn  { color: #7accff; }
-.str { color: #ffca7a; }
-.cmt { color: #3a6a3a; font-style: italic; }
-.ty  { color: #ca7aff; }
-.num { color: #ff7a7a; }
-.mac { color: #ffaa4a; }
-.var { color: #e8c8f0; }
+.kw {
+  color: #4aff4a;
+}
+.fn {
+  color: #7accff;
+}
+.str {
+  color: #ffca7a;
+}
+.cmt {
+  color: #3a6a3a;
+  font-style: italic;
+}
+.ty {
+  color: #ca7aff;
+}
+.num {
+  color: #ff7a7a;
+}
+.mac {
+  color: #ffaa4a;
+}
+.var {
+  color: #e8c8f0;
+}

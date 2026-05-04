@@ -4,7 +4,9 @@ import { SkillPips } from './SkillPips';
 
 function getPips(container: HTMLElement) {
   // The pip divs are siblings inside the .row wrapper
-  return container.querySelectorAll('[class*="pip"]:not([class*="wrapper"]):not([class*="label"]):not([class*="row"])');
+  return container.querySelectorAll(
+    '[class*="pip"]:not([class*="wrapper"]):not([class*="label"]):not([class*="row"])',
+  );
 }
 
 describe('SkillPips', () => {

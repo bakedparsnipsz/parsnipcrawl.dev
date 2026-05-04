@@ -13,7 +13,7 @@ export type SelectItemProps = {
   value: string;
   children: React.ReactNode;
   disabled?: boolean;
-}
+};
 
 export function SelectItem({ value, children, disabled }: SelectItemProps) {
   return (
@@ -29,14 +29,12 @@ export function SelectItem({ value, children, disabled }: SelectItemProps) {
 export type SelectGroupProps = {
   label?: string;
   children: React.ReactNode;
-}
+};
 
 export function SelectGroup({ label, children }: SelectGroupProps) {
   return (
     <RadixSelect.Group>
-      {label && (
-        <RadixSelect.Label className={styles.groupLabel}>{label}</RadixSelect.Label>
-      )}
+      {label && <RadixSelect.Label className={styles.groupLabel}>{label}</RadixSelect.Label>}
       {children}
     </RadixSelect.Group>
   );
@@ -58,7 +56,7 @@ export type SelectProps = {
   disabled?: boolean;
   id?: string;
   children: React.ReactNode;
-}
+};
 
 export function Select({
   label,
@@ -74,10 +72,9 @@ export function Select({
   const generatedId = useId();
   const triggerId = id ?? (label ? generatedId : undefined);
 
-  const triggerClasses = [
-    styles.trigger,
-    variant === 'error' && styles['trigger--error'],
-  ].filter(Boolean).join(' ');
+  const triggerClasses = [styles.trigger, variant === 'error' && styles['trigger--error']]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <div className={styles.wrapper}>
@@ -104,9 +101,7 @@ export function Select({
             <RadixSelect.ScrollUpButton className={styles.scrollButton}>
               <PixelChevronUp />
             </RadixSelect.ScrollUpButton>
-            <RadixSelect.Viewport className={styles.viewport}>
-              {children}
-            </RadixSelect.Viewport>
+            <RadixSelect.Viewport className={styles.viewport}>{children}</RadixSelect.Viewport>
             <RadixSelect.ScrollDownButton className={styles.scrollButton}>
               <PixelChevronDown />
             </RadixSelect.ScrollDownButton>

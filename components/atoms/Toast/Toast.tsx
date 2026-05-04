@@ -7,12 +7,12 @@ export type ToastProps = {
   message?: string;
   variant?: ToastVariant;
   onDismiss?: () => void;
-}
+};
 
 const ARIA_ROLE: Record<ToastVariant, 'alert' | 'status'> = {
   encounter: 'alert',
-  success:   'status',
-  loot:      'status',
+  success: 'status',
+  loot: 'status',
 };
 
 export function Toast({ title, message, variant = 'success', onDismiss }: ToastProps) {
@@ -25,7 +25,9 @@ export function Toast({ title, message, variant = 'success', onDismiss }: ToastP
       <div className={styles.header}>
         <span className={styles.title}>{title}</span>
         {onDismiss && (
-          <button className={styles.dismiss} onClick={onDismiss} aria-label="Dismiss">×</button>
+          <button className={styles.dismiss} onClick={onDismiss} aria-label="Dismiss">
+            ×
+          </button>
         )}
       </div>
       {message && <p className={styles.message}>{message}</p>}

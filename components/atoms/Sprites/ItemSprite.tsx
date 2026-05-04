@@ -16,7 +16,13 @@ export function TomeSprite({ type, boss = false, size = 32 }: Props) {
 
 function TomeBookSprite({ size }: { size: number }) {
   return (
-    <svg viewBox="0 0 16 16" width={size} height={size} style={{ imageRendering: 'pixelated' }} aria-hidden>
+    <svg
+      viewBox="0 0 16 16"
+      width={size}
+      height={size}
+      style={{ imageRendering: 'pixelated' }}
+      aria-hidden
+    >
       {/* Cover */}
       <rect x="2" y="1" width="12" height="14" fill="#4a0080" />
       {/* Spine */}
@@ -36,7 +42,13 @@ function TomeBookSprite({ size }: { size: number }) {
 
 function ScrollSprite({ size }: { size: number }) {
   return (
-    <svg viewBox="0 0 14 16" width={size} height={(size * 16) / 14} style={{ imageRendering: 'pixelated' }} aria-hidden>
+    <svg
+      viewBox="0 0 14 16"
+      width={size}
+      height={(size * 16) / 14}
+      style={{ imageRendering: 'pixelated' }}
+      aria-hidden
+    >
       {/* Top roller */}
       <rect x="1" y="0" width="12" height="2" fill="#8b6914" />
       {/* Bottom roller */}
@@ -59,7 +71,13 @@ function ScrollSprite({ size }: { size: number }) {
 
 function SkullSprite({ size }: { size: number }) {
   return (
-    <svg viewBox="0 0 18 18" width={size} height={size} style={{ imageRendering: 'pixelated' }} aria-hidden>
+    <svg
+      viewBox="0 0 18 18"
+      width={size}
+      height={size}
+      style={{ imageRendering: 'pixelated' }}
+      aria-hidden
+    >
       {/* Skull dome */}
       <rect x="3" y="2" width="12" height="10" fill="#8a0020" />
       {/* Sides taper */}
@@ -83,7 +101,13 @@ function SkullSprite({ size }: { size: number }) {
 
 function SwordItemSprite({ size }: { size: number }) {
   return (
-    <svg viewBox="0 0 16 16" width={size} height={size} style={{ imageRendering: 'pixelated' }} aria-hidden>
+    <svg
+      viewBox="0 0 16 16"
+      width={size}
+      height={size}
+      style={{ imageRendering: 'pixelated' }}
+      aria-hidden
+    >
       {/* Blade */}
       <rect x="7" y="1" width="2" height="10" fill="#a070c0" />
       {/* Tip */}
@@ -98,7 +122,13 @@ function SwordItemSprite({ size }: { size: number }) {
 
 function GemSprite({ size }: { size: number }) {
   return (
-    <svg viewBox="0 0 14 14" width={size} height={size} style={{ imageRendering: 'pixelated' }} aria-hidden>
+    <svg
+      viewBox="0 0 14 14"
+      width={size}
+      height={size}
+      style={{ imageRendering: 'pixelated' }}
+      aria-hidden
+    >
       {/* Diamond */}
       <rect x="4" y="2" width="6" height="1" fill="#c040ff" />
       <rect x="2" y="3" width="10" height="4" fill="#c040ff" />
@@ -206,7 +236,13 @@ export function SkeletonSprite({ size = 48 }: { size?: number }) {
 /* ─── Health potion ──────────────────────────────────────────────────────── */
 export function PotionSprite({ size = 14 }: { size?: number }) {
   return (
-    <svg viewBox="0 0 7 9" width={size} height={(size * 9) / 7} style={{ imageRendering: 'pixelated' }} aria-hidden>
+    <svg
+      viewBox="0 0 7 9"
+      width={size}
+      height={(size * 9) / 7}
+      style={{ imageRendering: 'pixelated' }}
+      aria-hidden
+    >
       <rect x="2" y="0" width="3" height="2" fill="#6a3a8a" />
       <rect x="1" y="2" width="5" height="6" fill="#2ad880" />
       <rect x="0" y="3" width="1" height="4" fill="#2ad880" />

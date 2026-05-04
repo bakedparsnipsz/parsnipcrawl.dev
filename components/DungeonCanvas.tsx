@@ -2,15 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import {
-  buildMap,
-  getPlayerStartPos,
-  getRoomAtTile,
-  DUNGEON_ROOMS,
-  MAP_W,
-  MAP_H,
-  TILE,
-} from '@/lib/dungeonMap';
+import { buildMap, getPlayerStartPos, getRoomAtTile, MAP_W, MAP_H, TILE } from '@/lib/dungeonMap';
 import { useGameStore } from '@/lib/store';
 import { T, type Room } from '@/lib/types';
 import styles from './DungeonCanvas.module.css';
@@ -20,11 +12,11 @@ const MARGIN = 0.35;
 
 /* ─── Tile colours ───────────────────────────────────────────────────────── */
 const TILE_COLORS = {
-  floor:     '#140020',
+  floor: '#140020',
   bossFloor: '#160a00',
-  wallSide:  '#2a0048',
-  wallTop:   '#3a0060',
-  grid:      '#1c0028',
+  wallSide: '#2a0048',
+  wallTop: '#3a0060',
+  grid: '#1c0028',
 };
 
 /* ─── Collision ──────────────────────────────────────────────────────────── */
@@ -196,12 +188,15 @@ export function DungeonCanvas() {
       const keys = keysRef.current;
       let dx = 0;
       let dy = 0;
-      if (keys.has('w') || keys.has('arrowup'))    dy = -1;
-      if (keys.has('s') || keys.has('arrowdown'))  dy = 1;
-      if (keys.has('a') || keys.has('arrowleft'))  dx = -1;
+      if (keys.has('w') || keys.has('arrowup')) dy = -1;
+      if (keys.has('s') || keys.has('arrowdown')) dy = 1;
+      if (keys.has('a') || keys.has('arrowleft')) dx = -1;
       if (keys.has('d') || keys.has('arrowright')) dx = 1;
 
-      if (dx !== 0 && dy !== 0) { dx *= 0.707; dy *= 0.707; }
+      if (dx !== 0 && dy !== 0) {
+        dx *= 0.707;
+        dy *= 0.707;
+      }
 
       const p = playerRef.current;
       if (dx !== 0 || dy !== 0) {
@@ -233,9 +228,9 @@ export function DungeonCanvas() {
 
       /* Tiles */
       const startX = Math.max(0, Math.floor(cam.x));
-      const endX   = Math.min(MAP_W, Math.ceil(cam.x + canvas.width  / TILE + 1));
+      const endX = Math.min(MAP_W, Math.ceil(cam.x + canvas.width / TILE + 1));
       const startY = Math.max(0, Math.floor(cam.y));
-      const endY   = Math.min(MAP_H, Math.ceil(cam.y + canvas.height / TILE + 1));
+      const endY = Math.min(MAP_H, Math.ceil(cam.y + canvas.height / TILE + 1));
 
       for (let ty = startY; ty < endY; ty++) {
         for (let tx = startX; tx < endX; tx++) {
@@ -247,7 +242,7 @@ export function DungeonCanvas() {
       drawPlayer(p.x, p.y, playerAnimRef.current);
 
       /* Vignette */
-      const cx2 = cam.x * TILE + canvas.width  / 2;
+      const cx2 = cam.x * TILE + canvas.width / 2;
       const cy2 = cam.y * TILE + canvas.height / 2;
       const vigR = Math.max(canvas.width, canvas.height) * 0.7;
       const vig = ctx.createRadialGradient(cx2, cy2, vigR * 0.3, cx2, cy2, vigR);
@@ -277,15 +272,17 @@ export function DungeonCanvas() {
       <canvas ref={canvasRef} className={styles.canvas} tabIndex={0} />
 
       {hoveredRoom && !overlayRoom && (
-        <div className={styles.hint}>
-          PRESS E TO ENTER · {hoveredRoom.name.toUpperCase()}
-        </div>
+        <div className={styles.hint}>PRESS E TO ENTER · {hoveredRoom.name.toUpperCase()}</div>
       )}
 
       {overlayRoom && (
         <div className={styles.roomOverlay}>
-          <p className={styles.roDiff}>{overlayRoom.floor} · {overlayRoom.diff}</p>
-          <h2 className={`${styles.roTitle}${overlayRoom.diff === 'BOSS' ? ` ${styles.boss}` : ''}`}>
+          <p className={styles.roDiff}>
+            {overlayRoom.floor} · {overlayRoom.diff}
+          </p>
+          <h2
+            className={`${styles.roTitle}${overlayRoom.diff === 'BOSS' ? ` ${styles.boss}` : ''}`}
+          >
             {overlayRoom.name}
           </h2>
           <p className={styles.roDesc}>{overlayRoom.desc}</p>
@@ -302,7 +299,12 @@ export function DungeonCanvas() {
           <button
             className={styles.roBtn}
             onClick={() => setOverlayRoom(null)}
-            style={{ background: 'transparent', border: 'none', color: 'var(--text3)', fontSize: 9 }}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'var(--text3)',
+              fontSize: 9,
+            }}
           >
             [ ESC ] cancel
           </button>
