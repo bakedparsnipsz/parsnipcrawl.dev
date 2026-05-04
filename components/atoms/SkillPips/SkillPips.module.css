@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font-family: var(--font-default);
+  font-size: var(--input-label-size);
+  color: var(--input-label-fg);
+  letter-spacing: 1px;
+  display: block;
+}
+
+.row {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.pip {
+  width: var(--pip-size);
+  height: var(--pip-size);
+  border: var(--border-width) solid var(--pip-empty-border);
+  border-radius: var(--border-rad);
+  background: transparent;
+}
+
+.pip--purple {
+  background: var(--pip-purple-bg);
+  border-color: var(--pip-purple-border);
+}
+
+.pip--gold {
+  background: var(--pip-gold-bg);
+  border-color: var(--pip-gold-border);
+}
+
+.pip--red {
+  background: var(--pip-red-bg);
+  border-color: var(--pip-red-border);
+}
