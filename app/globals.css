@@ -162,6 +162,16 @@
   --badge-red-border: var(--blood);
   --badge-red-fg: var(--pink);
 
+  /* Inputs ================================== */
+  --input-bg: #0a000f;
+  --input-border: var(--border);
+  --input-fg: var(--text);
+  --input-placeholder-fg: var(--text-3);
+  --input-focus-border: var(--purple);
+  --input-error-border: var(--blood);
+  --input-label-fg: var(--text-3);
+  --input-label-size: var(--font-size-14);
+
 }
 
 
