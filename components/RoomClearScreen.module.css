@@ -10,8 +10,12 @@
 }
 
 @keyframes flashIn {
-  0%   { background: rgba(255,255,255,0.9); }
-  100% { background: rgba(10, 0, 8, 0.97); }
+  0% {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    background: rgba(10, 0, 8, 0.97);
+  }
 }
 
 /* ─── Left panel ─────────────────────────────────────────────────────────── */
@@ -75,7 +79,9 @@
   color: var(--purple);
 }
 
-.xpVal.gold { color: var(--gold2); }
+.xpVal.gold {
+  color: var(--gold2);
+}
 
 /* Progress bar */
 .progressWrap {
@@ -250,7 +256,10 @@
   cursor: pointer;
   border-radius: 2px;
   letter-spacing: 1px;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
   text-align: center;
 }
 

@@ -1,6 +1,12 @@
 @keyframes slideIn {
-  from { opacity: 0; transform: translateY(-8px) scale(0.96); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .toast {
@@ -60,17 +66,23 @@
 .toast--encounter {
   border-color: var(--toast-encounter-border);
 
-  & .title { color: var(--toast-encounter-title); }
+  & .title {
+    color: var(--toast-encounter-title);
+  }
 }
 
 .toast--success {
   border-color: var(--toast-success-border);
 
-  & .title { color: var(--toast-success-title); }
+  & .title {
+    color: var(--toast-success-title);
+  }
 }
 
 .toast--loot {
   border-color: var(--toast-loot-border);
 
-  & .title { color: var(--toast-loot-title); }
+  & .title {
+    color: var(--toast-loot-title);
+  }
 }

@@ -108,7 +108,10 @@
   cursor: pointer;
   border-radius: 2px;
   letter-spacing: 1px;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
   flex-shrink: 0;
 }
 

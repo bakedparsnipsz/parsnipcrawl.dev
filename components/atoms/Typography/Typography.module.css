@@ -21,7 +21,9 @@
 .type--display-secondary-large {
   font-family: var(--font-display-2);
   font-size: var(--font-size-32);
-  text-shadow: 0 2px 0 var(--purple-3),0 4px 0 rgba(74,0,128,0.3);
+  text-shadow:
+    0 2px 0 var(--purple-3),
+    0 4px 0 rgba(74, 0, 128, 0.3);
   color: var(--pink);
   font-weight: 900;
   line-height: 1.15;
@@ -76,4 +78,3 @@
   color: var(--text-3);
   letter-spacing: 2px;
 }
-

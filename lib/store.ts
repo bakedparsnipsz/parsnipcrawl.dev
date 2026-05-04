@@ -56,11 +56,9 @@ export const useGameStore = create<GameStore>()(
           return { xp, level, xpToNext: threshold };
         }),
 
-      takeDamage: (amount) =>
-        set((state) => ({ hp: Math.max(0, state.hp - amount) })),
+      takeDamage: (amount) => set((state) => ({ hp: Math.max(0, state.hp - amount) })),
 
-      healHp: (amount) =>
-        set((state) => ({ hp: Math.min(state.maxHp, state.hp + amount) })),
+      healHp: (amount) => set((state) => ({ hp: Math.min(state.maxHp, state.hp + amount) })),
 
       clearRoom: (slug) =>
         set((state) => ({
@@ -68,11 +66,9 @@ export const useGameStore = create<GameStore>()(
           roomsCleared: state.roomsCleared + 1,
         })),
 
-      addLoot: (item) =>
-        set((state) => ({ inventory: [...state.inventory, item] })),
+      addLoot: (item) => set((state) => ({ inventory: [...state.inventory, item] })),
 
-      incrementSlain: () =>
-        set((state) => ({ slain: state.slain + 1 })),
+      incrementSlain: () => set((state) => ({ slain: state.slain + 1 })),
     }),
     {
       name: 'dungeon-dev-state',

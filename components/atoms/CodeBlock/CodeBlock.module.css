@@ -32,7 +32,9 @@
   cursor: pointer;
   letter-spacing: 1px;
   border-radius: var(--border-rad);
-  transition: color 0.15s, border-color 0.15s;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
 
   &:hover {
     color: var(--text-2);
@@ -66,10 +68,25 @@
 
 /* ── Syntax token colours ─────────────────────────────────────────────────── */
 
-.kw  { color: var(--tok-kw); }
-.fn  { color: var(--tok-fn); }
-.str { color: var(--tok-str); }
-.cmt { color: var(--tok-cmt); font-style: italic; }
-.ty  { color: var(--tok-ty); }
-.num { color: var(--tok-num); }
-.mac { color: var(--tok-mac); }
+.kw {
+  color: var(--tok-kw);
+}
+.fn {
+  color: var(--tok-fn);
+}
+.str {
+  color: var(--tok-str);
+}
+.cmt {
+  color: var(--tok-cmt);
+  font-style: italic;
+}
+.ty {
+  color: var(--tok-ty);
+}
+.num {
+  color: var(--tok-num);
+}
+.mac {
+  color: var(--tok-mac);
+}

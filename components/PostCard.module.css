@@ -7,7 +7,9 @@
   gap: 14px;
   cursor: pointer;
   text-decoration: none;
-  transition: border-color 0.15s, background 0.15s;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
   position: relative;
   overflow: hidden;
 }
@@ -93,10 +95,26 @@
   border: 1px solid;
 }
 
-.diff-Easy   { border-color: var(--green);   color: var(--green);   background: #001a0a; }
-.diff-Medium { border-color: var(--purple2);  color: var(--purple);  background: #1a003a; }
-.diff-Hard   { border-color: var(--blood);    color: var(--pink);    background: #1a000a; }
-.diff-BOSS   { border-color: var(--gold);     color: var(--gold2);   background: #130800; }
+.diff-Easy {
+  border-color: var(--green);
+  color: var(--green);
+  background: #001a0a;
+}
+.diff-Medium {
+  border-color: var(--purple2);
+  color: var(--purple);
+  background: #1a003a;
+}
+.diff-Hard {
+  border-color: var(--blood);
+  color: var(--pink);
+  background: #1a000a;
+}
+.diff-BOSS {
+  border-color: var(--gold);
+  color: var(--gold2);
+  background: #130800;
+}
 
 .roomName {
   font-size: 9px;

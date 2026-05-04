@@ -11,14 +11,7 @@ function emptyGrid(): Grid {
   return Array.from({ length: MAP_H }, () => Array(MAP_W).fill(T.VOID));
 }
 
-function fillRect(
-  grid: Grid,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  tile: TileType,
-) {
+function fillRect(grid: Grid, x: number, y: number, w: number, h: number, tile: TileType) {
   for (let row = y; row < y + h; row++) {
     for (let col = x; col < x + w; col++) {
       if (row >= 0 && row < MAP_H && col >= 0 && col < MAP_W) {
@@ -122,11 +115,7 @@ export function buildMap(clearedRooms: Set<string>, currentSlug: string | null):
 
 export function getRoomAtTile(tx: number, ty: number): Room | undefined {
   return DUNGEON_ROOMS.find(
-    (r) =>
-      tx >= r.x + 1 &&
-      tx < r.x + r.w - 1 &&
-      ty >= r.y + 1 &&
-      ty < r.y + r.h - 1,
+    (r) => tx >= r.x + 1 && tx < r.x + r.w - 1 && ty >= r.y + 1 && ty < r.y + r.h - 1,
   );
 }
 

@@ -34,7 +34,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Write your character\'s lore here...',
+    placeholder: "Write your character's lore here...",
     rows: 4,
   },
 };
@@ -42,7 +42,7 @@ export const Default: Story = {
 export const WithLabel: Story = {
   args: {
     label: 'CHARACTER LORE',
-    placeholder: 'Write your character\'s lore here...',
+    placeholder: "Write your character's lore here...",
     rows: 4,
   },
 };

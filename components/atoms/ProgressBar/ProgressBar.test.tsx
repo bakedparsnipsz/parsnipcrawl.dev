@@ -52,10 +52,7 @@ describe('ProgressBar', () => {
     },
   );
 
-  it.each(['thin', 'medium', 'thick'] as const)(
-    'renders size "%s" without throwing',
-    (size) => {
-      expect(() => render(<ProgressBar value={50} size={size} />)).not.toThrow();
-    },
-  );
+  it.each(['thin', 'medium', 'thick'] as const)('renders size "%s" without throwing', (size) => {
+    expect(() => render(<ProgressBar value={50} size={size} />)).not.toThrow();
+  });
 });

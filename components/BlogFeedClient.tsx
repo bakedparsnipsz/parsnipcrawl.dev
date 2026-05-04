@@ -12,12 +12,12 @@ interface Props {
 export function BlogFeedClient({ posts }: Props) {
   const { clearedRooms } = useGameStore();
 
-  const floors = [...new Set(posts.map(p => p.floor))].sort();
+  const floors = [...new Set(posts.map((p) => p.floor))].sort();
 
   return (
     <div className={styles.feed}>
       {floors.map((floor, fi) => {
-        const floorPosts = posts.filter(p => p.floor === floor);
+        const floorPosts = posts.filter((p) => p.floor === floor);
         return (
           <div key={floor}>
             {fi > 0 && (
@@ -34,12 +34,8 @@ export function BlogFeedClient({ posts }: Props) {
                 <div className={styles.dividerLine} />
               </div>
             )}
-            {floorPosts.map(post => (
-              <PostCard
-                key={post.slug}
-                post={post}
-                cleared={clearedRooms.has(post.slug)}
-              />
+            {floorPosts.map((post) => (
+              <PostCard key={post.slug} post={post} cleared={clearedRooms.has(post.slug)} />
             ))}
           </div>
         );

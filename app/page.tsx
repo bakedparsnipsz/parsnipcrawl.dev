@@ -1,10 +1,7 @@
 import { POSTS } from '@/lib/posts';
-import { PostCard } from '@/components/PostCard';
 import { Sidebar } from '@/components/Sidebar';
 import { BlogFeedClient } from '@/components/BlogFeedClient';
 import styles from './page.module.css';
-
-const floors = [...new Set(POSTS.map(p => p.floor))].sort();
 
 export default function BlogPage() {
   return (

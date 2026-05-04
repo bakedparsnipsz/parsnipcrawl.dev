@@ -31,18 +31,11 @@ describe('Button', () => {
   it.each(['primary', 'secondary', 'boss', 'combat', 'destructive', 'success'] as const)(
     'renders variant "%s" without throwing',
     (variant) => {
-      expect(() =>
-        render(<Button label="x" variant={variant} size="medium" />),
-      ).not.toThrow();
+      expect(() => render(<Button label="x" variant={variant} size="medium" />)).not.toThrow();
     },
   );
 
-  it.each(['small', 'medium', 'large'] as const)(
-    'renders size "%s" without throwing',
-    (size) => {
-      expect(() =>
-        render(<Button label="x" variant="primary" size={size} />),
-      ).not.toThrow();
-    },
-  );
+  it.each(['small', 'medium', 'large'] as const)('renders size "%s" without throwing', (size) => {
+    expect(() => render(<Button label="x" variant="primary" size={size} />)).not.toThrow();
+  });
 });

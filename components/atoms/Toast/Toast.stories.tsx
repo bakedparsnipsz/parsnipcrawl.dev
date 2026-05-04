@@ -64,9 +64,13 @@ export const NoDismiss: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Toast variant="encounter" title="⚔ ENEMY ENCOUNTERED" message="A Syntax Wraith blocks your path!" />
-      <Toast variant="success"   title="Room Cleared"        message="+850 XP earned" />
-      <Toast variant="loot"      title="Loot Dropped"        message="Borrow Checker's Seal (Rare)" />
+      <Toast
+        variant="encounter"
+        title="⚔ ENEMY ENCOUNTERED"
+        message="A Syntax Wraith blocks your path!"
+      />
+      <Toast variant="success" title="Room Cleared" message="+850 XP earned" />
+      <Toast variant="loot" title="Loot Dropped" message="Borrow Checker's Seal (Rare)" />
     </div>
   ),
 };

@@ -26,8 +26,8 @@ export function Minimap({ currentSlug }: Props) {
 
     function getRoomColor(room: Room): { fill: string; border: string } {
       if (room.slug === currentSlug) return { fill: '#ff3a7a', border: '#ff6aa0' };
-      if (clearedRooms.has(room.slug))  return { fill: '#6020a0', border: '#8020cc' };
-      if (room.diff === 'BOSS')          return { fill: '#d4a030', border: '#ffcc60' };
+      if (clearedRooms.has(room.slug)) return { fill: '#6020a0', border: '#8020cc' };
+      if (room.diff === 'BOSS') return { fill: '#d4a030', border: '#ffcc60' };
       return { fill: '#2a0040', border: '#3a0060' };
     }
 
@@ -46,12 +46,17 @@ export function Minimap({ currentSlug }: Props) {
 
         ctx.strokeStyle = border;
         ctx.lineWidth = 1;
-        ctx.strokeRect(room.x * CELL + 0.5, room.y * CELL + 0.5, room.w * CELL - 1, room.h * CELL - 1);
+        ctx.strokeRect(
+          room.x * CELL + 0.5,
+          room.y * CELL + 0.5,
+          room.w * CELL - 1,
+          room.h * CELL - 1,
+        );
       });
 
       /* Current room indicator — pulsing dot */
       if (currentSlug) {
-        const room = DUNGEON_ROOMS.find(r => r.slug === currentSlug);
+        const room = DUNGEON_ROOMS.find((r) => r.slug === currentSlug);
         if (room) {
           const cx = (room.x + room.w / 2) * CELL;
           const cy = (room.y + room.h / 2) * CELL;

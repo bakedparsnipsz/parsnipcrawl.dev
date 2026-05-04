@@ -19,22 +19,34 @@ export function ArticleProse({ content }: Props) {
 
 /* ─── Block types ────────────────────────────────────────────────────────── */
 type BlockNode =
-  | { type: 'h2';   text: string }
-  | { type: 'h3';   text: string }
-  | { type: 'p';    text: string }
+  | { type: 'h2'; text: string }
+  | { type: 'h3'; text: string }
+  | { type: 'p'; text: string }
   | { type: 'code'; lang: string; code: string }
-  | { type: 'ul';   items: string[] }
-  | { type: 'ol';   items: string[] };
+  | { type: 'ul'; items: string[] }
+  | { type: 'ol'; items: string[] };
 
 function Block({ block }: { block: BlockNode }) {
   if (block.type === 'h2') return <h2>{inlineFormat(block.text)}</h2>;
   if (block.type === 'h3') return <h3>{inlineFormat(block.text)}</h3>;
-  if (block.type === 'p')  return <p>{inlineFormat(block.text)}</p>;
+  if (block.type === 'p') return <p>{inlineFormat(block.text)}</p>;
   if (block.type === 'code') return <CodeBlock lang={block.lang} code={block.code} />;
   if (block.type === 'ul')
-    return <ul>{block.items.map((it, i) => <li key={i}>{inlineFormat(it)}</li>)}</ul>;
+    return (
+      <ul>
+        {block.items.map((it, i) => (
+          <li key={i}>{inlineFormat(it)}</li>
+        ))}
+      </ul>
+    );
   if (block.type === 'ol')
-    return <ol>{block.items.map((it, i) => <li key={i}>{inlineFormat(it)}</li>)}</ol>;
+    return (
+      <ol>
+        {block.items.map((it, i) => (
+          <li key={i}>{inlineFormat(it)}</li>
+        ))}
+      </ol>
+    );
   return null;
 }
 
@@ -45,10 +57,8 @@ function inlineFormat(text: string): React.ReactNode {
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**'))
       return <strong key={i}>{part.slice(2, -2)}</strong>;
-    if (part.startsWith('*') && part.endsWith('*'))
-      return <em key={i}>{part.slice(1, -1)}</em>;
-    if (part.startsWith('`') && part.endsWith('`'))
-      return <code key={i}>{part.slice(1, -1)}</code>;
+    if (part.startsWith('*') && part.endsWith('*')) return <em key={i}>{part.slice(1, -1)}</em>;
+    if (part.startsWith('`') && part.endsWith('`')) return <code key={i}>{part.slice(1, -1)}</code>;
     return part;
   });
 }
@@ -113,7 +123,15 @@ function parseBlocks(md: string): BlockNode[] {
     /* Paragraph — accumulate non-empty lines */
     if (line.trim()) {
       const paraLines: string[] = [];
-      while (i < lines.length && lines[i].trim() && !lines[i].startsWith('#') && !lines[i].startsWith('```') && !lines[i].startsWith('- ') && !lines[i].startsWith('* ') && !/^\d+\. /.test(lines[i])) {
+      while (
+        i < lines.length &&
+        lines[i].trim() &&
+        !lines[i].startsWith('#') &&
+        !lines[i].startsWith('```') &&
+        !lines[i].startsWith('- ') &&
+        !lines[i].startsWith('* ') &&
+        !/^\d+\. /.test(lines[i])
+      ) {
         paraLines.push(lines[i]);
         i++;
       }

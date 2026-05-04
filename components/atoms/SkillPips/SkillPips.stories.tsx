@@ -55,9 +55,9 @@ export const Red: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <SkillPips variant="gold"   filled={5} total={5} label="MASTERY" />
+      <SkillPips variant="gold" filled={5} total={5} label="MASTERY" />
       <SkillPips variant="purple" filled={3} total={5} label="ARCANE" />
-      <SkillPips variant="red"    filled={2} total={5} label="DAMAGE" />
+      <SkillPips variant="red" filled={2} total={5} label="DAMAGE" />
     </div>
   ),
 };

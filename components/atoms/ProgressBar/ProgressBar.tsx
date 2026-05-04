@@ -6,7 +6,7 @@ export type ProgressBarProps = {
   size?: 'thin' | 'medium' | 'thick';
   label?: string;
   valueLabel?: string;
-}
+};
 
 export function ProgressBar({
   value,

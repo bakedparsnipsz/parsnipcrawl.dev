@@ -5,11 +5,14 @@
   border-radius: var(--border-rad-2);
   border: var(--border-width) solid var(--border);
   flex-shrink: 0;
-  
+
   font-family: var(--font-default);
   letter-spacing: 1px;
 
-  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s,
+    color 0.15s;
 
   &:disabled {
     cursor: not-allowed;
@@ -21,13 +24,13 @@
       cursor: not-allowed;
       background-color: var(--btn-disabled-bg);
       border-color: var(--btn-disabled-border);
-      color: var(--btn-disabled-fg);  
+      color: var(--btn-disabled-fg);
     }
   }
 }
 
 /* Sizes */
-.btn--small { 
+.btn--small {
   font-size: var(--font-size-14);
   padding: var(--space-1) var(--space-2);
 }

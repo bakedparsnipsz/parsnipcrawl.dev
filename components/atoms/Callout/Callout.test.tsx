@@ -10,10 +10,10 @@ describe('Callout', () => {
 
   it('renders the default heading for each variant', () => {
     const cases: Array<[React.ComponentProps<typeof Callout>['variant'], string]> = [
-      ['lore',   '[ LORE DROP ]'],
-      ['warn',   '[ TRAP AHEAD ]'],
+      ['lore', '[ LORE DROP ]'],
+      ['warn', '[ TRAP AHEAD ]'],
       ['danger', '[ DANGER ]'],
-      ['info',   '[ ARCANE NOTE ]'],
+      ['info', '[ ARCANE NOTE ]'],
     ];
 
     for (const [variant, heading] of cases) {
@@ -24,7 +24,11 @@ describe('Callout', () => {
   });
 
   it('uses a custom heading when provided', () => {
-    render(<Callout variant="lore" heading="[ BOSS LORE ]">x</Callout>);
+    render(
+      <Callout variant="lore" heading="[ BOSS LORE ]">
+        x
+      </Callout>,
+    );
     expect(screen.getByText('[ BOSS LORE ]')).toBeInTheDocument();
     expect(screen.queryByText('[ LORE DROP ]')).not.toBeInTheDocument();
   });

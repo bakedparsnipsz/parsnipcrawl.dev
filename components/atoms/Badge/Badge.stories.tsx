@@ -17,8 +17,8 @@ const meta = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     disabled: {
-      control: { type: 'boolean' }
-    }
+      control: { type: 'boolean' },
+    },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   args: { onClick: fn() },
@@ -33,6 +33,6 @@ export const Primary: Story = {
     primary: true,
     label: '#dungeon',
     variant: 'default',
-    textVariant: 'uppercase'
+    textVariant: 'uppercase',
   },
 };

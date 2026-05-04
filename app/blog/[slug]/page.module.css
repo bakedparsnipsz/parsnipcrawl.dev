@@ -57,10 +57,26 @@
   border: 1px solid;
 }
 
-.diff-Easy   { border-color: var(--green);   color: var(--green);   background: #001a0a; }
-.diff-Medium { border-color: var(--purple2);  color: var(--purple);  background: #1a003a; }
-.diff-Hard   { border-color: var(--blood);    color: var(--pink);    background: #1a000a; }
-.diff-BOSS   { border-color: var(--gold);     color: var(--gold2);   background: #130800; }
+.diff-Easy {
+  border-color: var(--green);
+  color: var(--green);
+  background: #001a0a;
+}
+.diff-Medium {
+  border-color: var(--purple2);
+  color: var(--purple);
+  background: #1a003a;
+}
+.diff-Hard {
+  border-color: var(--blood);
+  color: var(--pink);
+  background: #1a000a;
+}
+.diff-BOSS {
+  border-color: var(--gold);
+  color: var(--gold2);
+  background: #130800;
+}
 
 .floor {
   font-size: 9px;
@@ -129,7 +145,9 @@
   cursor: pointer;
   border-radius: 2px;
   letter-spacing: 1px;
-  transition: background 0.15s, border-color 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
 }
 
 .collectBtn:hover {

@@ -9,11 +9,7 @@ interface Props {
 }
 
 export function PostCard({ post, cleared = false }: Props) {
-  const cardClass = [
-    styles.card,
-    post.isBoss ? styles.boss : '',
-    cleared ? styles.cleared : '',
-  ]
+  const cardClass = [styles.card, post.isBoss ? styles.boss : '', cleared ? styles.cleared : '']
     .filter(Boolean)
     .join(' ');
 
@@ -39,17 +35,24 @@ export function PostCard({ post, cleared = false }: Props) {
 
         <div className={styles.tags}>
           {post.tags.map((tag) => (
-            <span key={tag} className={styles.tag}>#{tag}</span>
+            <span key={tag} className={styles.tag}>
+              #{tag}
+            </span>
           ))}
         </div>
 
         <div className={styles.footer}>
           <span className={styles.readTime}>{post.readingTime}m read</span>
           <div className={styles.xpBar}>
-            <div className={`${styles.xpFill}${post.isBoss ? ` ${styles.boss}` : ''}`} style={{ width: '100%' }} />
+            <div
+              className={`${styles.xpFill}${post.isBoss ? ` ${styles.boss}` : ''}`}
+              style={{ width: '100%' }}
+            />
           </div>
           <span className={styles.xpLabel}>{post.xp} XP</span>
-          <span className={styles.roomLoc}>Floor {post.floor} · Room {post.room}</span>
+          <span className={styles.roomLoc}>
+            Floor {post.floor} · Room {post.room}
+          </span>
         </div>
       </div>
     </Link>
