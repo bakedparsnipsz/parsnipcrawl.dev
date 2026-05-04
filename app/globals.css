@@ -177,7 +177,13 @@
 
   /* Select */
   --select-arrow-color: var(--text-2);
-  --select-option-bg: var(--bg-2);
+  --select-trigger-hover-border: var(--text-2);
+  --select-content-bg: var(--bg-2);
+  --select-content-border: var(--border);
+  --select-item-fg: var(--text-2);
+  --select-item-hover-bg: var(--bg-3);
+  --select-item-selected-fg: var(--purple);
+  --select-separator: var(--border);
 
 }
 
