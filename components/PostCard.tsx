@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Post } from '@/lib/types';
-import { TomeSprite } from './sprites/ItemSprite';
+import { TomeSprite } from './atoms/Sprites/ItemSprite';
 import styles from './PostCard.module.css';
 
 interface Props {

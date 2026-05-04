@@ -1,0 +1,69 @@
+/* Base styles */
+.bdg {
+  font-family: var(--font-default);
+  font-size: var(--font-size-10);
+  text-align: center;
+  letter-spacing: 1px;
+
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--border-rad);
+  border: 1px solid;
+
+  min-height: 30px;
+  min-width: 30px;
+}
+
+/* Variants */
+.bdg--default {
+  background-color: #1a003a;
+  color: var(--purple);
+  border-color: var(--purple-2);
+}
+
+.bdg--outlined {
+  background-color: transparent;
+  color: var(--text-3);
+  border-color: var(--border);
+}
+
+.bdg--red {
+  background-color: #1a000a;
+  color: var(--pink);
+  border-color: var(--blood);
+}
+
+.bdg--gold {
+  background-color: #130800;
+  color: var(--gold-2);
+  border-color: var(--gold);
+}
+
+.bdg--boss {
+  composes: bdg--gold;
+  font-family: var(--font-display-3);
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.bdg--green {
+  background-color: #001a0a;
+  color: var(--green);
+  border-color: #0a5a3a;
+}
+
+/* Text options */
+.bdg--uppercase {
+  text-transform: uppercase;
+}
+
+.bdg--capitalised {
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.bdg--lowercase {
+  text-transform: lowercase;
+}

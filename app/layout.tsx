@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { TopBar } from '@/components/TopBar';
+import { TopBar } from '@/components/features/TopBar/TopBar';
 
 export const metadata: Metadata = {
   title: 'parsnipcrawl.dev',
