@@ -1,5 +1,5 @@
-import { CodeBlock } from './CodeBlock';
-import styles from './ArticleProse.module.css';
+import { CodeBlock } from '../../CodeBlock';
+import styles from '../../features/ArticleProse/ArticleProse.module.css';
 
 interface Props {
   content: string;

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useGameStore } from '@/lib/store';
-import { LogoIcon } from './sprites/LogoIcon';
+import { LogoIcon } from '../../atoms/Sprites/LogoIcon';
 import styles from './TopBar.module.css';
 
 export function TopBar() {

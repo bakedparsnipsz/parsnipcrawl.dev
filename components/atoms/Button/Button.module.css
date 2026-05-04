@@ -1,13 +1,114 @@
-.modeBtn {
-  background: var(--purple3);
-  border: 1px solid var(--purple);
-  color: var(--purple2);
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
-  padding: 4px 10px;
+/* Base styles */
+.btn {
   cursor: pointer;
-  border-radius: 2px;
-  letter-spacing: 1px;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+
+  border-radius: var(--border-rad-2);
+  border: var(--border-width) solid var(--border);
   flex-shrink: 0;
+  
+  font-family: var(--font-default);
+  letter-spacing: 1px;
+
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--btn-disabled-bg);
+    border-color: var(--btn-disabled-border);
+    color: var(--btn-disabled-fg);
+
+    &:hover {
+      cursor: not-allowed;
+      background-color: var(--btn-disabled-bg);
+      border-color: var(--btn-disabled-border);
+      color: var(--btn-disabled-fg);  
+    }
+  }
+}
+
+/* Sizes */
+.btn--small { 
+  font-size: var(--font-size-14);
+  padding: var(--space-1) var(--space-2);
+}
+.btn--medium {
+  font-size: var(--font-size-16);
+  padding: var(--space-2) var(--space-3);
+}
+.btn--large {
+  font-size: var(--font-size-20);
+  padding: var(--space-2) var(--space-4);
+}
+
+/* Variants */
+.btn--primary {
+  background-color: var(--btn-primary-rest-bg);
+  border-color: var(--btn-primary-rest-border);
+  color: var(--btn-primary-rest-fg);
+
+  &:hover {
+    background-color: var(--btn-primary-hover-bg);
+    border-color: var(--btn-primary-hover-border);
+    color: var(--btn-primary-hover-fg);
+  }
+}
+
+.btn--secondary {
+  background-color: var(--btn-secondary-rest-bg);
+  border-color: var(--btn-secondary-rest-border);
+  color: var(--btn-secondary-rest-fg);
+
+  &:hover {
+    background-color: var(--btn-secondary-hover-bg);
+    border-color: var(--btn-secondary-hover-border);
+    color: var(--btn-secondary-hover-fg);
+  }
+}
+
+.btn--boss {
+  background-color: var(--btn-boss-rest-bg);
+  border-color: var(--btn-boss-rest-border);
+  color: var(--btn-boss-rest-fg);
+
+  &:hover {
+    background-color: var(--btn-boss-hover-bg);
+    border-color: var(--btn-boss-hover-border);
+    color: var(--btn-boss-hover-fg);
+  }
+}
+
+.btn--combat {
+  background-color: var(--btn-combat-rest-bg);
+  border-color: var(--btn-combat-rest-border);
+  color: var(--btn-combat-rest-fg);
+
+  &:hover {
+    background-color: var(--btn-combat-hover-bg);
+    border-color: var(--btn-combat-hover-border);
+    color: var(--btn-combat-hover-fg);
+  }
+}
+
+.btn--destructive {
+  background-color: var(--btn-destructive-rest-bg);
+  border-color: var(--btn-destructive-rest-border);
+  color: var(--btn-destructive-rest-fg);
+
+  &:hover {
+    background-color: var(--btn-destructive-hover-bg);
+    border-color: var(--btn-destructive-hover-border);
+    color: var(--btn-destructive-hover-fg);
+  }
+}
+
+.btn--success {
+  background-color: var(--btn-success-rest-bg);
+  border-color: var(--btn-success-rest-border);
+  color: var(--btn-success-rest-fg);
+
+  &:hover {
+    background-color: var(--btn-success-hover-bg);
+    border-color: var(--btn-success-hover-border);
+    color: var(--btn-success-hover-fg);
+  }
 }

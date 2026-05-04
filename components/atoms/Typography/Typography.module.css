@@ -1,0 +1,79 @@
+/* Display primary */
+.primary {
+  font-family: var(--font-display-1);
+  color: var(--pink);
+  line-height: 1.1;
+}
+
+.type--display-primary-large {
+  composes: primary;
+  font-size: var(--font-size-logo);
+  text-shadow: var(--font-style-shadow);
+  white-space: nowrap;
+}
+
+/* Display secondary */
+.secondary {
+  font-family: var(--font-display-3);
+  color: var(--text);
+}
+
+.type--display-secondary-large {
+  font-family: var(--font-display-2);
+  font-size: var(--font-size-32);
+  text-shadow: 0 2px 0 var(--purple-3),0 4px 0 rgba(74,0,128,0.3);
+  color: var(--pink);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 2px;
+}
+
+.type--display-secondary-medium {
+  composes: secondary;
+  font-size: var(--font-size-24);
+  text-shadow: 2px 2px 0 var(--purple-3);
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.type--display-secondary-small {
+  composes: secondary;
+  font-size: var(--font-size-20);
+  text-shadow: none;
+  letter-spacing: 1px;
+}
+
+.type--display-secondary-xsmall {
+  composes: secondary;
+  font-size: var(--font-size-16);
+  text-shadow: none;
+}
+
+/* Body & logo */
+.default {
+  font-family: var(--font-default);
+  color: var(--text-2);
+}
+
+/* for default body text */
+.type--body {
+  color: var(--text-1);
+  font-size: var(--font-size-16);
+  line-height: 1.9;
+}
+
+/* Card excerpts, callouts etc */
+.type--body-small {
+  composes: default;
+  font-size: var(--font-size-14);
+  line-height: 1.65;
+}
+
+/* Metadata, tags, badges */
+.type--body-xsmall {
+  composes: default;
+  font-size: var(--font-size-12);
+  color: var(--text-3);
+  letter-spacing: 2px;
+}
+

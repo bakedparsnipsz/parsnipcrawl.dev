@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>parsnipscrawl.dev — Design System v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS ── */
+:root {
+  --bg:#0a0008; --bg-2:#110012; --bg-3:#1a001c;
+  --border:#4a1060; --border-b:#8a20b0;
+  --pink:#ff3a7a; --pink-2:#ff6aa0;
+  --purple:#c040ff; --purple-2:#8020cc; --purple-3:#4a0080;
+  --gold:#d4a030; --gold-2:#ffcc60;
+  --text:#e8c8f0; --text-2:#a070c0; --text-3:#9b7fc0;
+  --blood:#8a0020; --green:#2ad880; --fire:#ff6020;
+  --space-1:4px; --space-2:8px; --space-3:16px;
+  --space-4:24px; --space-5:32px; --space-6:40px;
+}
+
+/* ── RESET ── */
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Share Tech Mono',monospace;font-size:16px;line-height:1.6;}
+
+/* ── SHELL ── */
+.ds-shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh;}
+
+/* ── SIDEBAR NAV ── */
+.ds-nav{background:#05000a;border-right:2px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;padding:0;}
+.ds-nav-logo{padding:var(--space-3) var(--space-3) var(--space-2);border-bottom:1px solid var(--border);}
+.ds-nav-logo-text{font-family:'UnifrakturMaguntia',cursive;font-size:22px;color:var(--pink);text-shadow:1px 2px 0 var(--purple-3);display:block;line-height:1.1;}
+.ds-nav-version{font-size:14px;color:var(--text-3);letter-spacing:2px;margin-top:var(--space-1);}
+.ds-nav-list{list-style:none;flex:1;padding:var(--space-2) 0;}
+.ds-nav-item a{display:block;padding:var(--space-1) var(--space-3);font-size:14px;color:var(--text-3);text-decoration:none;letter-spacing:1px;border-left:2px solid transparent;transition:color 0.15s,border-color 0.15s;}
+.ds-nav-item a:hover,.ds-nav-item a.active{color:var(--pink);border-left-color:var(--pink);background:rgba(255,58,122,0.04);}
+.ds-nav-group{font-size:14px;color:var(--text-3);letter-spacing:3px;padding:var(--space-3) var(--space-3) var(--space-1);opacity:0.6;}
+
+/* ── MAIN CONTENT ── */
+.ds-main{padding:var(--space-5) var(--space-6);max-width:1100px;}
+
+/* ── PAGE HEADER ── */
+.ds-page-header{margin-bottom:var(--space-6);padding-bottom:var(--space-4);border-bottom:2px solid var(--border);}
+.ds-page-title{font-family:'UnifrakturMaguntia',cursive;font-size:36px;color:var(--pink);text-shadow:2px 3px 0 var(--purple-3),4px 5px 0 rgba(74,0,128,0.4);line-height:1.1;margin-bottom:var(--space-2);}
+.ds-page-subtitle{font-size:14px;color:var(--text-3);letter-spacing:2px;}
+.ds-version-badge{display:inline-block;font-size:14px;padding:2px var(--space-2);border:1px solid var(--purple-2);color:var(--purple);background:#1a003a;border-radius:1px;margin-left:var(--space-2);}
+
+/* ── SECTIONS ── */
+.ds-section{margin-bottom:var(--space-6);scroll-margin-top:var(--space-4);}
+.ds-section-title{font-family:'Cinzel',serif;font-size:14px;color:var(--text-3);letter-spacing:4px;margin-bottom:var(--space-4);padding-bottom:var(--space-2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:var(--space-2);}
+.ds-section-title::before{content:'';display:block;width:6px;height:6px;background:var(--purple-2);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);flex-shrink:0;}
+.ds-subsection{margin-bottom:var(--space-5);}
+.ds-sub-label{font-size:14px;color:var(--text-3);letter-spacing:2px;margin-bottom:var(--space-2);}
+
+/* ── COLOUR SWATCHES ── */
+.swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:var(--space-2);}
+.swatch{border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);}
+.swatch-color{height:56px;}
+.swatch-info{padding:var(--space-2);background:#0e0012;}
+.swatch-name{font-size:14px;color:var(--text-2);margin-bottom:2px;}
+.swatch-hex{font-size:14px;color:var(--text-3);font-family:'Share Tech Mono',monospace;}
+.swatch-var{font-size:14px;color:var(--border-b);font-family:'Share Tech Mono',monospace;}
+
+/* ── TABLES ── */
+table{width:100%;border-collapse:collapse;font-size:16px;margin-bottom:var(--space-3);}
+th{text-align:left;font-size:14px;color:var(--text-3);letter-spacing:2px;padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--border);font-weight:400;}
+td{padding:var(--space-2) var(--space-3);border-bottom:1px solid #1a0025;color:var(--text-2);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+td:first-child{color:var(--text-3);}
+td code{color:var(--purple);background:#0a000f;padding:1px 4px;border-radius:1px;font-size:10px;}
+
+/* ── CODE BLOCKS ── */
+.code-wrap{background:#060006;border:1px solid var(--border);border-radius:2px;margin:var(--space-2) 0 var(--space-3);}
+.code-hdr{background:#0e0012;border-bottom:1px solid #2a0040;padding:var(--space-2) var(--space-3);display:flex;align-items:center;justify-content:space-between;font-size:10px;}
+.code-lang{color:var(--purple);letter-spacing:1px;}
+.code-copy{cursor:pointer;color:var(--text-3);background:none;border:none;font-family:'Share Tech Mono',monospace;font-size:10px;padding:0;}
+.code-copy:hover{color:var(--pink);}
+.code-body{padding:var(--space-3);overflow-x:auto;}
+.code-body pre{font-family:'Share Tech Mono',monospace;font-size:14px;line-height:1.75;color:var(--text-2);}
+.tok-kw{color:#4aff4a;} .tok-fn{color:#7accff;} .tok-str{color:#ffca7a;}
+.tok-cm{color:#3a6a3a;font-style:italic;} .tok-ty{color:#ca7aff;} .tok-num{color:#ff7a7a;}
+.tok-prop{color:var(--text-2);} .tok-val{color:#ffca7a;}
+
+/* ── TYPE SPECIMENS ── */
+.type-specimen{padding:var(--space-3) var(--space-4);background:var(--bg-2);border:1px solid var(--border);border-radius:2px;margin-bottom:var(--space-2);}
+.type-meta{display:flex;flex-wrap:wrap;gap:var(--space-4);margin-top:var(--space-2);padding-top:var(--space-2);border-top:1px solid #1a0025;}
+.type-meta-item{font-size:14px;color:var(--text-3);}
+.type-meta-item span{color:var(--text-2);}
+
+/* ── SPACING VISUAL ── */
+.spacing-row{display:flex;align-items:flex-end;gap:var(--space-3);flex-wrap:wrap;margin-bottom:var(--space-3);}
+.sp-item{display:flex;flex-direction:column;align-items:center;gap:var(--space-1);}
+.sp-block{background:var(--purple-3);border:1px solid var(--purple-2);}
+.sp-label{font-size:14px;color:var(--text-3);}
+.sp-val{font-size:14px;color:var(--purple-2);font-family:'Share Tech Mono',monospace;}
+
+/* ── RADIUS VISUAL ── */
+.radius-row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-bottom:var(--space-3);}
+.rad-item{display:flex;flex-direction:column;align-items:center;gap:var(--space-1);}
+.rad-box{width:72px;height:40px;background:var(--bg-2);border:1px solid var(--purple-2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--text-3);}
+
+/* ── BUTTONS ── */
+.btn{font-family:'Share Tech Mono',monospace;cursor:pointer;letter-spacing:1px;border-radius:2px;border:2px solid;display:inline-flex;align-items:center;gap:var(--space-2);transition:background 0.15s,color 0.15s,border-color 0.15s;}
+.btn-sm{font-size:12px;padding:var(--space-1) var(--space-2);}
+.btn-md{font-size:16px;padding:var(--space-2) var(--space-3);}
+.btn-lg{font-size:20px;padding:var(--space-2) var(--space-4);}
+.btn-primary{background:var(--purple-3);border-color:var(--purple);color:var(--purple);}
+.btn-primary:hover{background:var(--purple-2);color:#fff;border-color:var(--pink);}
+.btn-boss{background:#1a0800;border-color:var(--gold);color:var(--gold);}
+.btn-boss:hover{background:#3a1800;color:var(--gold-2);}
+.btn-combat{background:#1a000a;border-color:var(--pink);color:var(--pink);}
+.btn-combat:hover{background:var(--blood);color:#fff;}
+.btn-ghost{background:transparent;border-color:var(--border);color:var(--text-3);}
+.btn-ghost:hover{border-color:var(--text-2);color:var(--text-2);}
+.btn-danger{background:var(--blood);border-color:#c04040;color:#ffaaaa;}
+.btn-danger:hover{background:#aa0030;color:#fff;}
+.btn-success{background:#001a08;border-color:#1a6a30;color:var(--green);}
+.btn-success:hover{background:#003018;color:#5aff5a;}
+.btn-disabled{background:#0e0015;border-color:#3a1050;color:#7a4a9a;cursor:not-allowed;}
+.btn-row{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:flex-end;margin-bottom:var(--space-3);}
+.btn-group{display:flex;flex-direction:column;gap:var(--space-1);}
+.btn-group-label{font-size:14px;color:var(--text-3);letter-spacing:1px;}
+
+/* ── TAGS ── */
+.tag{font-family:'Share Tech Mono',monospace;font-size:10px;padding:4px var(--space-2);letter-spacing:1px;border-radius:1px;border:1px solid;display:inline-block;}
+.tag-purple{border-color:var(--purple-2);color:var(--purple);background:#1a003a;}
+.tag-pink{border-color:var(--blood);color:var(--pink);background:#1a000a;}
+.tag-gold{border-color:var(--gold);color:var(--gold-2);background:#130800;}
+.tag-green{border-color:#0a5a3a;color:var(--green);background:#001a0a;}
+.tag-ghost{border-color:var(--border);color:var(--text-3);background:transparent;}
+.tag-row{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-3);}
+
+/* ── BARS ── */
+.bar-track{height:6px;background:#1a0018;border:1px solid #2a0028;margin-bottom:var(--space-2);}
+.bar-track.thick{height:10px;}
+.bar-track.thin{height:3px;}
+.bar-hp{background:var(--blood);height:100%;}
+.bar-xp{background:var(--purple-2);height:100%;}
+.bar-prog{background:linear-gradient(90deg,var(--purple-2),var(--pink));height:100%;}
+.bar-gold{background:var(--gold);height:100%;}
+.bar-green{background:var(--green);height:100%;}
+.bar-item{display:flex;flex-direction:column;gap:var(--space-1);margin-bottom:var(--space-3);}
+.bar-item-label{font-size:14px;color:var(--text-3);display:flex;justify-content:space-between;}
+
+/* ── PIPS ── */
+.pip-row{display:flex;gap:3px;margin-bottom:var(--space-2);}
+.pip{width:10px;height:10px;border:1px solid var(--border);border-radius:1px;}
+.pip.on{background:var(--purple-2);border-color:var(--purple);}
+.pip.gold{background:var(--gold);border-color:var(--gold-2);}
+.pip.red{background:var(--blood);border-color:#c04040;}
+
+/* ── CARDS ── */
+.post-card{border:1px solid var(--border);border-radius:2px;padding:var(--space-3);background:var(--bg-2);display:flex;gap:var(--space-3);margin-bottom:var(--space-2);}
+.post-card:hover{border-color:var(--pink);background:#160018;cursor:pointer;}
+.post-card.boss{border-color:var(--gold);background:#130a00;}
+.post-card.cleared{border-color:var(--purple-2);opacity:0.7;}
+.card-sprite{width:48px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:var(--space-1);padding-top:4px;}
+.card-body{flex:1;min-width:0;}
+.card-meta{display:flex;gap:var(--space-2);margin-bottom:var(--space-2);flex-wrap:wrap;align-items:center;}
+.card-date{font-size:14px;color:var(--text-3);margin-left:auto;}
+.card-title{font-family:'Cinzel',serif;font-size:16px;font-weight:700;color:var(--text);line-height:1.25;margin-bottom:var(--space-2);}
+.post-card:hover .card-title{color:var(--pink);}
+.post-card.boss .card-title{color:var(--gold-2);}
+.card-excerpt{font-size:16px;color:var(--text-2);line-height:1.65;margin-bottom:var(--space-2);}
+.card-footer{display:flex;align-items:center;gap:var(--space-2);font-size:14px;color:var(--text-3);}
+.xp-bar{width:44px;height:3px;background:#2a0030;display:inline-block;vertical-align:middle;}
+.xp-fill{height:100%;background:var(--purple-2);}
+.post-card.boss .xp-fill{background:var(--gold);}
+
+/* ── CALLOUTS ── */
+.callout{border:1px solid;border-radius:2px;padding:var(--space-3);margin-bottom:var(--space-2);font-size:16px;line-height:1.7;color:var(--text-2);}
+.callout-hd{font-size:10px;letter-spacing:2px;margin-bottom:var(--space-1);}
+.callout-lore{border-color:#1a4a1a;background:#030a04;} .callout-lore .callout-hd{color:var(--green);}
+.callout-warn{border-color:#5a3a0a;background:#0c0800;} .callout-warn .callout-hd{color:var(--gold);}
+.callout-danger{border-color:var(--blood);background:#100005;} .callout-danger .callout-hd{color:var(--pink);}
+.callout-info{border-color:var(--purple-2);background:#06000e;} .callout-info .callout-hd{color:var(--purple);}
+
+/* ── TOASTS ── */
+.toast{background:var(--bg-2);border:2px solid;border-radius:4px;padding:var(--space-2) var(--space-3);font-size:16px;max-width:220px;display:inline-block;}
+.toast-title{font-family:'Cinzel',serif;font-size:16px;margin-bottom:var(--space-1);}
+.toast-encounter{border-color:var(--pink);} .toast-encounter .toast-title{color:var(--pink);}
+.toast-success{border-color:var(--green);} .toast-success .toast-title{color:var(--green);}
+.toast-loot{border-color:var(--gold);} .toast-loot .toast-title{color:var(--gold-2);}
+.toast-row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-bottom:var(--space-3);}
+
+/* ── INLINE CODE ── */
+.ic{background:#0a000f;border:1px solid #2a0040;color:#8aff8a;padding:2px var(--space-2);font-size:14px;border-radius:1px;font-family:'Share Tech Mono',monospace;}
+
+/* ── SECTION LABEL DEMO ── */
+.section-label-demo{font-size:14px;color:var(--text-3);letter-spacing:3px;display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-3);}
+.section-label-demo::before{content:'';display:block;width:6px;height:6px;background:var(--purple-2);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);flex-shrink:0;}
+.section-label-demo::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── MINIMAP ── */
+.mm-grid{display:grid;grid-template-columns:repeat(6,20px);gap:3px;margin-bottom:var(--space-2);}
+.mm-cell{width:20px;height:20px;border:1px solid;}
+.mm-cleared{background:#2a0050;border-color:var(--purple-2);}
+.mm-current{background:var(--pink);border-color:var(--pink-2);}
+.mm-unread{background:#120018;border-color:#2a0040;}
+.mm-boss{background:#3a1800;border-color:var(--gold);}
+.mm-void{background:transparent;border-color:transparent;}
+.mm-legend{display:flex;gap:var(--space-3);flex-wrap:wrap;font-size:14px;color:var(--text-3);}
+.mm-legend-item{display:flex;align-items:center;gap:var(--space-1);}
+.mm-dot{width:10px;height:10px;border:1px solid;display:inline-block;}
+
+/* ── SCANLINE DEMO ── */
+.scanline-demo{position:relative;height:64px;background:var(--bg-2);border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:var(--space-2);}
+.scanline-demo::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.07) 3px,rgba(0,0,0,0.07) 4px);pointer-events:none;}
+.scanline-content{padding:var(--space-3);font-size:16px;color:var(--text-2);}
+
+/* ── PROSE DEMO ── */
+.prose-demo{background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:var(--space-4);}
+.prose-demo .h1{font-family:'Cinzel Decorative',serif;font-size:32px;font-weight:900;color:var(--pink);letter-spacing:2px;text-shadow:0 2px 0 var(--purple-3);margin-bottom:var(--space-2);}
+.prose-demo .h2{font-family:'Cinzel',serif;font-size:24px;color:var(--text);margin:var(--space-5) 0 var(--space-2);}
+.prose-demo .h2::before{content:'// ';color:var(--text-3);font-family:'Share Tech Mono',monospace;font-size:16px;}
+.prose-demo .h3{font-family:'Cinzel',serif;font-size:20px;color:var(--text);margin:var(--space-4) 0 var(--space-2);}
+.prose-demo .h3::before{content:'> ';color:var(--text-3);font-family:'Share Tech Mono',monospace;}
+.prose-demo p{font-size:16px;color:#b090c8;line-height:1.9;margin:0 0 var(--space-3);}
+.prose-demo strong{color:var(--text);}
+.prose-demo a{color:var(--pink);text-decoration:none;border-bottom:1px solid var(--purple-2);}
+
+/* ── INPUT ── */
+.input-base{width:100%;background:#0a000f;border:1px solid var(--border);color:var(--text);font-family:'Share Tech Mono',monospace;font-size:16px;padding:var(--space-2) var(--space-2);border-radius:1px;outline:none;margin-bottom:var(--space-2);}
+.input-base:focus{border-color:var(--purple);}
+.input-base::placeholder{color:var(--text-3);}
+.input-base.err{border-color:var(--blood);}
+.input-base:disabled{opacity:0.4;cursor:not-allowed;}
+.input-label{font-size:14px;color:var(--text-3);letter-spacing:1px;margin-bottom:var(--space-1);display:block;}
+.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-3);}
+
+/* ── Z-INDEX / ANIM TABLES ── */
+.token-swatch{display:inline-block;width:16px;height:16px;border-radius:1px;border:1px solid rgba(255,255,255,0.1);vertical-align:middle;margin-right:var(--space-1);}
+
+/* ── RULE CARDS ── */
+.rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);margin-bottom:var(--space-3);}
+.rule-card{background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:var(--space-3);}
+.rule-card-title{font-size:14px;color:var(--text-3);letter-spacing:2px;margin-bottom:var(--space-2);}
+.rule-card p{font-size:16px;color:var(--text-2);line-height:1.7;}
+
+/* ── ARCHITECTURE MAPPING ── */
+.arch-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);margin-bottom:var(--space-3);}
+.arch-row{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);background:var(--bg-2);border:1px solid var(--border);border-radius:2px;font-size:16px;}
+.arch-from{color:var(--text-2);flex:1;}
+.arch-arrow{color:var(--text-3);}
+.arch-to{color:var(--purple);flex:1;text-align:right;}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:#05000a;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:0;}
+::-webkit-scrollbar-thumb:hover{background:var(--border-b);}
+
+/* ── BLINK ── */
+.blink{animation:blink 1s step-end infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── FOOTER ── */
+.ds-footer{border-top:1px solid var(--border);padding:var(--space-4) var(--space-6);font-size:14px;color:var(--text-3);display:flex;justify-content:space-between;margin-top:var(--space-6);}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="ds-nav">
+  <div class="ds-nav-logo">
+    <span class="ds-nav-logo-text">Parsnipscrawl</span>
+    <div class="ds-nav-version">DESIGN SYSTEM v3 <span class="blink">_</span></div>
+  </div>
+  <ul class="ds-nav-list">
+    <li class="ds-nav-group">FOUNDATIONS</li>
+    <li class="ds-nav-item"><a href="#colours">01 — Colours</a></li>
+    <li class="ds-nav-item"><a href="#typography">02 — Typography</a></li>
+    <li class="ds-nav-item"><a href="#spacing">03 — Spacing</a></li>
+    <li class="ds-nav-group">COMPONENTS</li>
+    <li class="ds-nav-item"><a href="#buttons">04 — Buttons</a></li>
+    <li class="ds-nav-item"><a href="#tags">05 — Tags & Badges</a></li>
+    <li class="ds-nav-item"><a href="#cards">06 — Cards</a></li>
+    <li class="ds-nav-item"><a href="#inputs">07 — Inputs</a></li>
+    <li class="ds-nav-item"><a href="#feedback">08 — Feedback & Bars</a></li>
+    <li class="ds-nav-item"><a href="#prose">09 — Prose & Code</a></li>
+    <li class="ds-nav-item"><a href="#ui-components">10 — UI Components</a></li>
+    <li class="ds-nav-group">SYSTEM</li>
+    <li class="ds-nav-item"><a href="#sprites">11 — Pixel Art</a></li>
+    <li class="ds-nav-item"><a href="#tokens">12 — Token Reference</a></li>
+    <li class="ds-nav-item"><a href="#architecture">13 — Architecture</a></li>
+    <li class="ds-nav-item"><a href="#claude-md">14 — CLAUDE.md</a></li>
+  </ul>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="ds-main">
+
+  <div class="ds-page-header">
+    <div class="ds-page-title">Parsnipscrawl.dev <span class="ds-version-badge">v3</span></div>
+    <div class="ds-page-subtitle">// design system — single source of truth for colour, type, spacing, components & game logic</div>
+  </div>
+
+  <!-- ══ 01 COLOURS ══ -->
+  <section class="ds-section" id="colours">
+    <div class="ds-section-title">01 — Colours</div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">BRAND</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#ff3a7a;"></div><div class="swatch-info"><div class="swatch-name">Pink</div><div class="swatch-hex">#ff3a7a</div><div class="swatch-var">--pink</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#ff6aa0;"></div><div class="swatch-info"><div class="swatch-name">Pink 2</div><div class="swatch-hex">#ff6aa0</div><div class="swatch-var">--pink-2</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#c040ff;"></div><div class="swatch-info"><div class="swatch-name">Purple</div><div class="swatch-hex">#c040ff</div><div class="swatch-var">--purple</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#8020cc;"></div><div class="swatch-info"><div class="swatch-name">Purple 2</div><div class="swatch-hex">#8020cc</div><div class="swatch-var">--purple-2</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#4a0080;"></div><div class="swatch-info"><div class="swatch-name">Purple 3</div><div class="swatch-hex">#4a0080</div><div class="swatch-var">--purple-3</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#d4a030;"></div><div class="swatch-info"><div class="swatch-name">Gold</div><div class="swatch-hex">#d4a030</div><div class="swatch-var">--gold</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#ffcc60;"></div><div class="swatch-info"><div class="swatch-name">Gold 2</div><div class="swatch-hex">#ffcc60</div><div class="swatch-var">--gold-2</div></div></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">SEMANTIC</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#8a0020;"></div><div class="swatch-info"><div class="swatch-name">Blood</div><div class="swatch-hex">#8a0020</div><div class="swatch-var">--blood</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#2ad880;"></div><div class="swatch-info"><div class="swatch-name">Green</div><div class="swatch-hex">#2ad880</div><div class="swatch-var">--green</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#ff6020;"></div><div class="swatch-info"><div class="swatch-name">Fire</div><div class="swatch-hex">#ff6020</div><div class="swatch-var">--fire</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#4a1060;"></div><div class="swatch-info"><div class="swatch-name">Border</div><div class="swatch-hex">#4a1060</div><div class="swatch-var">--border</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#8a20b0;"></div><div class="swatch-info"><div class="swatch-name">Border B</div><div class="swatch-hex">#8a20b0</div><div class="swatch-var">--border-b</div></div></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">BACKGROUNDS & TEXT</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#0a0008;border:1px solid #2a0040;"></div><div class="swatch-info"><div class="swatch-name">BG Page</div><div class="swatch-hex">#0a0008</div><div class="swatch-var">--bg</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#110012;border:1px solid #2a0040;"></div><div class="swatch-info"><div class="swatch-name">BG Surface</div><div class="swatch-hex">#110012</div><div class="swatch-var">--bg-2</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#1a001c;border:1px solid #2a0040;"></div><div class="swatch-info"><div class="swatch-name">BG Elevated</div><div class="swatch-hex">#1a001c</div><div class="swatch-var">--bg-3</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#e8c8f0;"></div><div class="swatch-info"><div class="swatch-name">Text</div><div class="swatch-hex">#e8c8f0</div><div class="swatch-var">--text</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#a070c0;"></div><div class="swatch-info"><div class="swatch-name">Text 2</div><div class="swatch-hex">#a070c0</div><div class="swatch-var">--text-2</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#9b7fc0;"></div><div class="swatch-info"><div class="swatch-name">Text 3</div><div class="swatch-hex">#9b7fc0</div><div class="swatch-var">--text-3</div></div></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">USAGE RULES</div>
+      <div class="rule-grid">
+        <div class="rule-card"><div class="rule-card-title">USE --pink FOR</div><p>Hover titles · active states · current room indicator · CTA buttons · mode toggle hover</p></div>
+        <div class="rule-card"><div class="rule-card-title">USE --gold FOR</div><p>Boss rooms only · loot drops · rare items · XP rewards · level numbers — nowhere else</p></div>
+        <div class="rule-card"><div class="rule-card-title">USE --blood FOR</div><p>HP bars · enemy difficulty · wrong answers · death states · danger tags</p></div>
+        <div class="rule-card"><div class="rule-card-title">USE --green FOR</div><p>Correct answers · lore drops · health potions · success states · NEW badges</p></div>
+        <div class="rule-card"><div class="rule-card-title">PURPLE HIERARCHY</div><p>--purple = button text, tags, magic<br>--purple-2 = XP bars, active borders<br>--purple-3 = button backgrounds only</p></div>
+        <div class="rule-card"><div class="rule-card-title">NEVER</div><p>Hardcode hex in components · use pure #000 black · use --gold outside boss/loot · go below 10px font size</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 02 TYPOGRAPHY ══ -->
+  <section class="ds-section" id="typography">
+    <div class="ds-section-title">02 — Typography</div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">FONT STACK</div>
+      <div class="code-wrap">
+        <div class="code-hdr"><span class="code-lang">CSS</span></div>
+        <div class="code-body"><pre>@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia<span class="tok-str">&family=Cinzel+Decorative:wght@700;900</span><span class="tok-str">&family=Cinzel:wght@700</span><span class="tok-str">&family=Share+Tech+Mono</span>&display=swap');</pre></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">TYPE SCALE — minimum 10px, approved sizes only</div>
+
+      <div class="type-specimen">
+        <div style="font-family:'UnifrakturMaguntia',cursive;font-size:clamp(28px,4.5vw,36px);color:var(--pink);text-shadow:2px 3px 0 var(--purple-3),4px 5px 0 rgba(74,0,128,0.4);line-height:1.05;white-space:nowrap;">Parsnipscrawl.dev</div>
+        <div class="type-meta"><div class="type-meta-item">Font <span>UnifrakturMaguntia</span></div><div class="type-meta-item">Size <span>clamp(28px, 4.5vw, 36px)</span></div><div class="type-meta-item">Use <span>Site hero name — single line, never wraps</span></div><div class="type-meta-item">CSS <span>white-space: nowrap</span></div></div>
+      </div>
+
+      <div class="type-specimen">
+        <div style="font-family:'Cinzel Decorative',serif;font-size:32px;font-weight:900;color:var(--pink);letter-spacing:2px;text-shadow:0 2px 0 var(--purple-3);line-height:1.15;">Why I Rewrote My Parser in Rust</div>
+        <div class="type-meta"><div class="type-meta-item">Font <span>Cinzel Decorative 900</span></div><div class="type-meta-item">Size <span>32px</span></div><div class="type-meta-item">Color <span>--pink</span></div><div class="type-meta-item">Use <span>Article titles (H1)</span></div></div>
+      </div>
+
+      <div class="type-specimen">
+        <div style="font-family:'Cinzel',serif;font-size:24px;font-weight:700;color:var(--text);letter-spacing:0.5px;"><span style="color:var(--text-3);font-family:'Share Tech Mono',monospace;font-size:16px;">// </span>Section Heading</div>
+        <div class="type-meta"><div class="type-meta-item">Font <span>Cinzel 700</span></div><div class="type-meta-item">Size <span>24px</span></div><div class="type-meta-item">Prefix <span>::before { content: '// ' } in --text-3</span></div><div class="type-meta-item">Use <span>Article H2, room names</span></div></div>
+      </div>
+
+      <div class="type-specimen">
+        <div style="font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:var(--text);letter-spacing:1px;"><span style="color:var(--text-3);font-family:'Share Tech Mono',monospace;">&gt; </span>Sub Heading</div>
+        <div class="type-meta"><div class="type-meta-item">Font <span>Cinzel 700</span></div><div class="type-meta-item">Size <span>20px</span></div><div class="type-meta-item">Prefix <span>::before { content: '> ' }</span></div><div class="type-meta-item">Use <span>Article H3, sheet sections</span></div></div>
+      </div>
+
+      <div class="type-specimen">
+        <div style="font-family:'Cinzel',serif;font-size:16px;font-weight:700;color:var(--text);">Why I Rewrote My Parser in Rust and Regretted Nothing</div>
+        <div class="type-meta"><div class="type-meta-item">Font <span>Cinzel 700</span></div><div class="type-meta-item">Size <span>16px</span></div><div class="type-meta-item">Use <span>Card titles, sidebar headings</span></div></div>
+      </div>
+
+      <div class="type-specimen">
+        <div style="font-size:14px;color:#b090c8;line-height:1.9;font-family:'Share Tech Mono',monospace;">Deep in the compiler dungeon, the borrow checker isn't a monster — it's the wall that stops you falling into the abyss. A tale of lifetimes, zero-cost abstractions, and 50× faster parse times. Every match arm forced me to handle every case. No silent fall-throughs. No forgotten variants.</div>
+        <div class="type-meta"><div class="type-meta-item">Font <span>Share Tech Mono</span></div><div class="type-meta-item">Size <span>14px</span></div><div class="type-meta-item">Color <span>#b090c8</span></div><div class="type-meta-item">Line height <span>1.9</span></div><div class="type-meta-item">Use <span>Article body prose</span></div></div>
+      </div>
+
+      <div class="type-specimen">
+        <div style="font-size:16px;color:var(--text-2);line-height:1.65;font-family:'Share Tech Mono',monospace;">Card excerpts, callout text, secondary descriptions, code block content.</div>
+        <div class="type-meta"><div class="type-meta-item">Font <span>Share Tech Mono</span></div><div class="type-meta-item">Size <span>11px</span></div><div class="type-meta-item">Color <span>--text-2</span></div><div class="type-meta-item">Use <span>Card excerpts, callouts, code</span></div></div>
+      </div>
+
+      <div class="type-specimen">
+        <div style="font-size:14px;color:var(--text-3);letter-spacing:2px;font-family:'Share Tech Mono',monospace;">TAGS · BADGES · METADATA · HUD VALUES · BREADCRUMBS · LABELS</div>
+        <div class="type-meta"><div class="type-meta-item">Font <span>Share Tech Mono</span></div><div class="type-meta-item">Size <span>10px — MINIMUM</span></div><div class="type-meta-item">Color <span>--text-3</span></div><div class="type-meta-item">Letter spacing <span>2–3px</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 03 SPACING ══ -->
+  <section class="ds-section" id="spacing">
+    <div class="ds-section-title">03 — Spacing</div>
+    <div class="ds-subsection">
+      <div class="ds-sub-label">8PX SCALE — use these values only, nothing in between</div>
+      <div class="spacing-row">
+        <div class="sp-item"><div class="sp-block" style="width:4px;height:4px;"></div><div class="sp-label">4px</div><div class="sp-val">--space-1</div><div class="sp-label" style="max-width:60px;text-align:center;">icon gaps, pips</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:8px;height:8px;"></div><div class="sp-label">8px</div><div class="sp-val">--space-2</div><div class="sp-label" style="max-width:60px;text-align:center;">tag gaps, small spacing</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:16px;height:16px;"></div><div class="sp-label">16px</div><div class="sp-val">--space-3</div><div class="sp-label" style="max-width:60px;text-align:center;">card padding, code</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:24px;height:24px;"></div><div class="sp-label">24px</div><div class="sp-val">--space-4</div><div class="sp-label" style="max-width:60px;text-align:center;">default section padding</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:32px;height:32px;"></div><div class="sp-label">32px</div><div class="sp-val">--space-5</div><div class="sp-label" style="max-width:60px;text-align:center;">hero, large cards</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:40px;height:40px;"></div><div class="sp-label">40px</div><div class="sp-val">--space-6</div><div class="sp-label" style="max-width:60px;text-align:center;">section breaks</div></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">BORDER RADIUS</div>
+      <div class="radius-row">
+        <div class="rad-item"><div class="rad-box" style="border-radius:1px;">1px</div><div class="sp-label">Tags, pills</div></div>
+        <div class="rad-item"><div class="rad-box" style="border-radius:2px;">2px</div><div class="sp-label">Default — everything</div></div>
+        <div class="rad-item"><div class="rad-box" style="border-radius:4px;">4px</div><div class="sp-label">Overlays, toasts</div></div>
+        <div class="rad-item"><div class="rad-box" style="border-radius:8px;">8px</div><div class="sp-label">Outer wrapper only</div></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">BORDER WIDTHS</div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-2);max-width:480px;">
+        <div style="height:32px;background:var(--bg-2);border:1px solid var(--border);border-radius:2px;display:flex;align-items:center;padding:0 var(--space-3);font-size:16px;color:var(--text-3);">1px — cards, inputs, tags, sidebar, code blocks</div>
+        <div style="height:32px;background:var(--bg-2);border:2px solid var(--border);border-radius:2px;display:flex;align-items:center;padding:0 var(--space-3);font-size:16px;color:var(--text-3);">2px — topbar, hero border, active cards, buttons</div>
+        <div style="height:32px;background:var(--bg-2);border:2px solid var(--pink);border-radius:4px;display:flex;align-items:center;padding:0 var(--space-3);font-size:16px;color:var(--text-3);">2px --pink — combat overlay, encounter flash</div>
+        <div style="height:32px;background:#130a00;border:1px solid var(--gold);border-radius:2px;display:flex;align-items:center;padding:0 var(--space-3);font-size:16px;color:var(--text-3);">1px --gold — boss cards, boss buttons</div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">COMPONENT PADDING REFERENCE</div>
+      <table>
+        <thead><tr><th>Component</th><th>Padding</th><th>Gap</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Top bar</td><td><code>--space-2 --space-3</code></td><td><code>--space-2</code></td><td>2px border-bottom</td></tr>
+          <tr><td>HUD bar</td><td><code>--space-2 --space-3</code></td><td><code>--space-3</code></td><td>Dungeon view only</td></tr>
+          <tr><td>Post card</td><td><code>--space-3</code></td><td><code>--space-3</code></td><td>Sprite col 48px fixed</td></tr>
+          <tr><td>Article main</td><td><code>--space-4 --space-5</code></td><td>—</td><td>—</td></tr>
+          <tr><td>Sidebar</td><td><code>--space-4 --space-2</code></td><td><code>--space-4</code></td><td>190px fixed width</td></tr>
+          <tr><td>Hero header</td><td><code>--space-5 --space-4</code></td><td><code>--space-3</code></td><td>align-items: flex-end</td></tr>
+          <tr><td>Code block body</td><td><code>--space-3</code></td><td>—</td><td>overflow-x: auto</td></tr>
+          <tr><td>Callout</td><td><code>--space-3</code></td><td>—</td><td>1px border</td></tr>
+          <tr><td>Combat arena</td><td><code>--space-4</code></td><td><code>--space-3</code></td><td>grid 80px·1fr·80px</td></tr>
+          <tr><td>Section label</td><td>0 0 <code>--space-2</code></td><td><code>--space-2</code></td><td>letter-spacing: 3px</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ 04 BUTTONS ══ -->
+  <section class="ds-section" id="buttons">
+    <div class="ds-section-title">04 — Buttons</div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">PRIMARY</div>
+      <div class="btn-row">
+        <div class="btn-group"><button class="btn btn-primary btn-lg">ENTER DUNGEON ↗</button><div class="btn-group-label">Large — 20px</div></div>
+        <div class="btn-group"><button class="btn btn-primary btn-md">ENTER DUNGEON ↗</button><div class="btn-group-label">Medium — 16px (default)</div></div>
+        <div class="btn-group"><button class="btn btn-primary btn-sm">ENTER ↗</button><div class="btn-group-label">Small — 12px</div></div>
+      </div>
+      <div style="font-size:14px;color:var(--text-3);margin-bottom:var(--space-4);">bg: --purple-3 · border: --purple · color: --purple (NOT --purple-2) · hover → bg --purple-2, color #fff, border --pink</div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">BOSS</div>
+      <div class="btn-row">
+        <div class="btn-group"><button class="btn btn-boss btn-lg">ENTER BOSS ROOM ↗</button><div class="btn-group-label">Large</div></div>
+        <div class="btn-group"><button class="btn btn-boss btn-md">ENTER BOSS ROOM ↗</button><div class="btn-group-label">Medium</div></div>
+      </div>
+      <div style="font-size:14px;color:var(--text-3);margin-bottom:var(--space-4);">bg: #1a0800 · border: --gold · color: --gold · hover → bg #3a1800, color --gold-2</div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">COMBAT · GHOST · DANGER · SUCCESS · DISABLED</div>
+      <div class="btn-row">
+        <div class="btn-group"><button class="btn btn-combat btn-md">[ ENTER COMBAT ]</button><div class="btn-group-label">Combat</div></div>
+        <div class="btn-group"><button class="btn btn-ghost btn-md">[ keep exploring ]</button><div class="btn-group-label">Ghost</div></div>
+        <div class="btn-group"><button class="btn btn-danger btn-md">DELETE SAVE</button><div class="btn-group-label">Danger</div></div>
+        <div class="btn-group"><button class="btn btn-success btn-md">[ SAVE CHARACTER ]</button><div class="btn-group-label">Success</div></div>
+        <div class="btn-group"><button class="btn btn-disabled btn-md" disabled>FLOOR LOCKED</button><div class="btn-group-label">Disabled — #7a4a9a text, no opacity hack</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 05 TAGS ══ -->
+  <section class="ds-section" id="tags">
+    <div class="ds-section-title">05 — Tags & Badges</div>
+    <div class="ds-subsection">
+      <div class="ds-sub-label">TAG VARIANTS</div>
+      <div class="tag-row">
+        <div style="display:flex;flex-direction:column;gap:var(--space-1);align-items:flex-start;"><span class="tag tag-purple">#RUST</span><div style="font-size:14px;color:var(--text-3);">Purple — tech stack</div></div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-1);align-items:flex-start;"><span class="tag tag-pink">#DISTRIBUTED</span><div style="font-size:14px;color:var(--text-3);">Pink — topic</div></div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-1);align-items:flex-start;"><span class="tag tag-gold">BOSS ROOM</span><div style="font-size:14px;color:var(--text-3);">Gold — boss only</div></div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-1);align-items:flex-start;"><span class="tag tag-green">NEW</span><div style="font-size:14px;color:var(--text-3);">Green — new post</div></div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-1);align-items:flex-start;"><span class="tag tag-ghost">#perf</span><div style="font-size:14px;color:var(--text-3);">Ghost — cloud</div></div>
+      </div>
+    </div>
+    <div class="ds-subsection">
+      <div class="ds-sub-label">DIFFICULTY BADGES</div>
+      <div class="tag-row">
+        <span style="font-size:10px;padding:4px var(--space-2);border:1px solid #1a6a30;color:var(--green);background:#001a08;border-radius:1px;">Easy</span>
+        <span style="font-size:10px;padding:4px var(--space-2);border:1px solid var(--gold);color:var(--gold-2);background:#130800;border-radius:1px;">Medium</span>
+        <span style="font-size:10px;padding:4px var(--space-2);border:1px solid #c04040;color:#ff8888;background:#1a0008;border-radius:1px;">Hard</span>
+        <span style="font-size:10px;padding:4px var(--space-2);border:1px solid var(--gold);color:var(--gold-2);background:#1a0800;border-radius:1px;font-family:'Cinzel',serif;">BOSS</span>
+      </div>
+    </div>
+    <div class="ds-subsection">
+      <div class="ds-sub-label">STATUS BADGES</div>
+      <div class="tag-row">
+        <span style="background:#0a003a;border:1px solid var(--purple-2);color:var(--purple);font-size:10px;padding:4px var(--space-2);border-radius:1px;">+850 XP on completion</span>
+        <span style="background:#001a08;border:1px solid #1a6a30;color:var(--green);font-size:10px;padding:4px var(--space-2);border-radius:1px;">Cleared</span>
+        <span style="background:#0a0008;border:1px solid var(--pink);color:var(--pink);font-size:10px;padding:4px var(--space-2);border-radius:1px;">Exploring</span>
+        <span style="background:#06000e;border:1px solid var(--border);color:var(--text-3);font-size:10px;padding:4px var(--space-2);border-radius:1px;">Unread</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 06 CARDS ══ -->
+  <section class="ds-section" id="cards">
+    <div class="ds-section-title">06 — Cards</div>
+
+    <div class="ds-sub-label" style="margin-bottom:var(--space-2);">NORMAL — hover for state change</div>
+    <div class="post-card">
+      <div class="card-sprite">
+        <svg width="32" height="32" viewBox="0 0 16 16" style="image-rendering:pixelated;"><rect x="1" y="0" width="12" height="14" fill="#3a0060"/><rect x="0" y="1" width="2" height="12" fill="#6a10a0"/><rect x="2" y="1" width="10" height="12" fill="#2a0048"/><rect x="3" y="2" width="8" height="1" fill="#c040ff" opacity="0.7"/><rect x="3" y="4" width="6" height="1" fill="#8a20b0" opacity="0.6"/><rect x="3" y="6" width="7" height="1" fill="#8a20b0" opacity="0.6"/><rect x="4" y="10" width="4" height="4" fill="#ff3a7a" opacity="0.8"/><rect x="5" y="11" width="2" height="2" fill="#ffcc60" opacity="0.9"/><rect x="12" y="0" width="2" height="14" fill="#6a10a0"/></svg>
+        <div style="font-size:14px;color:var(--text-3);">tome</div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span class="tag tag-green">NEW</span><span class="tag tag-purple">#RUST</span><span class="tag tag-purple">#SYSTEMS</span><span class="card-date">2026-04-28</span></div>
+        <div class="card-title">Why I rewrote my parser in Rust and regretted nothing</div>
+        <div class="card-excerpt">Deep in the compiler dungeon, the borrow checker isn't a monster — it's the wall that stops you falling into the abyss.</div>
+        <div class="card-footer"><span>12 min</span><span style="color:var(--purple-2);">XP</span><div class="xp-bar"><div class="xp-fill" style="width:85%;"></div></div><span>850</span><span class="post-card-room" style="margin-left:auto;">Floor III · Room 7</span></div>
+      </div>
+    </div>
+
+    <div class="ds-sub-label" style="margin:var(--space-3) 0 var(--space-2);">BOSS — gold treatment</div>
+    <div class="post-card boss">
+      <div class="card-sprite">
+        <svg width="36" height="36" viewBox="0 0 18 18" style="image-rendering:pixelated;"><rect x="3" y="1" width="12" height="2" fill="#8a0020"/><rect x="1" y="3" width="16" height="7" fill="#c83040"/><rect x="3" y="5" width="4" height="4" fill="#0a0008"/><rect x="11" y="5" width="4" height="4" fill="#0a0008"/><rect x="4" y="6" width="2" height="2" fill="#ff3a7a"/><rect x="12" y="6" width="2" height="2" fill="#ff3a7a"/><rect x="3" y="11" width="12" height="3" fill="#8a0020"/><rect x="4" y="13" width="2" height="2" fill="#4a0010"/><rect x="8" y="13" width="2" height="2" fill="#4a0010"/><rect x="12" y="13" width="2" height="2" fill="#4a0010"/></svg>
+        <div style="font-size:14px;color:var(--gold);">BOSS</div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span class="tag tag-gold">BOSS ROOM</span><span class="tag tag-gold">#COMPILERS</span><span class="card-date">2026-03-30</span></div>
+        <div class="card-title">Building a compiler from scratch: the final descent</div>
+        <div class="card-excerpt">You made it. Lexer, parser, AST, codegen — all in your hands. Slay this beast and the dungeon is yours.</div>
+        <div class="card-footer"><span>24 min</span><span style="color:var(--gold);">XP</span><div class="xp-bar"><div class="xp-fill" style="width:100%;"></div></div><span style="color:var(--gold-2);">2400</span><span style="margin-left:auto;color:var(--gold);">Boss Room · Floor IV</span></div>
+      </div>
+    </div>
+
+    <div class="ds-sub-label" style="margin:var(--space-3) 0 var(--space-2);">CLEARED — reduced opacity</div>
+    <div class="post-card cleared">
+      <div class="card-sprite" style="justify-content:center;padding-top:var(--space-2);"><span style="font-size:20px;color:var(--purple-2);">✓</span></div>
+      <div class="card-body">
+        <div class="card-meta"><span class="tag tag-ghost">#DISTRIBUTED</span><span class="card-date">2026-04-14</span></div>
+        <div class="card-title" style="color:var(--text-2);">The CAP theorem is a map, not a verdict</div>
+        <div style="font-size:14px;color:var(--text-3);margin-top:var(--space-1);">Room cleared · +600 XP earned</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 07 INPUTS ══ -->
+  <section class="ds-section" id="inputs">
+    <div class="ds-section-title">07 — Inputs</div>
+    <div class="input-grid">
+      <div><label class="input-label">DEFAULT</label><input class="input-base" placeholder="Character name..."/></div>
+      <div><label class="input-label">FOCUSED (shown)</label><input class="input-base" style="border-color:var(--purple);" value="The Parsnip"/></div>
+      <div><label class="input-label">ERROR</label><input class="input-base err" value="invalid input"/></div>
+      <div><label class="input-label">DISABLED</label><input class="input-base" disabled value="locked"/></div>
+    </div>
+    <label class="input-label">SELECT</label>
+    <select class="input-base" style="margin-bottom:var(--space-3);">
+      <option>Rustacean</option><option>TypeWitch</option><option>Gopher</option><option>Shell Sorcerer</option>
+    </select>
+    <label class="input-label">TEXTAREA</label>
+    <textarea class="input-base" rows="3" placeholder="Write your character's lore here..."></textarea>
+  </section>
+
+  <!-- ══ 08 FEEDBACK ══ -->
+  <section class="ds-section" id="feedback">
+    <div class="ds-section-title">08 — Feedback & Bars</div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">PROGRESS & HP BARS</div>
+      <div style="max-width:400px;">
+        <div class="bar-item"><div class="bar-item-label"><span>HP — 6px, --blood</span><span>80/100</span></div><div class="bar-track"><div class="bar-hp" style="width:80%;"></div></div></div>
+        <div class="bar-item"><div class="bar-item-label"><span>XP — 6px, --purple-2</span><span>Lv7</span></div><div class="bar-track"><div class="bar-xp" style="width:62%;"></div></div></div>
+        <div class="bar-item"><div class="bar-item-label"><span>Progress — 3px thin, gradient</span></div><div class="bar-track thin"><div class="bar-prog" style="width:34%;"></div></div></div>
+        <div class="bar-item"><div class="bar-item-label"><span>XP track — 10px thick</span></div><div class="bar-track thick"><div class="bar-prog" style="width:72%;"></div></div></div>
+        <div class="bar-item"><div class="bar-item-label"><span>Gold / Boss — 3px</span></div><div class="bar-track thin"><div class="bar-gold" style="width:100%;"></div></div></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">SKILL PIPS</div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+        <div><div style="font-size:14px;color:var(--text-3);margin-bottom:var(--space-1);">Mastery — gold</div><div class="pip-row"><div class="pip gold"></div><div class="pip gold"></div><div class="pip gold"></div><div class="pip gold"></div><div class="pip gold"></div></div></div>
+        <div><div style="font-size:14px;color:var(--text-3);margin-bottom:var(--space-1);">Partial — purple</div><div class="pip-row"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+        <div><div style="font-size:14px;color:var(--text-3);margin-bottom:var(--space-1);">Damage — red</div><div class="pip-row"><div class="pip red"></div><div class="pip red"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">TOAST NOTIFICATIONS</div>
+      <div class="toast-row">
+        <div class="toast toast-encounter"><div class="toast-title">⚔ ENEMY ENCOUNTERED</div><div style="color:var(--text-2);">A Syntax Wraith blocks your path!</div></div>
+        <div class="toast toast-success"><div class="toast-title">Room Cleared</div><div style="color:var(--text-2);">+850 XP earned</div></div>
+        <div class="toast toast-loot"><div class="toast-title">Loot Dropped</div><div style="color:var(--text-2);">Borrow Checker's Seal (Rare)</div></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">XP POPUP</div>
+      <div style="display:inline-block;background:#0a1a08;border:2px solid var(--green);border-radius:4px;padding:var(--space-1) var(--space-3);font-family:'Cinzel',serif;font-size:16px;color:var(--green);">+850 XP</div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">CALLOUT BOXES</div>
+      <div class="callout callout-lore"><div class="callout-hd">[ LORE DROP ]</div>Cache-friendly data layout matters more than algorithmic complexity at this scale. A cache miss costs ~200 CPU cycles.</div>
+      <div class="callout callout-warn"><div class="callout-hd">[ TRAP AHEAD ]</div>Don't reach for <span class="ic">Box&lt;dyn Trait&gt;</span> as your first instinct. An enum handles 90% of AST node cases.</div>
+      <div class="callout callout-danger"><div class="callout-hd">[ DANGER ]</div>This approach causes undefined behaviour if the pointer outlives the allocation.</div>
+      <div class="callout callout-info"><div class="callout-hd">[ ARCANE NOTE ]</div>The borrow checker enforces these rules entirely at compile time — zero runtime cost.</div>
+    </div>
+  </section>
+
+  <!-- ══ 09 PROSE & CODE ══ -->
+  <section class="ds-section" id="prose">
+    <div class="ds-section-title">09 — Prose & Code</div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">ARTICLE PROSE SPECIMEN</div>
+      <div class="prose-demo">
+        <div class="h1">Why I Rewrote My Parser in Rust</div>
+        <div class="h2">The problem with the old parser</div>
+        <p>Three months ago my Python parser was taking 4 seconds on a 10 MB source file. I'd profiled it, cached it, and convinced myself I'd hit a wall. Then I rewrote it in Rust over a weekend.</p>
+        <div class="h3">The performance profile</div>
+        <p>Running <span class="ic">py-spy</span> showed 60% of time in dict lookups — not in my parsing logic, but in Python's own object machinery. That's the sign you've outgrown the abstraction.</p>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">CODE BLOCK</div>
+      <div class="code-wrap">
+        <div class="code-hdr"><span class="code-lang">RUST</span><button class="code-copy" onclick="navigator.clipboard.writeText('enum Node { Ident(String), BinOp { lhs: Box<Node> } }')">[copy]</button></div>
+        <div class="code-body"><pre><span class="tok-kw">enum</span> <span class="tok-ty">Node</span> {
+    <span class="tok-fn">Ident</span>(<span class="tok-ty">String</span>),
+    <span class="tok-fn">BinOp</span> { lhs: <span class="tok-ty">Box</span>&lt;<span class="tok-ty">Node</span>&gt;, op: <span class="tok-ty">Op</span> },
+    <span class="tok-fn">Literal</span>(<span class="tok-ty">i64</span>),   <span class="tok-cm">// the simple case</span>
+}
+
+<span class="tok-kw">fn</span> <span class="tok-fn">parse_expr</span>(tokens: <span class="tok-kw">&mut</span> <span class="tok-ty">Peekable</span>&lt;<span class="tok-ty">Lexer</span>&gt;) -&gt; <span class="tok-ty">Node</span> {
+    <span class="tok-kw">let</span> x = <span class="tok-num">42</span>;
+    <span class="tok-kw">let</span> s = <span class="tok-str">"hello world"</span>;
+    <span class="tok-fn">parse_primary</span>(tokens)
+}</pre></div>
+      </div>
+      <div style="display:flex;gap:var(--space-4);flex-wrap:wrap;font-size:14px;color:var(--text-3);margin-top:var(--space-1);">
+        <span><span style="color:#4aff4a;">■</span> Keyword</span>
+        <span><span style="color:#7accff;">■</span> Function</span>
+        <span><span style="color:#ffca7a;">■</span> String</span>
+        <span><span style="color:#3a6a3a;">■</span> Comment</span>
+        <span><span style="color:#ca7aff;">■</span> Type</span>
+        <span><span style="color:#ff7a7a;">■</span> Number</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 10 UI COMPONENTS ══ -->
+  <section class="ds-section" id="ui-components">
+    <div class="ds-section-title">10 — UI Components</div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">SECTION LABEL</div>
+      <div class="section-label-demo">LATEST DISPATCHES FROM THE DEEP</div>
+      <div style="font-size:14px;color:var(--text-3);margin-bottom:var(--space-3);">diamond ::before + trailing line ::after · letter-spacing 3px · text-transform uppercase</div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">SWORD DIVIDER</div>
+      <div style="display:flex;align-items:center;gap:var(--space-2);padding:var(--space-1) 0;margin-bottom:var(--space-2);">
+        <div style="flex:1;height:1px;background:var(--border);"></div>
+        <svg width="60" height="10" viewBox="0 0 30 5" style="image-rendering:pixelated;flex-shrink:0;"><rect x="0" y="2" width="12" height="1" fill="#8a20b0"/><rect x="12" y="1" width="1" height="3" fill="#c040ff"/><rect x="13" y="2" width="12" height="1" fill="#c040ff"/><rect x="25" y="1" width="3" height="3" fill="#8a20b0"/><rect x="11" y="2" width="1" height="1" fill="#ff3a7a"/></svg>
+        <div style="flex:1;height:1px;background:var(--border);"></div>
+      </div>
+      <div style="font-size:14px;color:var(--text-3);margin-bottom:var(--space-3);">30×5 viewBox SVG · --purple-2 blade · --purple guard · --pink gem · renders at 60×10px</div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">BREADCRUMB</div>
+      <div style="font-size:14px;color:var(--text-3);letter-spacing:1px;margin-bottom:var(--space-3);">[ <span style="color:var(--purple-2);">blog</span> ] / [ <span style="color:var(--purple-2);">series: systems-programming</span> ] / [ <span style="color:var(--purple-2);">floor-III · room-7</span> ]</div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">MINIMAP ROOM STATES</div>
+      <div class="mm-grid">
+        <div class="mm-cell mm-cleared"></div><div class="mm-cell mm-cleared"></div><div class="mm-cell mm-current"></div><div class="mm-cell mm-void"></div><div class="mm-cell mm-void"></div><div class="mm-cell mm-void"></div>
+        <div class="mm-cell mm-void"></div><div class="mm-cell mm-cleared"></div><div class="mm-cell mm-unread"></div><div class="mm-cell mm-unread"></div><div class="mm-cell mm-void"></div><div class="mm-cell mm-void"></div>
+        <div class="mm-cell mm-void"></div><div class="mm-cell mm-void"></div><div class="mm-cell mm-unread"></div><div class="mm-cell mm-unread"></div><div class="mm-cell mm-boss"></div><div class="mm-cell mm-void"></div>
+      </div>
+      <div class="mm-legend">
+        <div class="mm-legend-item"><div class="mm-dot" style="background:var(--pink);border-color:var(--pink-2);"></div>Current</div>
+        <div class="mm-legend-item"><div class="mm-dot" style="background:#2a0050;border-color:var(--purple-2);"></div>Cleared</div>
+        <div class="mm-legend-item"><div class="mm-dot" style="background:#120018;border-color:#2a0040;"></div>Unread</div>
+        <div class="mm-legend-item"><div class="mm-dot" style="background:#3a1800;border-color:var(--gold);"></div>Boss</div>
+        <div class="mm-legend-item" style="font-size:14px;color:var(--text-3);">6px per tile · canvas rendered · player dot 5×5px hot pink pulsing</div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">SCANLINE OVERLAY</div>
+      <div class="scanline-demo"><div class="scanline-content">Content beneath scanline overlay — position: absolute inset: 0 pointer-events: none</div></div>
+      <div style="font-size:14px;color:var(--text-3);">repeating-linear-gradient · 3px transparent / 1px rgba(0,0,0,0.07) · always highest non-interactive z-index</div>
+    </div>
+  </section>
+
+  <!-- ══ 11 PIXEL ART ══ -->
+  <section class="ds-section" id="sprites">
+    <div class="ds-section-title">11 — Pixel Art System</div>
+    <div class="ds-subsection">
+      <div class="ds-sub-label">SPRITE CATALOGUE — all inline SVG, image-rendering: pixelated</div>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);margin-bottom:var(--space-3);">
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-2);">
+          <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:var(--space-3);display:flex;align-items:center;justify-content:center;width:80px;height:80px;">
+            <svg width="40" height="48" viewBox="0 0 10 12" style="image-rendering:pixelated;"><rect x="3" y="0" width="4" height="1" fill="#2a0060"/><rect x="2" y="0" width="1" height="2" fill="#2a0060"/><rect x="7" y="0" width="1" height="2" fill="#2a0060"/><rect x="3" y="0" width="4" height="3" fill="#ff9a7a"/><rect x="4" y="1" width="1" height="1" fill="#0a0008"/><rect x="6" y="1" width="1" height="1" fill="#0a0008"/><rect x="3" y="3" width="5" height="4" fill="#8a20b0"/><rect x="2" y="3" width="1" height="4" fill="#6a1090"/><rect x="8" y="3" width="1" height="4" fill="#6a1090"/><rect x="3" y="7" width="2" height="4" fill="#3a0060"/><rect x="5" y="7" width="2" height="4" fill="#3a0060"/><rect x="9" y="3" width="1" height="5" fill="#c8c8c8"/><rect x="8" y="5" width="3" height="1" fill="#d4a030"/><rect x="9" y="1" width="1" height="3" fill="#e8e8e8"/></svg>
+          </div>
+          <div style="font-size:14px;color:var(--text-3);text-align:center;">Player<br>0 0 10 12 / 40×48px</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-2);">
+          <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:var(--space-3);display:flex;align-items:center;justify-content:center;width:80px;height:80px;">
+            <svg width="48" height="40" viewBox="0 0 12 10" style="image-rendering:pixelated;"><rect x="2" y="0" width="8" height="2" fill="#8a0020"/><rect x="1" y="2" width="10" height="5" fill="#c83040"/><rect x="0" y="3" width="1" height="3" fill="#8a0020"/><rect x="11" y="3" width="1" height="3" fill="#8a0020"/><rect x="2" y="3" width="3" height="3" fill="#0a0008"/><rect x="7" y="3" width="3" height="3" fill="#0a0008"/><rect x="3" y="4" width="1" height="1" fill="#ff3a7a"/><rect x="8" y="4" width="1" height="1" fill="#ff3a7a"/><rect x="1" y="7" width="10" height="2" fill="#8a0020"/><rect x="2" y="8" width="2" height="2" fill="#6a0010"/><rect x="5" y="8" width="2" height="2" fill="#6a0010"/><rect x="8" y="8" width="2" height="2" fill="#6a0010"/></svg>
+          </div>
+          <div style="font-size:14px;color:var(--text-3);text-align:center;">Imp Enemy<br>0 0 12 10 / 48×40px</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-2);">
+          <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:var(--space-3);display:flex;align-items:center;justify-content:center;width:80px;height:80px;">
+            <svg width="36" height="36" viewBox="0 0 18 18" style="image-rendering:pixelated;"><rect x="3" y="1" width="12" height="2" fill="#8a0020"/><rect x="1" y="3" width="16" height="7" fill="#c83040"/><rect x="3" y="5" width="4" height="4" fill="#0a0008"/><rect x="11" y="5" width="4" height="4" fill="#0a0008"/><rect x="4" y="6" width="2" height="2" fill="#ff3a7a"/><rect x="12" y="6" width="2" height="2" fill="#ff3a7a"/><rect x="3" y="11" width="12" height="3" fill="#8a0020"/><rect x="4" y="13" width="2" height="2" fill="#4a0010"/><rect x="7" y="13" width="2" height="2" fill="#4a0010"/><rect x="10" y="13" width="2" height="2" fill="#4a0010"/><rect x="13" y="13" width="2" height="2" fill="#4a0010"/></svg>
+          </div>
+          <div style="font-size:14px;color:var(--text-3);text-align:center;">Boss Skull<br>0 0 18 18 / 36×36px</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-2);">
+          <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:var(--space-3);display:flex;align-items:center;justify-content:center;width:80px;height:80px;">
+            <svg width="32" height="32" viewBox="0 0 16 16" style="image-rendering:pixelated;"><rect x="1" y="0" width="12" height="14" fill="#3a0060"/><rect x="0" y="1" width="2" height="12" fill="#6a10a0"/><rect x="2" y="1" width="10" height="12" fill="#2a0048"/><rect x="3" y="2" width="8" height="1" fill="#c040ff" opacity="0.7"/><rect x="3" y="4" width="6" height="1" fill="#8a20b0" opacity="0.6"/><rect x="4" y="10" width="4" height="4" fill="#ff3a7a" opacity="0.8"/><rect x="5" y="11" width="2" height="2" fill="#ffcc60" opacity="0.9"/><rect x="12" y="0" width="2" height="14" fill="#6a10a0"/></svg>
+          </div>
+          <div style="font-size:14px;color:var(--text-3);text-align:center;">Tome<br>0 0 16 16 / 32×32px</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-2);">
+          <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:var(--space-3);display:flex;align-items:center;justify-content:center;width:80px;height:80px;">
+            <svg width="64" height="40" viewBox="0 0 16 10" style="image-rendering:pixelated;"><rect x="0" y="9" width="16" height="1" fill="#d4a030"/><rect x="0" y="8" width="16" height="1" fill="#d4a030"/><rect x="1" y="7" width="14" height="1" fill="#d4a030"/><rect x="1" y="6" width="14" height="1" fill="#ffcc60"/><rect x="2" y="5" width="2" height="2" fill="#d4a030"/><rect x="7" y="4" width="2" height="3" fill="#d4a030"/><rect x="12" y="5" width="2" height="2" fill="#d4a030"/><rect x="0" y="4" width="1" height="4" fill="#d4a030"/><rect x="15" y="4" width="1" height="4" fill="#d4a030"/><rect x="3" y="6" width="1" height="1" fill="#ff3a7a"/><rect x="8" y="5" width="1" height="1" fill="#c040ff"/><rect x="12" y="6" width="1" height="1" fill="#ff3a7a"/></svg>
+          </div>
+          <div style="font-size:14px;color:var(--text-3);text-align:center;">Crown<br>0 0 16 10 / 64×40px</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-2);">
+          <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:var(--space-3);display:flex;align-items:center;justify-content:center;width:80px;height:80px;">
+            <svg width="14" height="18" viewBox="0 0 7 9" style="image-rendering:pixelated;"><rect x="2" y="0" width="3" height="2" fill="#8a3800"/><rect x="1" y="2" width="5" height="6" fill="#2ad880"/><rect x="2" y="3" width="3" height="1" fill="#5aff5a" opacity="0.5"/><rect x="0" y="7" width="7" height="2" fill="#1a8820"/></svg>
+          </div>
+          <div style="font-size:14px;color:var(--text-3);text-align:center;">Health Potion<br>0 0 7 9 / 14×18px</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">TILE SYSTEM</div>
+      <table>
+        <thead><tr><th>Tile</th><th>Value</th><th>Colour</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>VOID</td><td>0</td><td><span class="token-swatch" style="background:#000;"></span>#000</td><td>Transparent, impassable</td></tr>
+          <tr><td>FLOOR</td><td>1</td><td><span class="token-swatch" style="background:#140020;"></span>#140020</td><td>Standard walkable</td></tr>
+          <tr><td>WALL (side)</td><td>2</td><td><span class="token-swatch" style="background:#2a0048;"></span>#2a0048</td><td>Impassable</td></tr>
+          <tr><td>WALL (top)</td><td>2</td><td><span class="token-swatch" style="background:#3a0060;"></span>#3a0060</td><td>Brighter top face</td></tr>
+          <tr><td>BOSS_FLOOR</td><td>8</td><td><span class="token-swatch" style="background:#160a00;"></span>#160a00</td><td>Warmer dark, boss rooms</td></tr>
+          <tr><td>TORCH</td><td>6</td><td><span class="token-swatch" style="background:#d4a030;"></span>animated</td><td>Floor + flame + glow</td></tr>
+          <tr><td>PILLAR</td><td>7</td><td><span class="token-swatch" style="background:#2a0045;"></span>#2a0045</td><td>Impassable decoration</td></tr>
+          <tr><td>CHEST</td><td>5</td><td><span class="token-swatch" style="background:#5a2000;"></span>sprite</td><td>Floor + chest drawn on top</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ 12 TOKENS ══ -->
+  <section class="ds-section" id="tokens">
+    <div class="ds-section-title">12 — Token Reference</div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">COMPLETE CSS VARIABLES</div>
+      <div class="code-wrap">
+        <div class="code-hdr"><span class="code-lang">CSS — globals.css</span></div>
+        <div class="code-body"><pre><span class="tok-prop">:root</span> {
+  <span class="tok-cm">/* Backgrounds */</span>
+  <span class="tok-prop">--bg</span>:       <span class="tok-val">#0a0008</span>;
+  <span class="tok-prop">--bg-2</span>:     <span class="tok-val">#110012</span>;
+  <span class="tok-prop">--bg-3</span>:     <span class="tok-val">#1a001c</span>;
+
+  <span class="tok-cm">/* Borders */</span>
+  <span class="tok-prop">--border</span>:   <span class="tok-val">#4a1060</span>;
+  <span class="tok-prop">--border-b</span>: <span class="tok-val">#8a20b0</span>;
+
+  <span class="tok-cm">/* Pink */</span>
+  <span class="tok-prop">--pink</span>:     <span class="tok-val">#ff3a7a</span>;
+  <span class="tok-prop">--pink-2</span>:   <span class="tok-val">#ff6aa0</span>;
+
+  <span class="tok-cm">/* Purple */</span>
+  <span class="tok-prop">--purple</span>:   <span class="tok-val">#c040ff</span>;
+  <span class="tok-prop">--purple-2</span>: <span class="tok-val">#8020cc</span>;
+  <span class="tok-prop">--purple-3</span>: <span class="tok-val">#4a0080</span>;
+
+  <span class="tok-cm">/* Gold */</span>
+  <span class="tok-prop">--gold</span>:     <span class="tok-val">#d4a030</span>;
+  <span class="tok-prop">--gold-2</span>:   <span class="tok-val">#ffcc60</span>;
+
+  <span class="tok-cm">/* Text */</span>
+  <span class="tok-prop">--text</span>:     <span class="tok-val">#e8c8f0</span>;
+  <span class="tok-prop">--text-2</span>:   <span class="tok-val">#a070c0</span>;
+  <span class="tok-prop">--text-3</span>:   <span class="tok-val">#9b7fc0</span>;
+
+  <span class="tok-cm">/* Semantic */</span>
+  <span class="tok-prop">--blood</span>:    <span class="tok-val">#8a0020</span>;
+  <span class="tok-prop">--green</span>:    <span class="tok-val">#2ad880</span>;
+  <span class="tok-prop">--fire</span>:     <span class="tok-val">#ff6020</span>;
+
+  <span class="tok-cm">/* Spacing */</span>
+  <span class="tok-prop">--space-1</span>:  <span class="tok-val">4px</span>;
+  <span class="tok-prop">--space-2</span>:  <span class="tok-val">8px</span>;
+  <span class="tok-prop">--space-3</span>:  <span class="tok-val">16px</span>;
+  <span class="tok-prop">--space-4</span>:  <span class="tok-val">24px</span>;
+  <span class="tok-prop">--space-5</span>:  <span class="tok-val">32px</span>;
+  <span class="tok-prop">--space-6</span>:  <span class="tok-val">40px</span>;
+}</pre></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">Z-INDEX STACK</div>
+      <table>
+        <thead><tr><th>Layer</th><th>z-index</th><th>Element</th></tr></thead>
+        <tbody>
+          <tr><td>XP Popup</td><td>300</td><td>Fixed centre-top, short-lived</td></tr>
+          <tr><td>Scanlines</td><td>200</td><td>Fixed, pointer-events: none — always topmost</td></tr>
+          <tr><td>Combat overlay</td><td>200</td><td>Fixed full-screen</td></tr>
+          <tr><td>Encounter flash</td><td>150</td><td>Fixed top-right corner</td></tr>
+          <tr><td>Room overlay</td><td>100</td><td>Absolute within canvas-area</td></tr>
+          <tr><td>Topbar / HUD</td><td>50</td><td>Sticky</td></tr>
+          <tr><td>Content</td><td>1</td><td>All standard content</td></tr>
+          <tr><td>Background SVG</td><td>0</td><td>Topo lines, ambient glow</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">ANIMATION REFERENCE</div>
+      <table>
+        <thead><tr><th>Element</th><th>Timing</th><th>Technique</th></tr></thead>
+        <tbody>
+          <tr><td>Cursor blink</td><td>1s step-end ∞</td><td>CSS keyframe opacity 0↔1</td></tr>
+          <tr><td>Encounter flash</td><td>0.3s ease</td><td>translateX(40px→0) + opacity</td></tr>
+          <tr><td>XP popup</td><td>0.4s ease, 1.8s visible</td><td>scale(0.8→1) + opacity</td></tr>
+          <tr><td>Room clear flash</td><td>0.08s in / 0.4s out</td><td>CSS transition opacity</td></tr>
+          <tr><td>Progress bar fill</td><td>1.2s ease</td><td>CSS transition width 0→100%</td></tr>
+          <tr><td>HP / XP bars</td><td>0.3–0.5s</td><td>CSS transition width</td></tr>
+          <tr><td>Camera follow</td><td>Every frame</td><td>camX += (target - camX) × 0.12 × dt</td></tr>
+          <tr><td>Torch flicker</td><td>Every frame</td><td>Math.sin(t × 3 + tileOffset)</td></tr>
+          <tr><td>Character bob</td><td>Every frame</td><td>Math.sin(t × 8) × 0.6px</td></tr>
+          <tr><td>Enemy bob</td><td>Every frame</td><td>Math.sin(t × 4) × 0.8px</td></tr>
+          <tr><td>XP orbs fly</td><td>1200ms ease-in-out</td><td>rAF lerp cx/cy to player</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ 13 ARCHITECTURE ══ -->
+  <section class="ds-section" id="architecture">
+    <div class="ds-section-title">13 — Architecture</div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">CONTENT ↔ DUNGEON MAPPING</div>
+      <div class="arch-grid">
+        <div class="arch-row"><span class="arch-from">Article / post</span><span class="arch-arrow">→</span><span class="arch-to">Room</span></div>
+        <div class="arch-row"><span class="arch-from">Series</span><span class="arch-arrow">→</span><span class="arch-to">Floor / zone</span></div>
+        <div class="arch-row"><span class="arch-from">Tag (#rust)</span><span class="arch-arrow">→</span><span class="arch-to">Room type / biome</span></div>
+        <div class="arch-row"><span class="arch-from">About page</span><span class="arch-arrow">→</span><span class="arch-to">Character sheet</span></div>
+        <div class="arch-row"><span class="arch-from">Reading an article</span><span class="arch-arrow">→</span><span class="arch-to">Exploring a room</span></div>
+        <div class="arch-row"><span class="arch-from">Quiz / code challenge</span><span class="arch-arrow">→</span><span class="arch-to">Combat encounter</span></div>
+        <div class="arch-row"><span class="arch-from">Newsletter subscribe</span><span class="arch-arrow">→</span><span class="arch-to">Save point</span></div>
+        <div class="arch-row"><span class="arch-from">Series capstone post</span><span class="arch-arrow">→</span><span class="arch-to">Boss room</span></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">TECH STACK</div>
+      <table>
+        <thead><tr><th>Concern</th><th>Choice</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Framework</td><td>Next.js 14 App Router</td><td>Static export for blog</td></tr>
+          <tr><td>Styling</td><td>CSS custom properties</td><td>No Tailwind, no CSS-in-JS</td></tr>
+          <tr><td>Content</td><td>MDX + frontmatter YAML</td><td>Embed combat components in posts</td></tr>
+          <tr><td>Game canvas</td><td>Vanilla Canvas2D</td><td>No game engine needed</td></tr>
+          <tr><td>Fonts</td><td>Google Fonts → self-host</td><td>UnifrakturMaguntia, Cinzel Decorative, Cinzel, Share Tech Mono</td></tr>
+          <tr><td>State</td><td>localStorage</td><td>XP, HP, rooms, inventory — no login</td></tr>
+          <tr><td>Syntax highlight</td><td>Shiki + custom theme</td><td>Token colours from §09</td></tr>
+          <tr><td>Audio</td><td>Web Audio API</td><td>lib/audioEngine.ts — zero dependencies</td></tr>
+          <tr><td>Deployment</td><td>Vercel</td><td>Next.js native</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-sub-label">FILE STRUCTURE</div>
+      <div class="code-wrap">
+        <div class="code-hdr"><span class="code-lang">SHELL</span></div>
+        <div class="code-body"><pre><span style="color:var(--pink);">parsnipscrawl-dev/</span>
+├── <span style="color:var(--gold);">CLAUDE.md</span>                 ← standing orders for Claude Code
+├── <span style="color:var(--gold);">DESIGN_SYSTEM.md</span>          ← canonical spec (this document)
+├── app/
+│   ├── layout.tsx             ← topbar, mode toggle, global state
+│   ├── page.tsx               ← blog feed
+│   ├── dungeon/page.tsx       ← game canvas view
+│   └── blog/[slug]/page.tsx   ← article reading view
+├── components/
+│   ├── TopBar.tsx
+│   ├── PostCard.tsx
+│   ├── ArticleProse.tsx
+│   ├── CodeBlock.tsx          ← wraps Shiki
+│   ├── Callout.tsx
+│   ├── CombatOverlay.tsx
+│   ├── EncounterFlash.tsx
+│   ├── RoomClearScreen.tsx
+│   ├── DungeonCanvas.tsx
+│   ├── Minimap.tsx
+│   └── sprites/
+│       ├── PlayerSprite.tsx
+│       ├── ImpSprite.tsx
+│       ├── SkeletonSprite.tsx
+│       └── ItemSprite.tsx
+├── lib/
+│   ├── audioEngine.ts
+│   ├── dungeonMap.ts
+│   ├── gameLoop.ts
+│   ├── collision.ts
+│   ├── playerState.ts         ← localStorage wrapper
+│   └── contentToRoom.ts       ← MDX frontmatter → room config
+├── content/posts/
+│   └── parser-in-rust.mdx
+├── styles/
+│   └── globals.css            ← :root vars + base reset
+└── public/fonts/              ← self-hosted typefaces</pre></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 14 CLAUDE.MD ══ -->
+  <section class="ds-section" id="claude-md">
+    <div class="ds-section-title">14 — CLAUDE.md</div>
+    <div style="font-size:16px;color:var(--text-2);margin-bottom:var(--space-3);">Copy this file verbatim into the project root. Claude Code reads it automatically at the start of every session.</div>
+    <div class="code-wrap">
+      <div class="code-hdr"><span class="code-lang">MARKDOWN — CLAUDE.md</span></div>
+      <div class="code-body"><pre><span class="tok-cm"># parsnipscrawl.dev — Claude Code standing orders</span>
+
+<span class="tok-cm">## Read first</span>
+Read DESIGN_SYSTEM.md before writing any component, style, or game logic.
+
+<span class="tok-cm">## Hard rules — never break these</span>
+- All colours from CSS custom properties in DESIGN_SYSTEM.md §2 — never hardcode hex
+- CSS variable suffixes use hyphens: --purple-3 not --purple3, --text-2 not --text2
+- All spacing from the 8px scale only: 4, 8, 16, 24, 32, 40px — nothing in between
+- Minimum font size: 10px — never go below this
+- Approved font sizes only: 10, 11, 14, 16, 20, 24, 32, and clamp(28px,4.5vw,36px) for hero
+- No Tailwind, no CSS-in-JS, no component libraries (shadcn, MUI, etc.)
+- All pixel art is inline SVG or Canvas2D — no image files, no sprite sheets
+- Primary button resting colour: --purple (NOT --purple-2 — insufficient contrast)
+- Disabled button: bg #0e0015, border #3a1050, color #7a4a9a — no opacity hack
+- border-radius: 2px default, 4px overlays only, 8px outer wrapper only
+- Site name "Parsnipscrawl.dev" — single line, clamp(28px,4.5vw,36px), white-space: nowrap
+
+<span class="tok-cm">## Build order</span>
+1. globals.css — CSS custom properties + base reset
+2. layout.tsx — TopBar + mode toggle + localStorage state init
+3. PostCard.tsx
+4. DungeonCanvas.tsx + game loop
+5. ArticleProse.tsx + CodeBlock.tsx
+6. CombatOverlay.tsx + EncounterFlash.tsx
+7. RoomClearScreen.tsx
+
+<span class="tok-cm">## Watch for drift</span>
+- Colour drift: reject any hex value not in §2
+- Font substitution: only UnifrakturMaguntia, Cinzel Decorative, Cinzel, Share Tech Mono
+- Border radius creep: flat is the aesthetic — resist rounding things
+- Spacing drift: no 6px, 10px, 12px, 20px, 28px — round to the 8px scale
+- Tailwind: not available, not wanted
+- Canvas libraries: use vanilla Canvas2D only</pre></div>
+    </div>
+  </section>
+
+  <div class="ds-footer">
+    <span>// parsnipscrawl.dev — design system v3 — slay code · loot knowledge · crawl deeper</span>
+    <span><span class="blink">_</span></span>
+  </div>
+
+</main>
+</div>
+
+<script>
+// Highlight active nav link on scroll
+const sections = document.querySelectorAll('.ds-section');
+const navLinks = document.querySelectorAll('.ds-nav-item a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const id = entry.target.id;
+      const link = document.querySelector(`.ds-nav-item a[href="#${id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

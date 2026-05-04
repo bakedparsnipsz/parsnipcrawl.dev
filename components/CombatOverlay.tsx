@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import type { Enemy } from '@/lib/types';
 import { useGameStore } from '@/lib/store';
-import { PlayerSprite, ImpSprite, SkeletonSprite } from './sprites/ItemSprite';
+import { PlayerSprite, ImpSprite, SkeletonSprite } from './atoms/Sprites/ItemSprite';
 import styles from './CombatOverlay.module.css';
 
 interface Props {

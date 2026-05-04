@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import type { Post } from '@/lib/types';
 import { POSTS } from '@/lib/posts';
 import { useGameStore } from '@/lib/store';
-import { TomeSprite, PotionSprite } from './sprites/ItemSprite';
+import { TomeSprite, PotionSprite } from './atoms/Sprites/ItemSprite';
 import styles from './RoomClearScreen.module.css';
 
 interface Props {

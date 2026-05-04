@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
 import type { Post } from '@/lib/types';
 import { useGameStore } from '@/lib/store';
-import { ArticleProse } from '@/components/ArticleProse';
+import { ArticleProse } from '@/components/features/ArticleProse/ArticleProse';
 import { CombatOverlay } from '@/components/CombatOverlay';
 import { EncounterFlash } from '@/components/EncounterFlash';
 import { RoomClearScreen } from '@/components/RoomClearScreen';

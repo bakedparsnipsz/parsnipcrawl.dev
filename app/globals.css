@@ -1,37 +1,169 @@
+/* --- Fonts ---------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
 /* ─── Colour palette ─────────────────────────────────────────────────────── */
 :root {
   /* Backgrounds */
-  --bg:       #0a0008;
-  --bg2:      #110012;
-  --bg3:      #1a001c;
+  --bg:            #0a0008;
+  --bg-2:          #110012;
+  --bg-3:          #1a001c;
 
   /* Borders */
-  --border:   #4a1060;
-  --border-b: #8a20b0;
+  --border:        #4a1060;
+  --border-bright: #8a20b0;
 
   /* Brand */
-  --pink:     #ff3a7a;
-  --pink2:    #ff6aa0;
-  --purple:   #c040ff;
-  --purple2:  #8020cc;
-  --purple3:  #4a0080;
+  --pink:          #ff3a7a;
+  --pink-2:        #ff6aa0;
+  --purple:        #c040ff;
+  --purple-2:      #8020cc;
+  --purple-3:      #4a0080;
 
   /* Gold */
-  --gold:     #d4a030;
-  --gold2:    #ffcc60;
+  --gold:          #d4a030;
+  --gold-2:        #ffcc60;
 
   /* Text */
-  --text:     #e8c8f0;
-  --text2:    #a070c0;
-  --text3:    #6a3a8a;
+  --text:          #e8c8f0;
+  --text-2:        #a070c0;
+  --text-3:        #9b7fc0;
 
   /* Semantic */
-  --blood:    #8a0020;
-  --green:    #2ad880;
-  --fire:     #ff6020;
+  --blood:         #8a0020;
+  --green:         #2ad880;
+  --fire:          #ff6020;
+
+  /* Fonts */
+  --font-display-1: "UnifrakturMaguntia", cursive;
+  --font-display-2: "Cinzel Decorative", serif;
+  --font-display-3: "Cinzel", serif;
+  --font-default:  'Share Tech Mono', monospace;
+
+  /* Font sizes */
+  --font-size-logo: clamp(28px, 4.5vw, 36px);
+  --font-size-32: 2rem;
+  --font-size-24: 1.5rem;
+  --font-size-20: 1.25rem;
+  --font-size-16: 1rem;
+  --font-size-14: 0.875rem;
+  --font-size-12: 0.75rem;
+  --font-size-10: 0.625rem;
+
+  /* Font styles */
+  --font-style-shadow: 2px 3px 0 var(--purple-3), 4px 5px 0 rgba(74,0,128,0.4);
+
+  /* Border radius */
+  --border-rad: 0.063rem;
+  --border-rad-2: 0.125rem;
+  --border-rad-3: 0.25rem;
+  --border-rad-4: 0.5rem;
+
+  /* Border widths */
+  --border-width: 0.063rem;
+  --border-width-2: 0.125rem;
+
+  /* Border combos */
+  
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+
+  /* Buttons ====================================== */
+
+  /* Primary - used in most places */
+  --btn-primary-rest-bg: var(--purple-3);
+  --btn-primary-rest-border: var(--purple);
+  --btn-primary-rest-fg: var(--purple);
+
+  --btn-primary-hover-bg: var(--purple-2);
+  --btn-primary-hover-border: var(--pink);
+  --btn-primary-hover-fg: #fff;
+
+  /* Disabled styles for all buttons */
+  --btn-disabled-bg: #0e0015;
+  --btn-disabled-border: #3a1050;
+  --btn-disabled-fg: #7a4a9a;
+
+  /* Secondary / ghost */
+  --btn-secondary-rest-bg: transparent;
+  --btn-secondary-rest-border: var(--border);
+  --btn-secondary-rest-bg: var(--text-3);
+
+  --btn-secondary-hover-bg: transparent;
+  --btn-secondary-hover-border: var(--text-2);
+  --btn-secondary-hover-fg: var(--text-2);
+
+  /* Boss */
+  --btn-boss-rest-bg: #1a0800;
+  --btn-boss-rest-border: var(--gold);
+  --btn-boss-rest-fg: var(--gold);
+
+  --btn-boss-hover-bg: #3a1800;
+  --btn-boss-hover-border: var(--gold);
+  --btn-boss-hover-fg: var(--gold-2);
+
+  /* Combat */
+  --btn-combat-rest-bg: #1a000a;
+  --btn-combat-rest-border: var(--pink);
+  --btn-combat-rest-fg: var(--pink);
+
+  --btn-combat-hover-bg: var(--blood);
+  --btn-combat-hover-border: var(--pink);
+  --btn-combat-hover-fg: #fff;
+
+  /* Destructive */
+  --btn-destructive-rest-bg: var(--blood);
+  --btn-destructive-rest-border: #c04040;
+  --btn-destructive-rest-fg: #ffaaaa;
+
+  --btn-destructive-hover-bg: #aa0030;
+  --btn-destructive-hover-border: #c04040;
+  --btn-destructive-hover-fg: #fff;
+
+  /* Success */
+  --btn-success-rest-bg: #001a08;
+  --btn-success-rest-border: #1a6a30;
+  --btn-success-rest-fg: var(--green);
+
+  --btn-success-hover-bg: #003018;
+  --btn-success-hover-border: #1a6a30;
+  --btn-success-hover-fg: #5aff5a;
+
+  /* Badges / Tags ================================== */
+  /* Default */
+  --badge-default-bg: #1a003a;
+  --badge-default-border: var(--purple-2);
+  --badge-default-fg: var(--purple);
+
+  /* Outlined */
+  --badge-outlined-bg: transparent; 
+  --badge-outlined-border: var(--border);
+  --badge-outlined-fg: var(--text-3);
+
+  /* Green */
+  --badge-green-bg: #001a0a;
+  --badge-green-border: #0a5a3a;
+  --badge-green-fg: var(--green);
+
+  /* Gold */
+  --badge-gold-bg: #130800;
+  --badge-gold-border: var(--gold);
+  --badge-gold-fg: var(--gold-2);
+
+  /* Red */
+  --badge-red-bg: #1a000a;
+  --badge-red-border: var(--blood);
+  --badge-red-fg: var(--pink);
+
 }
+
 
 /* ─── Base reset ─────────────────────────────────────────────────────────── */
 *, *::before, *::after {
@@ -47,7 +179,7 @@ html, body {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-default);
   font-size: 12px;
   line-height: 1.9;
   -webkit-font-smoothing: antialiased;
