@@ -172,6 +172,13 @@
   --input-label-fg: var(--text-3);
   --input-label-size: var(--font-size-14);
 
+  /* Textarea */
+  --textarea-min-height: 80px;
+
+  /* Select */
+  --select-arrow-color: var(--text-2);
+  --select-option-bg: var(--bg-2);
+
 }
 
 
