@@ -1,0 +1,51 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.label {
+  font-family: var(--font-default);
+  font-size: var(--input-label-size);
+  color: var(--input-label-fg);
+  letter-spacing: 1px;
+}
+
+.valueLabel {
+  font-family: var(--font-default);
+  font-size: var(--input-label-size);
+  color: var(--text-2);
+}
+
+/* ── Track ───────────────────────────────────────────────────────────────── */
+
+.track {
+  width: 100%;
+  background: var(--bar-track-bg);
+  border: var(--border-width) solid var(--bar-track-border);
+  overflow: hidden;
+}
+
+.track--thin   { height: var(--bar-height-thin); }
+.track--medium { height: var(--bar-height-medium); }
+.track--thick  { height: var(--bar-height-thick); }
+
+/* ── Fill variants ───────────────────────────────────────────────────────── */
+
+.fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.fill--hp       { background: var(--bar-fill-hp); }
+.fill--xp       { background: var(--bar-fill-xp); }
+.fill--progress { background: var(--bar-fill-progress); }
+.fill--gold     { background: var(--bar-fill-gold); }
+.fill--green    { background: var(--bar-fill-green); }

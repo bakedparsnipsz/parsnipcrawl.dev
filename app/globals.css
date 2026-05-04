@@ -168,12 +168,41 @@
   --input-fg: var(--text);
   --input-placeholder-fg: var(--text-3);
   --input-focus-border: var(--purple);
+
   --input-error-border: var(--blood);
+
   --input-label-fg: var(--text-3);
   --input-label-size: var(--font-size-14);
 
   /* Textarea */
   --textarea-min-height: 80px;
+
+  /* Progress bars */
+  --bar-track-bg: #1a0018;
+  --bar-track-border: #2a0028;
+
+  --bar-height-thin: 0.25rem;
+  --bar-height-medium: 0.5rem;
+  --bar-height-thick: 0.75rem;
+
+  --bar-fill-hp: var(--blood);
+  --bar-fill-xp: var(--purple-2);
+  --bar-fill-progress: linear-gradient(90deg, var(--purple-2), var(--pink));
+  --bar-fill-gold: var(--gold);
+  --bar-fill-green: var(--green);
+
+  /* Skill pips */
+  --pip-size: 1rem;
+  --pip-empty-border: var(--border);
+
+  --pip-purple-bg: var(--purple-2);
+  --pip-purple-border: var(--purple);
+
+  --pip-gold-bg: var(--gold);
+  --pip-gold-border: var(--gold-2);
+
+  --pip-red-bg: var(--blood);
+  --pip-red-border: #c04040;
 
   /* Select */
   --select-arrow-color: var(--text-2);
