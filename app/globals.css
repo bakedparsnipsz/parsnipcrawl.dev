@@ -162,6 +162,29 @@
   --badge-red-border: var(--blood);
   --badge-red-fg: var(--pink);
 
+  /* Inputs ================================== */
+  --input-bg: #0a000f;
+  --input-border: var(--border);
+  --input-fg: var(--text);
+  --input-placeholder-fg: var(--text-3);
+  --input-focus-border: var(--purple);
+  --input-error-border: var(--blood);
+  --input-label-fg: var(--text-3);
+  --input-label-size: var(--font-size-14);
+
+  /* Textarea */
+  --textarea-min-height: 80px;
+
+  /* Select */
+  --select-arrow-color: var(--text-2);
+  --select-trigger-hover-border: var(--text-2);
+  --select-content-bg: var(--bg-2);
+  --select-content-border: var(--border);
+  --select-item-fg: var(--text-2);
+  --select-item-hover-bg: var(--bg-3);
+  --select-item-selected-fg: var(--purple);
+  --select-separator: var(--border);
+
 }
 
 

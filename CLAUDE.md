@@ -7,6 +7,7 @@
 Read DESIGN_SYSTEM.md before writing any component, style, or game logic.
 
 ## Hard rules — never break these
+- Add any new code in the root of this directory and follow folder patterns.
 - All colours from CSS custom properties in DESIGN_SYSTEM.md §2 — never hardcode hex
 - CSS variable suffixes use hyphens: --purple-3 not --purple3, --text-2 not --text2
 - All spacing from the 8px scale only: 4, 8, 16, 24, 32, 40px — nothing in between
