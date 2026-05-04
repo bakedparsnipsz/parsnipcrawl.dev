@@ -204,6 +204,56 @@
   --pip-red-bg: var(--blood);
   --pip-red-border: #c04040;
 
+  /* Toast */
+  --toast-bg: var(--bg-2);
+  --toast-body-fg: var(--text-2);
+
+  --toast-encounter-border: var(--pink);
+  --toast-encounter-title: var(--pink);
+
+  --toast-success-border: var(--green);
+  --toast-success-title: var(--green);
+
+  --toast-loot-border: var(--gold);
+  --toast-loot-title: var(--gold-2);
+
+  /* Popup */
+  --popup-xp-bg: #0a1a08;
+  --popup-xp-border: var(--green);
+  --popup-xp-fg: var(--green);
+
+  --popup-gold-bg: #130800;
+  --popup-gold-border: var(--gold);
+  --popup-gold-fg: var(--gold-2);
+
+  --popup-combat-bg: #1a000a;
+  --popup-combat-border: var(--pink);
+  --popup-combat-fg: var(--pink);
+
+  --popup-encounter-bg: #1a0018;
+  --popup-encounter-border: var(--purple);
+  --popup-encounter-fg: var(--purple);
+
+  /* Callout */
+  --callout-body-fg: var(--text-2);
+  --callout-heading-size: var(--font-size-10);
+
+  --callout-lore-bg: #030a04;
+  --callout-lore-border: #1a4a1a;
+  --callout-lore-heading: var(--green);
+
+  --callout-warn-bg: #0c0800;
+  --callout-warn-border: #5a3a0a;
+  --callout-warn-heading: var(--gold);
+
+  --callout-danger-bg: #100005;
+  --callout-danger-border: var(--blood);
+  --callout-danger-heading: var(--pink);
+  
+  --callout-info-bg: #06000e;
+  --callout-info-border: var(--purple-2);
+  --callout-info-heading: var(--purple);
+
   /* Select */
   --select-arrow-color: var(--text-2);
   --select-trigger-hover-border: var(--text-2);
