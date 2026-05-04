@@ -204,6 +204,22 @@
   --pip-red-bg: var(--blood);
   --pip-red-border: #c04040;
 
+  /* Series Minimap */
+  --mm-border: var(--border);
+  --mm-legend-fg: var(--text-3);
+  /* Room fill/border colours are applied directly in Canvas2D to avoid
+     CSS-variable-in-canvas limitations; kept here as reference tokens */
+  --mm-bg:             #08000f;
+  --mm-corridor:       #2a0040;
+  --mm-current-fill:   var(--pink);
+  --mm-current-border: var(--pink-2);
+  --mm-cleared-fill:   #2a0050;
+  --mm-cleared-border: var(--purple-2);
+  --mm-unread-fill:    #120018;
+  --mm-unread-border:  #2a0040;
+  --mm-boss-fill:      #3a1800;
+  --mm-boss-border:    var(--gold);
+
   /* Prose */
   --prose-body-fg: #b090c8;
   --prose-h1-fg: var(--pink);
