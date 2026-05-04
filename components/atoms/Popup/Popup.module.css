@@ -1,0 +1,42 @@
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8) translateY(4px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.popup {
+  display: inline-block;
+  border: var(--border-width-2) solid;
+  border-radius: var(--border-rad-3);
+  padding: var(--space-1) var(--space-3);
+  font-family: var(--font-display-3);
+  font-size: var(--font-size-16);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  animation: popIn 0.4s ease both;
+}
+
+/* ── Variants ────────────────────────────────────────────────────────────── */
+
+.popup--xp {
+  background: var(--popup-xp-bg);
+  border-color: var(--popup-xp-border);
+  color: var(--popup-xp-fg);
+}
+
+.popup--gold {
+  background: var(--popup-gold-bg);
+  border-color: var(--popup-gold-border);
+  color: var(--popup-gold-fg);
+}
+
+.popup--combat {
+  background: var(--popup-combat-bg);
+  border-color: var(--popup-combat-border);
+  color: var(--popup-combat-fg);
+}
+
+.popup--encounter {
+  background: var(--popup-encounter-bg);
+  border-color: var(--popup-encounter-border);
+  color: var(--popup-encounter-fg);
+}

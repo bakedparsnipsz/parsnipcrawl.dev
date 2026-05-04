@@ -1,0 +1,50 @@
+.callout {
+  border: var(--border-width) solid;
+  border-radius: var(--border-rad-2);
+  padding: var(--space-3);
+}
+
+.heading {
+  font-family: var(--font-default);
+  font-size: var(--callout-heading-size);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+}
+
+.body {
+  font-family: var(--font-default);
+  font-size: var(--font-size-16);
+  color: var(--callout-body-fg);
+  line-height: 1.7;
+}
+
+/* ── Variants ────────────────────────────────────────────────────────────── */
+
+.callout--lore {
+  background: var(--callout-lore-bg);
+  border-color: var(--callout-lore-border);
+
+  & .heading { color: var(--callout-lore-heading); }
+}
+
+.callout--warn {
+  background: var(--callout-warn-bg);
+  border-color: var(--callout-warn-border);
+
+  & .heading { color: var(--callout-warn-heading); }
+}
+
+.callout--danger {
+  background: var(--callout-danger-bg);
+  border-color: var(--callout-danger-border);
+
+  & .heading { color: var(--callout-danger-heading); }
+}
+
+.callout--info {
+  background: var(--callout-info-bg);
+  border-color: var(--callout-info-border);
+
+  & .heading { color: var(--callout-info-heading); }
+}
