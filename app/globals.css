@@ -204,6 +204,38 @@
   --pip-red-bg: var(--blood);
   --pip-red-border: #c04040;
 
+  /* Prose */
+  --prose-body-fg: #b090c8;
+  --prose-h1-fg: var(--pink);
+  --prose-h1-shadow: 0 2px 0 var(--purple-3);
+  --prose-h2-fg: var(--text);
+  --prose-h3-fg: var(--text);
+  --prose-strong-fg: var(--text);
+  --prose-link-fg: var(--pink);
+  --prose-link-border: var(--purple-2);
+  --prose-marker-fg: var(--purple);
+  --prose-prefix-fg: var(--text-3);
+
+  /* Inline code */
+  --inline-code-bg: #0a000f;
+  --inline-code-border: #2a0040;
+  --inline-code-fg: #8aff8a;
+
+  /* Code block */
+  --code-block-bg: #060006;
+  --code-header-bg: #0e0012;
+  --code-header-border: #2a0040;
+  --code-default-fg: var(--text-2);
+
+  /* Syntax tokens */
+  --tok-kw:  #4aff4a;
+  --tok-fn:  #7accff;
+  --tok-str: #ffca7a;
+  --tok-cmt: #3a6a3a;
+  --tok-ty:  #ca7aff;
+  --tok-num: #ff7a7a;
+  --tok-mac: #ffaa4a;
+
   /* Toast */
   --toast-bg: var(--bg-2);
   --toast-body-fg: var(--text-2);
