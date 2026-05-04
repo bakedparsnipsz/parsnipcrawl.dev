@@ -1,5 +1,5 @@
-import { CodeBlock } from '../../CodeBlock';
-import styles from '../../features/ArticleProse/ArticleProse.module.css';
+import { Prose } from '../../../components/atoms/Prose/Prose';
+import { CodeBlock } from '../../../components/atoms/CodeBlock/CodeBlock';
 
 interface Props {
   content: string;
@@ -9,11 +9,11 @@ interface Props {
 export function ArticleProse({ content }: Props) {
   const blocks = parseBlocks(content);
   return (
-    <article className={styles.prose}>
+    <Prose>
       {blocks.map((block, i) => (
         <Block key={i} block={block} />
       ))}
-    </article>
+    </Prose>
   );
 }
 

@@ -1,0 +1,75 @@
+.block {
+  background: var(--code-block-bg);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--border-rad-2);
+  margin: var(--space-2) 0 var(--space-3);
+  overflow: hidden;
+}
+
+.header {
+  background: var(--code-header-bg);
+  border-bottom: var(--border-width) solid var(--code-header-border);
+  padding: var(--space-2) var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lang {
+  font-family: var(--font-default);
+  font-size: var(--font-size-10);
+  color: var(--purple);
+  letter-spacing: 2px;
+}
+
+.copyBtn {
+  background: transparent;
+  border: var(--border-width) solid var(--border);
+  color: var(--text-3);
+  font-family: var(--font-default);
+  font-size: var(--font-size-10);
+  padding: var(--space-1) var(--space-2);
+  cursor: pointer;
+  letter-spacing: 1px;
+  border-radius: var(--border-rad);
+  transition: color 0.15s, border-color 0.15s;
+
+  &:hover {
+    color: var(--text-2);
+    border-color: var(--border-bright);
+  }
+}
+
+.copied {
+  color: var(--green);
+  border-color: var(--green);
+
+  &:hover {
+    color: var(--green);
+    border-color: var(--green);
+  }
+}
+
+.body {
+  padding: var(--space-3);
+  overflow-x: auto;
+}
+
+.body pre {
+  font-family: var(--font-default);
+  font-size: var(--font-size-14);
+  line-height: 1.75;
+  color: var(--code-default-fg);
+  margin: 0;
+  white-space: pre;
+}
+
+/* ── Syntax token colours ─────────────────────────────────────────────────── */
+
+.kw  { color: var(--tok-kw); }
+.fn  { color: var(--tok-fn); }
+.str { color: var(--tok-str); }
+.cmt { color: var(--tok-cmt); font-style: italic; }
+.ty  { color: var(--tok-ty); }
+.num { color: var(--tok-num); }
+.mac { color: var(--tok-mac); }
