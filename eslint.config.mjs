@@ -14,7 +14,7 @@ export default tseslint.config(
       'node_modules/**',
       'storybook-static/**',
       'coverage/**',
-      'parsnipscrawl-design-system-v4.html',
+      './parsnipscrawl-design-system-v4.html',
     ],
   },
 
